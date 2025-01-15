@@ -14,7 +14,16 @@
     <body>
         <header>
             <h1>One On Perception</h1>
+            <p>Welcome to our marketplace!</p>
         </header>
-
+        <section class="dashboard">
+            <ul>
+                <li>
+                    <a href="" class="product">
+                        {{ $products[0]["name"] }}
+                    </a>
+                </li>
+            </ul>
+        </section>
     </body>
 </html>

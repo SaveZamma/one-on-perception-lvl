@@ -14,6 +14,7 @@
     <body>
         <header>
             <h1>One On Perception</h1>
+            <p>{{ $greeting }} adventurer!</p>
         </header>
 
     </body>

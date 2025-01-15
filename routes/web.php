@@ -6,9 +6,14 @@ Route::get('/', function () {
     return view('landing');
 });
 Route::get('login', function () {
-    return view('login');
+    return view('login', ["greeting" => "Hello"]);
 });
 Route::get('marketplace', function () {
-    return view('marketplace.index');
+    $products = [
+        ["name" => "Product 1", "price" => 100, "id" => 1],
+        ["name" => "Product 2", "price" => 200, "id" => 2],
+        ["name" => "Product 3", "price" => 300, "id" => 3],
+    ];
+    return view('marketplace.index', ["products" => $products]);
 });
 
