@@ -1,6 +1,4 @@
-@props(['custom' => "defaultValue", 'dynamic' => false])
-
-<div @class(['dynamicClass' => $dynamic, 'card', $custom])>
+<div @class(['card'])>
     {{ $slot }}
     <a {{ $attributes }}>View</a>
 </div>
