@@ -18,11 +18,13 @@
         </header>
         <section class="dashboard">
             <ul>
-                <li>
-                    <a href="marketplace/{{ $products[0]["id"] }}" class="product">
-                        {{ $products[0]["name"] }}
-                    </a>
-                </li>
+                @foreach ($products as $product)
+                    <li class="product">
+                        <a href="marketplace/{{ $product["id"] }}" class="product">
+                            {{ $product["name"] }}
+                        </a>
+                    </li>
+                @endforeach
             </ul>
         </section>
     </body>
