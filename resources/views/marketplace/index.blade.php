@@ -5,10 +5,8 @@
         <ul>
             @foreach ($products as $product)
                 <li class="product">
-                    {{-- ATTENTION: in this case I can't use the double quotes
-                     to get the product's field or they'll create a conflict
-                     with the ones of the href. Single quote must be used. --}}
-                    <x-card href="marketplace/{{ $product['id'] }}">
+                    {{-- Note: I can also pass a custom or dynamic attribute --}}
+                    <x-card href="marketplace/{{ $product['id'] }}" custom="customValue" :dynamic="$product['id'] < 2">
                         <h3>{{ $product["name"] }}</h3>
                         <p>{{ $product["price"] }}</p>
                     </x-card>
