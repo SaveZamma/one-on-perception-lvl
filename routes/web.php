@@ -16,4 +16,8 @@ Route::get('marketplace', function () {
     ];
     return view('marketplace.index', ["products" => $products]);
 });
+Route::get('marketplace/{id}', function ($id) {
+    // TODO fetch record with id and pass it as arg
+    return view('marketplace.product', ["id" => $id]);
+});
 

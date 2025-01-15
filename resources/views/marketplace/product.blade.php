@@ -17,13 +17,7 @@
             <p>Welcome to our marketplace!</p>
         </header>
         <section class="dashboard">
-            <ul>
-                <li>
-                    <a href="marketplace/{{ $products[0]["id"] }}" class="product">
-                        {{ $products[0]["name"] }}
-                    </a>
-                </li>
-            </ul>
+            <p>{{ $id }}</p>
         </section>
     </body>
 </html>
