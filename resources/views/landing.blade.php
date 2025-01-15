@@ -14,6 +14,9 @@
         {{-- <link href="../resources/css/app.css" rel="stylesheet" type="text/css"/> --}}
     </head>
     <body>
+        <header>
+            <a href="login" class="btn">Login</a>
+        </header>
         <section class="presentaion">
             <h1>One On Perception</h1>
             <p>Find everything you need for your adventures.</p>
