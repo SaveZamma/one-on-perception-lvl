@@ -1,15 +1,17 @@
 <x-layout>
-    <header>
-        <p>Welcome to our marketplace</p>
-        <a href="marketplace/my">My shop</a>
-    </header>
+    <h2>Welcome to our marketplace</h2>
+    <a href="marketplace/my">My shop</a>
     <section class="dashboard">
         <ul>
             @foreach ($products as $product)
                 <li class="product">
-                    <a href="marketplace/{{ $product["id"] }}" class="product">
-                        {{ $product["name"] }}
-                    </a>
+                    {{-- ATTENTION: in this case I can't use the double quotes
+                     to get the product's field or they'll create a conflict
+                     with the ones of the href. Single quote must be used. --}}
+                    <x-card href="marketplace/{{ $product['id'] }}">
+                        <h3>{{ $product["name"] }}</h3>
+                        <p>{{ $product["price"] }}</p>
+                    </x-card>
                 </li>
             @endforeach
         </ul>
