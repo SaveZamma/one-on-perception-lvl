@@ -1,6 +1,7 @@
 <x-layout>
     <header>
         <p>Welcome to our marketplace</p>
+        <a href="marketplace/my">My shop</a>
     </header>
     <section class="dashboard">
         <ul>
