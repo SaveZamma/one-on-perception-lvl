@@ -10,7 +10,7 @@
         <header>
             <nav>
                 <h1>One On Perception</h1>
-                <a href="marketplace">Marketplace</a>
+                <a href="/marketplace">Marketplace</a>
             </nav>
         </header>
 
