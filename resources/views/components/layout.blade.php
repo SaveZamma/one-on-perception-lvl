@@ -8,7 +8,7 @@
     </head> 
     <body>
         <header>
-            <nav>
+            <nav class="top-navbar">
                 <h1>One On Perception</h1>
                 <a href="{{ route('marketplace.index')}}">Marketplace</a>
             </nav>
