@@ -5,12 +5,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>One On Perception</title>
         @vite('resources/css/app.css')
-    </head>
+    </head> 
     <body>
         <header>
             <nav>
                 <h1>One On Perception</h1>
-                <a href="/marketplace">Marketplace</a>
+                <a href="{{ route('marketplace.index')}}">Marketplace</a>
             </nav>
         </header>
 

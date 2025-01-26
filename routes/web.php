@@ -10,13 +10,13 @@ Route::get('login', function () {
     return view('login', ["greeting" => "Hello"]);
 });
 
-Route::get('marketplace', [MarketplaceController::class, 'index']);
+Route::get('marketplace', [MarketplaceController::class, 'index'])->name('marketplace.index');
 
 // Laravel reads the routes from top to down
 // if the product route were to be put above the orders, the program would have
 // redirected the user to the product page using "orders" as the id
 Route::get('marketplace/my', function () {
     return view('marketplace.my');
-});
-Route::get('marketplace/{id}', [MarketplaceController::class, 'showProduct']);
+})->name('marketplace.my');
+Route::get('marketplace/{id}', [MarketplaceController::class, 'showProduct'])->name('marketplace.product');
 

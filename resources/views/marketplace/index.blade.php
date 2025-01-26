@@ -5,7 +5,7 @@
         <ul>
             @foreach ($products as $product)
                 <li class="product">
-                    <x-card href="marketplace/{{ $product['id'] }}">
+                    <x-card href="{{ route('marketplace.product', ['id' => $product['id']]) }}">
                         <h3>{{ $product["name"] }}</h3>
                         <p>{{ $product["price"] }}</p>
                     </x-card>
