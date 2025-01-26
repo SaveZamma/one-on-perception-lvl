@@ -3,12 +3,11 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use App\Models\Shop;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Product>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Shop>
  */
-class ProductFactory extends Factory
+class ShopFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -18,10 +17,9 @@ class ProductFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => fake()->word(),
+            'name' => fake()->company(),
             'description' => fake()->realText(),
-            'price' => fake()->numberBetween(100, 1000) / 100.0,
-            'shop_id' => Shop::inRandomOrder()->first()->id,
+            'email' => fake()->email()
         ];
     }
 }

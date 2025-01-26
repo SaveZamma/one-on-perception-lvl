@@ -26,6 +26,7 @@ class DatabaseSeeder extends Seeder
 
         // Reference the other seeders that must be called
         $this->call([
+            ShopSeeder::class,
             ProductSeeder::class,
         ]);
     }

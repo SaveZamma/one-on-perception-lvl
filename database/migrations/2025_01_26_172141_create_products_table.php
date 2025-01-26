@@ -4,6 +4,8 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
+// Had to rename file so that the table is created after the shop one.
+
 return new class extends Migration
 {
     /**
@@ -17,6 +19,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('description');
             $table->double('price');
+            $table->foreignId('shop_id')->constrained()->onDelete('cascade');
         });
     }
 

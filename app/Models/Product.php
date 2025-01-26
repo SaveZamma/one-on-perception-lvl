@@ -12,7 +12,7 @@ use Illuminate\Database\Eloquent\Model;
 class Product extends Model
 {
     // Defines the columns that can be mass assigned during creation.
-    protected $fillable = ['name', 'description', 'price'];
+    protected $fillable = ['name', 'description', 'email'];
 
     use HasFactory;
 }
