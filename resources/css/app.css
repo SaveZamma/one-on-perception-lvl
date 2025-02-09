@@ -28,30 +28,17 @@ footer {
 nav {
     background-color: white;
     border-radius: 10px;
-    padding: 1% 5%;
+    padding: 1% 2%;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     h1 {
-        font-size: 2rem;
-    }
-    p {
-        margin: 0;
-    }
-    a {
-        margin-top: 2%;
-    }
-    span {
-        font-size: 1rem;
-    }
-    span svg {
-        width: 1rem;
-        height: 1rem;
-        fill: var(--dark-brown);
+        font-size: 1.5rem;
     }
 }
-nav.top-navbar {
-    border-radius: 0px;
+.nav-section {
+    display: flex;
+    gap: 10px;
 }
 
 main header{
@@ -79,6 +66,9 @@ a:hover {
     overflow: hidden;
     width: fit-content !important;
 }
+svg {
+    width: 1rem;
+}
 
 /* LAYOUT */
 .fill-height {
@@ -98,16 +88,27 @@ a:hover {
 .fx-space-around {
     justify-content: space-around;
 }
+.fill-landing {
+    padding: 15%;
+    text-align: center;
+    border-radius: 20px;
+}
+.centered {
+    text-align: center;
+}
 
 /* COLOR */
 .primary {
     color: var(--primary);
+    fill: var(--primary);
 }
 .secondary {
     color: var(--secondary);
+    fill: var(--secondary);
 }
 .ternary {
     color: var(--ternary);
+    fill: var(--ternary);
 }
 .horizontal-gradient {
     background: linear-gradient(to right, var(--primary), var(--secondary), var(--ternary));
@@ -122,14 +123,6 @@ a:hover {
         #a0a0a0;
     background-blend-mode: overlay, overlay, overlay, normal;
     color: white;
-}
-.fill-landing {
-    padding: 15%;
-    text-align: center;
-    border-radius: 20px;
-}
-.centered {
-    text-align: center;
 }
 
 /* BUTTONS */
