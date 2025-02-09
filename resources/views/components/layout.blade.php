@@ -16,8 +16,8 @@
             {{ $slot }}
         </main>
 
-        <footer>
+        {{-- <footer>
             <p>One On Perception &copy; 2025</p>
-        </footer>
+        </footer> --}}
     </body>
 </html>

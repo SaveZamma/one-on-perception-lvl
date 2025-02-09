@@ -74,22 +74,54 @@ a:hover {
     font-weight: bold;
 }
 
-ul {
+.products-list {
     padding: 0;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: stretch;
 }
 li {
     list-style: none;
 }
+li.product {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    border: #a1a1a1 1px solid;
+    min-width: 45%;
+}
 .card {
-    border: 1px solid var(--ternary);
     border-radius: 10px;
-    padding: 2%;
-    margin: 2%;
+    margin: 1%;
+    overflow: hidden;
+    width: fit-content !important;
+}
+.card-title-container {
+    width: 100%;
+    margin-top: 60%;
+    padding: 20px;
+    background: linear-gradient(to top, black, transparent);
+    color: white;
+    p { margin: 0; }
+    a { color: white; }
+    a:hover { font-weight: bold; }
 }
 
-/* DIMENSIONS */
+/* LAYOUT */
 .fill-height {
     height: -webkit-fill-available;
+}
+.fx-col {
+    display: flex;
+    flex-direction: column;
+}
+.fx-row {
+    display: flex;
+    flex-direction: row;
+}
+.fx-space-between {
+    justify-content: space-between;
 }
 
 /* COLOR */
