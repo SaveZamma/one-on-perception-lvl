@@ -1,7 +1,7 @@
 <x-layout>
+    @vite('resources/css/marketplace.css')
+
     <h2>Welcome to our marketplace</h2>
-
-
 
     <a href="marketplace/my">My shop</a>
     <section class="promotion">
@@ -12,7 +12,15 @@
     
     <section class="dashboard">
         
-        <input type="text" placeholder="Search for products"/>
+        <div class="search">
+            <select id="product-category" name="category">
+                <option value="all">All</option>
+                <option value="electronics">Electronics</option>
+                <option value="clothing">Clothing</option>
+                <option value="food">Food</option>
+            </select>
+            <input type="text" placeholder="Search for products"/>
+        </div>
 
         <ul class="products-list">
         @foreach ($products as $product)
