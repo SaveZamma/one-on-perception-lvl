@@ -2,7 +2,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Rakkas&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Rakkas&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
 
-
 :root{
     --primary: #29A3A3;
     --secondary: #FE7171;
@@ -16,11 +15,11 @@
     --light-ternary: #fbcfeb;
 }
 
+
 html, body, main {
     height: 100%;
 }
 body {
-    /* background-color: white; */
     padding: 0;
     margin: 0% 2%;
     font-family: Raleway, sans-serif;
@@ -45,11 +44,8 @@ nav {
 .nav-section {
     display: flex;
     gap: 10px;
-}
-
-main header{
-    display: flex;
-    flex-direction: row-reverse;
+    align-content: center;
+    flex-wrap: wrap;
 }
 
 h1 {
@@ -131,6 +127,13 @@ svg {
     background-blend-mode: overlay, overlay, overlay, normal;
     color: white;
 }
+.glass {
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 10px;
+    backdrop-filter: blur(5px);
+    box-shadow: 0 8px 32px 0 rgba(14, 42, 61, 0.37);
+    
+}
 
 /* BUTTONS */
 .gradient-bg-btn {
@@ -146,6 +149,14 @@ svg {
 }
 .gradient-bg-btn:hover {
     background: #ffffff15;
+}
+.btn-ternary {
+    background: var(--dark-ternary);
+    color: white;
+    padding: 3%;
+    margin: 10% 5% 0;
+    font-family: Raleway;
+    font-weight: bold;
 }
 
 /* DESKTOP */

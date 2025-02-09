@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MarketplaceController;
+use App\Http\Controllers\ProfileController;
+
+$isLogged = false;
 
 Route::get('/', function () {
     return view('landing');
@@ -9,6 +12,8 @@ Route::get('/', function () {
 Route::get('login', function () {
     return view('login', ["greeting" => "Hello"]);
 });
+Route::get('/profile', [ProfileController::class, 'profile'])->name('profile');
+
 
 Route::get('marketplace', [MarketplaceController::class, 'index'])->name('marketplace.index');
 
