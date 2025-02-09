@@ -80,10 +80,9 @@ a:hover {
     flex-direction: row;
     flex-wrap: wrap;
     align-content: stretch;
+    justify-content: space-around;
 }
-li {
-    list-style: none;
-}
+li { list-style: none; }
 li.product {
     display: flex;
     flex-direction: row;
@@ -107,6 +106,10 @@ li.product {
     a { color: white; }
     a:hover { font-weight: bold; }
 }
+.promotion .banner {
+ height: 200px;
+ border-radius: 15px;
+}
 
 /* LAYOUT */
 .fill-height {
@@ -122,6 +125,9 @@ li.product {
 }
 .fx-space-between {
     justify-content: space-between;
+}
+.fx-space-around {
+    justify-content: space-around;
 }
 
 /* COLOR */
