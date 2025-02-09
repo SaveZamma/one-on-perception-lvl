@@ -7,16 +7,17 @@
         @vite('resources/css/app.css')
     </head> 
     <body>
-        <header>
-            <nav class="top-navbar">
-                <h1>One On Perception</h1>
-                <a href="{{ route('marketplace.index')}}">Marketplace</a>
-            </nav>
-        </header>
+        <nav class="top-navbar">
+            <h1 class="primary" style="">One On Perception</h1>
+            {{-- <a href="{{ route('marketplace.index')}}">Marketplace</a> --}}
+        </nav>
 
         <main class="container">
             {{ $slot }}
         </main>
 
+        <footer>
+            <p>One On Perception &copy; 2025</p>
+        </footer>
     </body>
 </html>

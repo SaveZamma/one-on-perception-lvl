@@ -4,21 +4,29 @@
 
 
 :root{
-    --bone: #f9f5f3;
-    --beige: #dbc7b7;
-    --brown: #593b35;
-    --dark-brown: #2f1d1b;
+    --primary: #29A3A3;
+    --secondary: #FE7171;
+    --ternary: #7E1748;
+    --dark-gray: #5f5f5f;
 }
 
+html, body, main {
+    height: 100%;
+}
 body {
-    background-color: var(--bone);
+    /* background-color: white; */
     padding: 0;
-    margin: 0;
+    margin: 0% 2%;
     font-family: Raleway, sans-serif;
-    color: var(--dark-brown);
+    color: black;
+}
+footer {
+    padding: 2% 1%;
+    font-size: small;
+    color: var(--dark-gray);
 }
 nav {
-    background-color: var(--beige);
+    background-color: white;
     border-radius: 10px;
     padding: 1% 5%;
     display: flex;
@@ -46,16 +54,12 @@ nav.top-navbar {
     border-radius: 0px;
 }
 
-main{
-    padding: 5% 10%;
-}
 main header{
     display: flex;
     flex-direction: row-reverse;
 }
 
 h1 {
-    color: var(--brown);
     font-family: Rakkas, cursive;
     font-size: 3rem;
     line-height: 3rem;
@@ -63,7 +67,7 @@ h1 {
 }
 
 a {
-    color: var(--brown);
+    color: var(--ternary);
     text-decoration: none;
 }
 a:hover {
@@ -77,8 +81,67 @@ li {
     list-style: none;
 }
 .card {
-    border: 1px solid var(--brown);
+    border: 1px solid var(--ternary);
     border-radius: 10px;
     padding: 2%;
     margin: 2%;
+}
+
+/* DIMENSIONS */
+.fill-height {
+    height: -webkit-fill-available;
+}
+
+/* COLOR */
+.primary {
+    color: var(--primary);
+}
+.secondary {
+    color: var(--secondary);
+}
+.ternary {
+    color: var(--ternary);
+}
+.horizontal-gradient {
+    background: linear-gradient(to right, var(--primary), var(--secondary), var(--ternary));
+    background-clip: text;
+    color: transparent;
+}
+.gradient-bg {
+    background:
+        radial-gradient(circle at 10% 0%, var(--primary) 50%, transparent 60%),
+        radial-gradient(circle at 25% 90%, var(--secondary) 40%, transparent 60%),
+        radial-gradient(circle at 90% 50%, var(--ternary) 40%, transparent 70%),
+        #a0a0a0;
+    background-blend-mode: overlay, overlay, overlay, normal;
+    color: white;
+}
+.fill-landing {
+    padding: 15%;
+    text-align: center;
+    border-radius: 20px;
+}
+.centered {
+    text-align: center;
+}
+
+/* BUTTONS */
+.gradient-bg-btn {
+    display: block;
+    color: white;
+    font-weight: bold;
+    padding: 5%;
+    margin-top: 20%;
+    background: transparent;
+    border: 1px solid white;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.gradient-bg-btn:hover {
+    background: #ffffff15;
+}
+
+/* DESKTOP */
+@media (min-width: 600px) {
+
 }
