@@ -34,7 +34,7 @@ li.product {
 }
 
 .search {
-    background: #a5eae5;
+    background: var(--light-primary);
     padding: 0 2%;
     border-radius: 100px;
     display: flex;
@@ -49,7 +49,7 @@ li.product {
 select, input {
     background: transparent;
     border: none;
-    color: #1b4446;
+    color: var(--dark-primary);
     padding: 1% 2%;
     font-family: Raleway;
 }

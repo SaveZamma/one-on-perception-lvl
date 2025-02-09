@@ -1,17 +1,16 @@
 <x-layout>
     @vite('resources/css/marketplace.css')
 
-    <h2>Welcome to our marketplace</h2>
-
-    <a href="marketplace/my">My shop</a>
+    {{-- <a href="marketplace/my">My shop</a> --}}
     <section class="promotion">
-        <div class="banner" style="background-image: url(https://picsum.photos/800); background-size: cover;">
+        <h2>Our best deals</h2>
+        <div class="banner"
+        style="background-image: url(https://picsum.photos/800); background-size: cover;">
+    </div>
+</section>
 
-        </div>
-    </section>
-    
-    <section class="dashboard">
-        
+<section class="dashboard">
+        <h2>Shop by category</h2>        
         <div class="search">
             <select id="product-category" name="category">
                 <option value="all">All</option>
