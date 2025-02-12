@@ -4,7 +4,7 @@
     <div class="gradient-bg centered fill-landing fill-height form-outer-container">
         <h1>Welcome!</h1>
         <div class="form-container glass">
-            <form action="">
+            <form action="{{ route('login') }}" method="POST">
                 @csrf
                 <div class="form-control">
                     <label for="username">Username or email:</label>

@@ -73,9 +73,26 @@ svg {
     width: 1rem;
 }
 
+ul {
+    padding: 0%;
+}
+li {
+    list-style: none;
+}
+.error-item {
+    color: white;
+    fill: white;
+    padding: 2% 5%;
+    text-align: start;
+    background-color: #a00a;
+}
+
 /* LAYOUT */
 .fill-height {
     height: -webkit-fill-available;
+}
+.fill-width {
+    width: -webkit-fill-available;
 }
 .fx-col {
     display: flex;
@@ -95,9 +112,14 @@ svg {
     padding: 15%;
     text-align: center;
     border-radius: 20px;
+    height: 100% !important;
+    min-height: fit-content;
 }
 .centered {
     text-align: center;
+}
+.tm-10 {
+    margin-top: 10px;;
 }
 
 /* COLOR */
