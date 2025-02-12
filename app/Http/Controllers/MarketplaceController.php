@@ -16,4 +16,8 @@ class MarketplaceController extends Controller
         $product = Product::findOrFail($id);
         return view('marketplace.product', ["product" => $product]);
     }
+
+    public function my() {
+        return view('marketplace.my');
+    }
 }

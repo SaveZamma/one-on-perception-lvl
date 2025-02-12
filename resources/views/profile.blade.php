@@ -1,9 +1,9 @@
 <x-layout>
-    <h1>profile page is working!</h1>
+    <h1>Hi {{ Auth::user()->username }}</h1>
     <p>Profile page is working fine</p>
 
     <form action="{{ route('logout') }}" method="POST">
         @csrf
-        <button type="submit">Logout</button>
+        <button type="submit" class="glass fill-width">Logout</button>
     </form>
 </x-layout>

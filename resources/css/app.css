@@ -47,9 +47,15 @@ nav {
     align-content: center;
     flex-wrap: wrap;
 }
+button {
+    font-family: Raleway, sans-serif;
+    padding: 2%;
+    color: var(--dark-primary);
+    fill: var(--dark-primary);
+}
 
 h1 {
-    font-family: Rakkas, cursive;
+    font-family: Rakkas, sans-serif;
     font-size: 3rem;
     line-height: 3rem;
     font-weight: lighter;
@@ -150,7 +156,7 @@ li {
     color: white;
 }
 .glass {
-    border: 1px solid rgba(255, 255, 255, 0.18);
+    border: 1px solid #fffa;
     border-radius: 10px;
     backdrop-filter: blur(5px);
     box-shadow: 0 8px 32px 0 rgba(14, 42, 61, 0.37);
