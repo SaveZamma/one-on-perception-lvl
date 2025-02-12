@@ -5,15 +5,22 @@
         <h1>Welcome!</h1>
         <div class="form-container glass">
             <form action="">
+                @csrf
                 <div class="form-control">
                     <label for="username">Username or email:</label>
-                    <input type="text" name="username" id="username">
+                    <input type="text" required
+                      name="username" id="username"
+                      value="{{ old('email') }}"
+                    >
                 </div>
                 <div class="form-control">
                     <label for="password">Password:</label>
-                    <input type="password" name="password" id="password">
+                    <input type="password" name="password" id="password" required>
                 </div>
             </form>
+            <p>
+                Don't have an account? <a href="{{ route('show.register') }}">Register</a>
+            </p>
             <button type="submit" class="glass btn-ternary">Login</button>
         </div>
     </div>

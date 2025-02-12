@@ -3,15 +3,16 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MarketplaceController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\AuthController;
 
 $isLogged = false;
 
 Route::get('/', function () {
     return view('landing');
 });
-Route::get('login', function () {
-    return view('login', ["greeting" => "Hello"]);
-});
+Route::get('/login', [AuthController::class, 'showLogin'])->name('show.login');
+Route::get('/register', [AuthController::class, 'showRegister'])->name('show.register');
+
 Route::get('/profile', [ProfileController::class, 'profile'])->name('profile');
 
 

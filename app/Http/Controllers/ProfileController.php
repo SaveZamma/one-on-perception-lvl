@@ -10,7 +10,7 @@ class ProfileController extends Controller
         if (Auth::check()) {
             return view('profile');
         } else {
-            return view('login');
+            return redirect()->route('show.login');
         }
     }
 }
