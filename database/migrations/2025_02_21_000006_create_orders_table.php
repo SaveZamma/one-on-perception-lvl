@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained('users');
-            //$table->foreignId('address_id')->constrained('addresses');
+            $table->foreignId('address_id')->constrained('addresses');
             $table->date('date');
             $table->char('title', 50);
             $table->string('shipping_code');
