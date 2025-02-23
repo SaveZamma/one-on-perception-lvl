@@ -13,6 +13,6 @@ class OrderedProduct extends Model
         'storage_id',
         'quantity'
     ];
-    
+
     use HasFactory;
 }
