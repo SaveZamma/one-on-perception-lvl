@@ -4,9 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Address extends Model
 {
+    use HasFactory;
+
     protected $fillable = [
         'state',
         'city',
@@ -17,5 +20,8 @@ class Address extends Model
         'longitude'
     ];
 
-    use HasFactory;
+    public function orders(): HasMany
+    {
+        return $this->hasMany(Order::class);
+    }
 }
