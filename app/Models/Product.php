@@ -4,15 +4,35 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
-/* Created using the command `php artisan make:model Product -mfs`.
+/* New classes can be created using the command `php artisan make:model Product -mfs`.
  * The options `-mfs` will automatically create the migration, the factory and
  * the seeder for the model.
  */
 class Product extends Model
 {
-    // Defines the columns that can be mass assigned during creation.
-    protected $fillable = ['name', 'description', 'email'];
-
     use HasFactory;
+    // Defines the columns that can be mass assigned during creation.
+    protected $fillable = [
+        'name',
+        'description',
+        'category_id'
+    ];
+
+    public function categories(): BelongsToMany
+    {
+        return $this->belongsToMany(Category::class);
+    }
+
+    public function storedProducts(): HasMany
+    {
+        return $this->hasMany(StoredProduct::class);
+    }
+
+    public function orderedProducts(): HasMany
+    {
+        return $this->hasMany(OrderedProduct::class);
+    }
 }
