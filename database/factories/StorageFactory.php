@@ -17,7 +17,7 @@ class StorageFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'dealer_id' => DealerFactory::new()
         ];
     }
 }
