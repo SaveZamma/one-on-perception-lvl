@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Dealer extends Model
@@ -13,11 +14,11 @@ class Dealer extends Model
     protected $fillable = [
         'name',
         'identification_code',
-        'nation'
+        'country'
     ];
 
-    public function storage(): HasOne
+    public function storage(): BelongsTo
     {
-        return $this->hasOne(Storage::class);
+        return $this->belongsTo(Storage::class);
     }
 }

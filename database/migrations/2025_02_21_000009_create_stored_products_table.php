@@ -16,6 +16,7 @@ return new class extends Migration
             $table->foreignId('storage_id')->constrained('storages')->cascadeOnUpdate()->cascadeOnDelete();
             $table->unsignedInteger('quantity')->default(0);
             $table->float('price')->default(0);
+            $table->char('currency', 3);
             $table->boolean('new')->default(true);
             $table->boolean('visible')->default(true);
             $table->timestamps();
