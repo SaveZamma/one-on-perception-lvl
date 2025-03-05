@@ -118,8 +118,8 @@ li {
     padding: 15%;
     text-align: center;
     border-radius: 20px;
-    height: 100% !important;
     min-height: fit-content;
+    height: -webkit-fill-available;
 }
 .centered {
     text-align: center;

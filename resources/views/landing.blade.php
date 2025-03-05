@@ -1,5 +1,5 @@
 <x-layout>
-    <div class="gradient-bg centered fill-landing fill-height">
+    <div class="gradient-bg centered fill-landing">
         <h1>One On Perception</h1>
         <p>Find everything you need for your adventures.
         Be it dice, miniatures, maps or even an owlbear's egg, we have it all.</p>
