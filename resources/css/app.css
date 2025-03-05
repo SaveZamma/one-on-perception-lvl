@@ -189,5 +189,7 @@ li {
 
 /* DESKTOP */
 @media (min-width: 600px) {
-
+    .fill-landing {
+        padding: 5%;
+    }
 }
