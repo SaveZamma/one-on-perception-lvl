@@ -1,0 +1,195 @@
+/* Execute `npm run dev` from terminal to start vite (which loads the css) */
+@import url('https://fonts.googleapis.com/css2?family=Rakkas&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rakkas&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root{
+    --primary: #29A3A3;
+    --secondary: #FE7171;
+    --ternary: #7E1748;
+    --dark-gray: #5f5f5f;
+    --dark-primary: #1b4446;
+    --dark-secondary: #821a1a;
+    --dark-ternary: #7e1748;
+    --light-primary: #a5eae5;
+    --light-secondary: #ffc8c8;
+    --light-ternary: #fbcfeb;
+}
+
+
+html, body, main {
+    height: 100%;
+}
+body {
+    padding: 0;
+    margin: 0% 2%;
+    font-family: Raleway, sans-serif;
+    color: var(--dark-primary);
+}
+footer {
+    padding: 2% 1%;
+    font-size: small;
+    color: var(--dark-gray);
+}
+nav {
+    background-color: white;
+    border-radius: 10px;
+    padding: 1% 2%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    h1 {
+        font-size: 1.5rem;
+    }
+}
+.nav-section {
+    display: flex;
+    gap: 10px;
+    align-content: center;
+    flex-wrap: wrap;
+}
+button {
+    font-family: Raleway, sans-serif;
+    padding: 2%;
+    color: var(--dark-primary);
+    fill: var(--dark-primary);
+}
+
+h1 {
+    font-family: Rakkas, sans-serif;
+    font-size: 3rem;
+    line-height: 3rem;
+    font-weight: lighter;
+    margin: 0;
+}
+a {
+    color: var(--ternary);
+    text-decoration: none;
+}
+a:hover {
+    font-weight: bold;
+}
+
+.card {
+    border-radius: 10px;
+    margin: 1%;
+    overflow: hidden;
+    width: fit-content !important;
+}
+svg {
+    width: 1rem;
+}
+
+ul {
+    padding: 0%;
+}
+li {
+    list-style: none;
+}
+.error-item {
+    color: white;
+    fill: white;
+    padding: 2% 5%;
+    text-align: start;
+    background-color: #a00a;
+}
+
+/* LAYOUT */
+.fill-height {
+    height: -webkit-fill-available;
+}
+.fill-width {
+    width: -webkit-fill-available;
+}
+.fx-col {
+    display: flex;
+    flex-direction: column;
+}
+.fx-row {
+    display: flex;
+    flex-direction: row;
+}
+.fx-space-between {
+    justify-content: space-between;
+}
+.fx-space-around {
+    justify-content: space-around;
+}
+.fill-landing {
+    padding: 15%;
+    text-align: center;
+    border-radius: 20px;
+    min-height: fit-content;
+    height: -webkit-fill-available;
+}
+.centered {
+    text-align: center;
+}
+.tm-10 {
+    margin-top: 10px;;
+}
+
+/* COLOR */
+.primary {
+    color: var(--primary);
+    fill: var(--primary);
+}
+.secondary {
+    color: var(--secondary);
+    fill: var(--secondary);
+}
+.ternary {
+    color: var(--ternary);
+    fill: var(--ternary);
+}
+.horizontal-gradient {
+    background: linear-gradient(to right, var(--primary), var(--secondary), var(--ternary));
+    background-clip: text;
+    color: transparent;
+}
+.gradient-bg {
+    background:
+        radial-gradient(circle at 10% 0%, var(--primary) 50%, transparent 60%),
+        radial-gradient(circle at 25% 90%, var(--secondary) 40%, transparent 60%),
+        radial-gradient(circle at 90% 50%, var(--ternary) 40%, transparent 70%),
+        #a0a0a0;
+    background-blend-mode: overlay, overlay, overlay, normal;
+    color: white;
+}
+.glass {
+    border: 1px solid #fffa;
+    border-radius: 10px;
+    backdrop-filter: blur(5px);
+    box-shadow: 0 8px 32px 0 rgba(14, 42, 61, 0.37);
+    
+}
+
+/* BUTTONS */
+.gradient-bg-btn {
+    display: block;
+    color: white;
+    font-weight: bold;
+    padding: 5%;
+    margin-top: 20%;
+    background: transparent;
+    border: 1px solid white;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.gradient-bg-btn:hover {
+    background: #ffffff15;
+}
+.btn-ternary {
+    background: var(--dark-ternary);
+    color: white;
+    padding: 3%;
+    margin: 10% 5% 0;
+    font-family: Raleway;
+    font-weight: bold;
+}
+
+/* DESKTOP */
+@media (min-width: 600px) {
+    .fill-landing {
+        padding: 5%;
+    }
+}
