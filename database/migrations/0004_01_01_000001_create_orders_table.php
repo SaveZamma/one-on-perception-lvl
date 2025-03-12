@@ -18,6 +18,7 @@ return new class extends Migration
             $table->date('date');
             $table->char('title', 50);
             $table->string('shipping_code');
+            $table->integer('status');
             $table->timestamps();
         });
     }

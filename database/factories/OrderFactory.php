@@ -22,7 +22,8 @@ class OrderFactory extends Factory
             'address_id' => AddressFactory::new(),
             'date' => fake()->date(),
             'title' => fake()->name(),
-            'shipping_code' => Str::random(10)
+            'shipping_code' => Str::random(10),
+            'status' => fake()->randomElement([0, 1, 2])
         ];
     }
 }

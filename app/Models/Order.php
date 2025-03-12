@@ -18,6 +18,7 @@ class Order extends Model
         'date',
         'title',
         'shipping_code',
+        'status',
     ];
 
     public function orderedProducts(): HasMany
