@@ -19,6 +19,7 @@ class UserSeeder extends Seeder
             'username' => 'nicla123',
             'email' => 'Nicla_Pagliuca@libero.it',
             'password' => Hash::make('niclapagliuca'),
+            'avatar' => 'https://api.dicebear.com/7.x/thumbs/svg'
         ]);
         User::factory()->count(10)->create();
     }
