@@ -7,6 +7,6 @@ use Illuminate\Support\Facades\Auth;
 class ProfileController extends Controller
 {
     public function profile() {
-        return view('profile');
+        return view('profile/profile');
     }
 }
