@@ -13,7 +13,6 @@ class OrderSeeder extends Seeder
      */
     public function run(): void
     {
-        //
         Order::truncate(); 
         Order::factory()->create([
             'user_id' => 1,
