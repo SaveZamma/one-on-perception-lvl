@@ -8,6 +8,26 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
+enum OrderStatus: int {
+    case REJECTED = -1;
+    case PROCESSING = 0;
+    case CONFIRMED = 1;
+    case SHIPPED = 2;
+    case TRANSIT = 3;
+    case DELIVERED = 4;
+
+    public function label(): string {
+        return match($this) {
+            self::PROCESSING => 'Processing',
+            self::CONFIRMED => 'Confirmed',
+            self::REJECTED => 'Rejected',
+            self::SHIPPED => 'Shipped',
+            self::TRANSIT => 'In Transit',
+            self::DELIVERED => 'Delivered',
+        };
+    }
+}
+
 class Order extends Model
 {
     use HasFactory;
@@ -18,6 +38,7 @@ class Order extends Model
         'date',
         'title',
         'shipping_code',
+        'status',
     ];
 
     public function orderedProducts(): HasMany
@@ -34,4 +55,8 @@ class Order extends Model
     {
         return $this->belongsTo(Address::class);
     }
+
+    protected $casts = [
+        'status' => OrderStatus::class,
+    ];
 }

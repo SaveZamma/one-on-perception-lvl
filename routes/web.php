@@ -14,6 +14,8 @@ Route::get('marketplace/{id}', [MarketplaceController::class, 'showProduct'])->n
 // Protected routes (needs to be logged in)
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'profile'])->name('profile');
+    Route::get('/profile/orders', [ProfileController::class, 'myOrders'])->name('profile.orders');
+    Route::get('/profile/payments', [ProfileController::class, 'myPayments'])->name('profile.payments');
     Route::get('marketplace/my', [MarketplaceController::class, 'showProduct'])->name('marketplace.my');
 });
 

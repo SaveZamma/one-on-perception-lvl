@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
+use App\Models\OrderStatus;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Order>
@@ -22,7 +23,8 @@ class OrderFactory extends Factory
             'address_id' => AddressFactory::new(),
             'date' => fake()->date(),
             'title' => fake()->name(),
-            'shipping_code' => Str::random(10)
+            'shipping_code' => Str::random(10),
+            'status' => fake()->randomElement(OrderStatus::cases())->value
         ];
     }
 }

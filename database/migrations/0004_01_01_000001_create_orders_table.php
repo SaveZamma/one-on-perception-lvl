@@ -4,8 +4,6 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-// Had to rename file so that the table is created after the shop one.
-
 return new class extends Migration
 {
     /**
@@ -13,13 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('products', function (Blueprint $table) {
+        Schema::create('orders', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained('users');
+            $table->foreignId('address_id')->constrained('addresses');
+            $table->date('date');
+            $table->char('title', 50);
+            $table->string('shipping_code');
+            $table->tinyInteger('status');
             $table->timestamps();
-            $table->string('name');
-            $table->string('description');
-            $table->double('price');
-            $table->foreignId('shop_id')->constrained()->onDelete('cascade');
         });
     }
 
@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('products');
+        Schema::dropIfExists('orders');
     }
 };

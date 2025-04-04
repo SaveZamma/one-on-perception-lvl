@@ -3,7 +3,7 @@
 
     <div class="gradient-bg centered fill-landing fill-height form-outer-container">
         <h1>Welcome!</h1>
-        <div class="form-container glass">
+        <div class="form-container glass with-shadow-lg">
             <form action="{{ route('register') }}" method="POST">
                 @csrf
                 <div class="form-control">
@@ -34,10 +34,10 @@
                 <p>
                     Already have an account? <a href="{{ route('show.login') }}">Login</a>
                 </p>
-                <button type="submit" class="glass btn-ternary fill-width">Register</button>
+                <button type="submit" class="glass with-shadow-sm btn-ternary fill-width">Register</button>
     
                 @if ($errors->any())
-                    <ul class="glass error-item">
+                    <ul class="glass with-shadow-sm error-item">
                         @foreach ($errors->all() as $error)
                             <li class="tm-10">
                                 <svg xmlns="http://www.w3.org/2000/svg"

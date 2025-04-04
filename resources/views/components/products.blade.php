@@ -15,7 +15,7 @@
 
 {{-- 
 @foreach ($pdr as $product)
-<li class="product card"
+<li class="product card-no-border"
     style="background-image: url(https://picsum.photos/800); background-size: cover;"
     style="background-image: url({{ $product["image"] }})"
 >
