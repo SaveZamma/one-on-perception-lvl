@@ -19,7 +19,6 @@ class ProductFactory extends Factory
         return [
             'name' => fake()->name(),
             'description' => fake()->text(),
-            'category_id' => CategoryFactory::new()
         ];
     }
 }
