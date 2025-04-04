@@ -25,3 +25,7 @@ Route::middleware('guest')->group(function () {
     Route::post('/login', [AuthController::class, 'login'])->name('login');
     Route::post('/register', [AuthController::class, 'register'])->name('register');
 });
+
+Route::get('/Marketplace', function () {
+    return view('marketplace');
+});
