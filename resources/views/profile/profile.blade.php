@@ -1,18 +1,21 @@
-<x-layout>
+@extends('components.layout')
     @vite('resources/css/profile.css')
-
-    <div class="profile-page-container">    
+@section('styles')
+    <link rel="stylesheet" href="{{ \Illuminate\Support\Facades\URL::to('src/css/profile.css') }}">
+@endsection
+@section('page-content')
+    <div class="profile-page-container">
         <main>
             <section class="profile-section-card">
                 <header class="fx-col">
                     <img class="profile-pic" src="{{ Auth::user()->avatar }}" alt="Profile Picture">
                     <h2>{{ Auth::user()->username }}</h2>
                 </header>
-            
+
                 <p>Member since: {{ Auth::user()->created_at->format('d M Y') }}</p>
                 <p>From: {{ Auth::user()->country }}</p>
             </section>
-    
+
             <section class="profile-actions">
                 <a class="profile-action-btn with-shadow-sm" href="{{ route('profile.orders')}}">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" alt="boxes icon">
@@ -42,4 +45,4 @@
             </button>
         </form>
     </div>
-</x-layout>
+@endsection

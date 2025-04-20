@@ -1,5 +1,6 @@
-<x-layout>
+@extends('components.layout')
 
+@section('page-content')
     <ul class="products-list">
         @foreach ($transactions as $transaction)
             <li class="card-border fx-row fx-space-between" style="padding: 0.2rem 1rem;">
@@ -9,4 +10,4 @@
         @endforeach
     </ul>
 
-</x-layout>
+@endsection

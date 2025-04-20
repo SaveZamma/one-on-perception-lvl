@@ -1,4 +1,5 @@
-<x-layout>
+@extends('components.layout')
+@section('page-content')
     <header>
         <p>Product page</p>
     </header>
@@ -7,4 +8,4 @@
         <p>{{ $product->description }}</p>
         <p class="price-tag"><strong>{{ $product->price }}</strong></p>
     </section>
-</x-layout>
+@endsection
