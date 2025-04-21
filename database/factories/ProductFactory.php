@@ -19,6 +19,7 @@ class ProductFactory extends Factory
         return [
             'name' => fake()->name(),
             'description' => fake()->text(),
+            'imagePath' => 'https://via.placeholder.com/150'
         ];
     }
 }
