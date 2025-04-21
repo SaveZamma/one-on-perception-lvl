@@ -1,5 +1,4 @@
 @extends('components.layout')
-    @vite('resources/css/form.css')
 @section('styles')
     <link rel="stylesheet" href="{{ \Illuminate\Support\Facades\URL::to('src/css/form.css') }}">
 @endsection

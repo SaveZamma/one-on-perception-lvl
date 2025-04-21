@@ -1,6 +1,7 @@
 @extends('components.layout')
-
-    @vite('public/src/css/form.css')
+@section('styles')
+    <link rel="stylesheet" href="{{ \Illuminate\Support\Facades\URL::to('src/css/form.css') }}">
+@endsection
 
 @section('page-content')
     <div class="gradient-bg centered fill-landing fill-height form-outer-container">

@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>@yield('title', 'One On Perception')</title>
     <link rel="stylesheet" href="{{ \Illuminate\Support\Facades\URL::to('src/css/app.css') }}">
-    @vite('src/css/app.css')
     <!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
     @yield('styles')
 </head>

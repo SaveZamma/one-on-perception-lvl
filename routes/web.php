@@ -26,6 +26,4 @@ Route::middleware('guest')->group(function () {
     Route::post('/register', [AuthController::class, 'register'])->name('register');
 });
 
-Route::get('/Marketplace', function () {
-    return view('marketplace');
-});
+Route::get('/marketplace', [MarketplaceController::class, 'index'])->name('marketplace.index');
