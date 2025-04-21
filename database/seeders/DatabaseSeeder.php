@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\Category;
 use App\Models\User;
+use App\Models\WishlistProduct;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -28,6 +29,8 @@ class DatabaseSeeder extends Seeder
             AddressSeeder::class,
             OrderSeeder::class,
             TransactionSeeder::class,
+            WishlistSeeder::class,
+            WishlistProductSeeder::class,
         ]);
     }
 }
