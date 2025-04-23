@@ -37,6 +37,45 @@ function loadWishlistItems() {
     .then(() => true);
 }
 
+function addRemoveItem(productId, shouldRemove, button) {
+    try {
+        const route = shouldRemove 
+            ? "wishlist/remove"
+            : "wishlist/add";
+        fetch(route, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRF-TOKEN': csrfToken,
+            },
+            body: JSON.stringify({ product_id: productId })
+        })
+        .then(response => mapToJsonOrNull(response))
+        .then(data => {
+            if (data !== null || data.status === 200) {
+                return loadWishlistItems();
+            }
+            return null;
+        })
+        .then(data => {
+            if (data === null) {
+                throw new Error('Failed to toggle wishlist');
+            } else {
+                setButtonIcon(button);
+                Toastify({
+                    text: shouldRemove ? "Removed from wishlist" : "Added to wishlist!",
+                    duration: 2000,
+                    style: {
+                        background: "linear-gradient(to right, #29A3A3, #FE7171)",
+                      },
+                }).showToast();
+            }
+        });
+    } catch (error) {
+        console.error("Error toggling wishlist:", error);
+    }
+}
+
 loadWishlistItems()
 .then(() => document.querySelectorAll('.wishlist-toggle-btn').forEach(button => setButtonIcon(button)))
 
@@ -47,35 +86,15 @@ document.addEventListener('DOMContentLoaded', () => {
             const productId = button.dataset.productId;
             const isInWishlist = inWishlist.includes(+productId);
 
-            try {
-                const route = isInWishlist 
-                    ? "wishlist/remove"
-                    : "wishlist/add";
-                fetch(route, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'X-CSRF-TOKEN': csrfToken,
-                    },
-                    body: JSON.stringify({ product_id: productId })
-                })
-                .then(response => mapToJsonOrNull(response))
-                .then(data => {
-                    if (data !== null || data.status === 200) {
-                        return loadWishlistItems();
-                    }
-                    return null;
-                })
-                .then(data => {
-                    if (data === null) {
-                        throw new Error('Failed to toggle wishlist');
-                    } else {
-                        setButtonIcon(button);
-                    }
-                });
-            } catch (error) {
-                console.error("Error toggling wishlist:", error);
+            if (isInWishlist) {
+                inWishlist = inWishlist.filter(id => id !== +productId);
+            } else {
+                inWishlist.push(+productId);
             }
+            // Update the icon before the call to improve UX
+            // The icon will be updated again after the call according to the result of the operation
+            setButtonIcon(button);
+            addRemoveItem(+productId, isInWishlist, button);            
         });
     });
 });
