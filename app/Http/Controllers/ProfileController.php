@@ -38,4 +38,13 @@ class ProfileController extends Controller
     
         return view('profile/wishlist', ["wishlists" => $wishlists, "products" => $products]);
     }
+
+    public function getUserWishlists() {
+        $wishlist = Wishlist::where('owner', Auth::id())->get();
+        $wishlistProducts = WishlistProduct::where('user_id', Auth::id())->get();
+        return response()->json([
+            'wishlist' => json_encode($wishlist),
+            'wishlistProducts' => json_encode($wishlistProducts),
+        ]);
+    }
 }

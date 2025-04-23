@@ -187,6 +187,11 @@ li {
 }
 
 /* BUTTONS */
+button {
+    border: 0px;
+    background-color: transparent;
+    cursor: pointer;
+}
 .gradient-bg-btn {
     display: block;
     color: white;
