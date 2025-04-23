@@ -69,6 +69,10 @@ a:hover {
     font-weight: bold;
 }
 
+.card {
+    border: lightgray 1px solid;
+    border-radius: 10px;
+}
 .card-border {
     border: lightgray 1px solid;
     border-radius: 10px;
@@ -131,6 +135,9 @@ li {
 }
 .tm-10 {
     margin-top: 10px;;
+}
+.pad-2 {
+    padding: 2%;
 }
 
 /* COLOR */
