@@ -13,18 +13,22 @@
                     <p>{{ $wishlist['description'] }}</p>
 
                     <ul class="product-list">
-                        @foreach ($products as $product)
-                            @if ($product->wishlist_id == $wishlist['id'])
-                                <li class="card pad-2">
-                                    {{-- <img src="{{$product->imagePath}}" alt="{{$product->name}}"> --}}
-                                    {{-- <p class="price-tag"><strong>{{ $product->price }}</strong></p> --}}
+                        @if ($products->count() == 0)
+                            <p>You don't have any products in this wishlist.</p>
+                        @else
+                            @foreach ($products as $product)
+                                @if ($product->wishlist_id == $wishlist['id'])
+                                    <li class="card pad-2">
+                                        {{-- <img src="{{$product->imagePath}}" alt="{{$product->name}}"> --}}
+                                        {{-- <p class="price-tag"><strong>{{ $product->price }}</strong></p> --}}
 
-                                    <a href="{{ route('marketplace.product', ['id' => $product->id]) }}">
-                                        {{ $product->name }}
-                                    </a>
-                                </li>
-                            @endif
-                        @endforeach
+                                        <a href="{{ route('marketplace.product', ['id' => $product->id]) }}">
+                                            {{ $product->name }}
+                                        </a>
+                                    </li>
+                                @endif
+                            @endforeach
+                        @endif
                     </ul>
 
                 </li>

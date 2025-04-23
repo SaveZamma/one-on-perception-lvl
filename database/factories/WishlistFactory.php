@@ -27,6 +27,7 @@ class WishlistFactory extends Factory
         return [
             'name' => fake()->randomElement($wishlistNames),
             'description' => fake()->text(),
+            'owner' => UserFactory::new()
         ];
     }
 }

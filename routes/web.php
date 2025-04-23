@@ -11,6 +11,9 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::get('marketplace', [MarketplaceController::class, 'index'])->name('marketplace.index');
 Route::get('marketplace/{id}', [MarketplaceController::class, 'showProduct'])->name('marketplace.product');
 
+Route::get('marketplace/wishlist/add/{product}', [MarketplaceController::class, 'addToWishlist'])->name('marketplace.wishlist.add');
+Route::get('marketplace/wishlist/remove/{product}', [MarketplaceController::class, 'removeFromWishlist'])->name('marketplace.wishlist.remove');
+
 // Protected routes (needs to be logged in)
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'profile'])->name('profile');

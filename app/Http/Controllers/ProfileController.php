@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Order;
 use App\Models\Transaction;
 use App\Models\Wishlist;
+use App\Models\WishlistProduct;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
@@ -32,8 +33,8 @@ class ProfileController extends Controller
             ->where('wishlist_products.user_id', Auth::id())
             ->select('products.*', 'wishlist_products.wishlist_id')
             ->get();
-        $wishlistIDs = $products->pluck('wishlist_id');
-        $wishlists = Wishlist::whereIn('id', $wishlistIDs)->get();
+        // $wishlistIDs = $products->pluck('wishlist_id');
+        $wishlists = Wishlist::where('owner', Auth::id())->get();
     
         return view('profile/wishlist', ["wishlists" => $wishlists, "products" => $products]);
     }
