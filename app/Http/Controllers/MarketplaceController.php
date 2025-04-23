@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
-use Illuminate\Http\Request;
+use App\Models\WishlistProduct;
+use Illuminate\Support\Facades\Auth;
 
 class MarketplaceController extends Controller
 {
@@ -14,7 +15,9 @@ class MarketplaceController extends Controller
 
     public function showProduct($id) {
         $product = Product::query()->findOrFail($id);
-        return view('marketplace.product', ["product" => $product]);
+        $wishlist = WishlistProduct::where('user_id', Auth::id())->get();
+        $isInWishlist = $wishlist->contains('product_id', $id);
+        return view('marketplace.product', ["product" => $product, "isWishlist" => $isInWishlist]);
     }
 
     public function my() {
