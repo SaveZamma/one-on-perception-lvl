@@ -17,6 +17,16 @@
                 <option value="clothing">Clothing</option>
                 <option value="food">Food</option>
             </select>
+            <form method="GET" id="pagination-form" class="pagination-control">
+                <label for="perPage">Products per page:</label>
+                <select name="perPage" id="perPage" onchange="document.getElementById('pagination-form').submit()">
+                    @foreach ([10, 20, 50, 100] as $size)
+                        <option value="{{ $size }}" {{ request('perPage', 20) == $size ? 'selected' : '' }}>
+                            {{ $size }}
+                        </option>
+                    @endforeach
+                </select>
+            </form>
             <input type="text" placeholder="Search for products" />
         </div>
 
@@ -26,118 +36,24 @@
             <div class="products-container">
                 <div class="grid">
                     <?php
-        $products = [
-            ['name' => 'Product 1', 'price' => '$20', 'image' => 'https://picsum.photos/800'],
-            ['name' => 'Product 2', 'price' => '$35', 'image' => 'https://picsum.photos/800'],
-            ['name' => 'Product 3', 'price' => '$50', 'image' => 'https://picsum.photos/800'],
-            ['name' => 'Product 4', 'price' => '$25', 'image' => 'https://picsum.photos/800'],
-            ['name' => 'Product 5', 'price' => '$40', 'image' => 'https://picsum.photos/800'],
-            ['name' => 'Product 6', 'price' => '$15', 'image' => 'https://picsum.photos/800'],
-            ['name' => 'Product 7', 'price' => '$60', 'image' => 'https://picsum.photos/800'],
-            ['name' => 'Product 8', 'price' => '$30', 'image' => 'https://picsum.photos/800'],
-            ['name' => 'Product 1', 'price' => '$20', 'image' => 'https://picsum.photos/800'],
-            ['name' => 'Product 2', 'price' => '$35', 'image' => 'https://picsum.photos/800'],
-            ['name' => 'Product 3', 'price' => '$50', 'image' => 'https://picsum.photos/800'],
-            ['name' => 'Product 4', 'price' => '$25', 'image' => 'https://picsum.photos/800'],
-            ['name' => 'Product 5', 'price' => '$40', 'image' => 'https://picsum.photos/800'],
-            ['name' => 'Product 6', 'price' => '$15', 'image' => 'https://picsum.photos/800'],
-            ['name' => 'Product 7', 'price' => '$60', 'image' => 'https://picsum.photos/800'],
-            ['name' => 'Product 8', 'price' => '$30', 'image' => 'https://picsum.photos/800'],
-            ['name' => 'Product 1', 'price' => '$20', 'image' => 'https://picsum.photos/800'],
-            ['name' => 'Product 2', 'price' => '$35', 'image' => 'https://picsum.photos/800'],
-            ['name' => 'Product 3', 'price' => '$50', 'image' => 'https://picsum.photos/800'],
-            ['name' => 'Product 4', 'price' => '$25', 'image' => 'https://picsum.photos/800'],
-            ['name' => 'Product 5', 'price' => '$40', 'image' => 'https://picsum.photos/800'],
-            ['name' => 'Product 6', 'price' => '$15', 'image' => 'https://picsum.photos/800'],
-            ['name' => 'Product 7', 'price' => '$60', 'image' => 'https://picsum.photos/800'],
-            ['name' => 'Product 8', 'price' => '$30', 'image' => 'https://picsum.photos/800'],
-            ['name' => 'Product 1', 'price' => '$20', 'image' => 'https://picsum.photos/800'],
-            ['name' => 'Product 2', 'price' => '$35', 'image' => 'https://picsum.photos/800'],
-            ['name' => 'Product 3', 'price' => '$50', 'image' => 'https://picsum.photos/800'],
-            ['name' => 'Product 4', 'price' => '$25', 'image' => 'https://picsum.photos/800'],
-            ['name' => 'Product 5', 'price' => '$40', 'image' => 'https://picsum.photos/800'],
-            ['name' => 'Product 6', 'price' => '$15', 'image' => 'https://picsum.photos/800'],
-            ['name' => 'Product 7', 'price' => '$60', 'image' => 'https://picsum.photos/800'],
-            ['name' => 'Product 8', 'price' => '$30', 'image' => 'https://picsum.photos/800'],
-            ['name' => 'Product 1', 'price' => '$20', 'image' => 'https://picsum.photos/800'],
-            ['name' => 'Product 2', 'price' => '$35', 'image' => 'https://picsum.photos/800'],
-            ['name' => 'Product 3', 'price' => '$50', 'image' => 'https://picsum.photos/800'],
-            ['name' => 'Product 4', 'price' => '$25', 'image' => 'https://picsum.photos/800'],
-            ['name' => 'Product 5', 'price' => '$40', 'image' => 'https://picsum.photos/800'],
-            ['name' => 'Product 6', 'price' => '$15', 'image' => 'https://picsum.photos/800'],
-            ['name' => 'Product 7', 'price' => '$60', 'image' => 'https://picsum.photos/800'],
-            ['name' => 'Product 8', 'price' => '$30', 'image' => 'https://picsum.photos/800'],
-            ['name' => 'Product 1', 'price' => '$20', 'image' => 'https://picsum.photos/800'],
-            ['name' => 'Product 2', 'price' => '$35', 'image' => 'https://picsum.photos/800'],
-            ['name' => 'Product 3', 'price' => '$50', 'image' => 'https://picsum.photos/800'],
-            ['name' => 'Product 4', 'price' => '$25', 'image' => 'https://picsum.photos/800'],
-            ['name' => 'Product 5', 'price' => '$40', 'image' => 'https://picsum.photos/800'],
-            ['name' => 'Product 6', 'price' => '$15', 'image' => 'https://picsum.photos/800'],
-            ['name' => 'Product 7', 'price' => '$60', 'image' => 'https://picsum.photos/800'],
-            ['name' => 'Product 8', 'price' => '$30', 'image' => 'https://picsum.photos/800'],
-            ['name' => 'Product 1', 'price' => '$20', 'image' => 'https://picsum.photos/800'],
-            ['name' => 'Product 2', 'price' => '$35', 'image' => 'https://picsum.photos/800'],
-            ['name' => 'Product 3', 'price' => '$50', 'image' => 'https://picsum.photos/800'],
-            ['name' => 'Product 4', 'price' => '$25', 'image' => 'https://picsum.photos/800'],
-            ['name' => 'Product 5', 'price' => '$40', 'image' => 'https://picsum.photos/800'],
-            ['name' => 'Product 6', 'price' => '$15', 'image' => 'https://picsum.photos/800'],
-            ['name' => 'Product 7', 'price' => '$60', 'image' => 'https://picsum.photos/800'],
-            ['name' => 'Product 8', 'price' => '$30', 'image' => 'https://picsum.photos/800'],
-            ['name' => 'Product 1', 'price' => '$20', 'image' => 'https://picsum.photos/800'],
-            ['name' => 'Product 2', 'price' => '$35', 'image' => 'https://picsum.photos/800'],
-            ['name' => 'Product 3', 'price' => '$50', 'image' => 'https://picsum.photos/800'],
-            ['name' => 'Product 4', 'price' => '$25', 'image' => 'https://picsum.photos/800'],
-            ['name' => 'Product 5', 'price' => '$40', 'image' => 'https://picsum.photos/800'],
-            ['name' => 'Product 6', 'price' => '$15', 'image' => 'https://picsum.photos/800'],
-            ['name' => 'Product 7', 'price' => '$60', 'image' => 'https://picsum.photos/800'],
-            ['name' => 'Product 8', 'price' => '$30', 'image' => 'https://picsum.photos/800'],
-            ['name' => 'Product 1', 'price' => '$20', 'image' => 'https://picsum.photos/800'],
-            ['name' => 'Product 2', 'price' => '$35', 'image' => 'https://picsum.photos/800'],
-            ['name' => 'Product 3', 'price' => '$50', 'image' => 'https://picsum.photos/800'],
-            ['name' => 'Product 4', 'price' => '$25', 'image' => 'https://picsum.photos/800'],
-            ['name' => 'Product 5', 'price' => '$40', 'image' => 'https://picsum.photos/800'],
-            ['name' => 'Product 6', 'price' => '$15', 'image' => 'https://picsum.photos/800'],
-            ['name' => 'Product 7', 'price' => '$60', 'image' => 'https://picsum.photos/800'],
-            ['name' => 'Product 8', 'price' => '$30', 'image' => 'https://picsum.photos/800'],
-            ['name' => 'Product 1', 'price' => '$20', 'image' => 'https://picsum.photos/800'],
-            ['name' => 'Product 2', 'price' => '$35', 'image' => 'https://picsum.photos/800'],
-            ['name' => 'Product 3', 'price' => '$50', 'image' => 'https://picsum.photos/800'],
-            ['name' => 'Product 4', 'price' => '$25', 'image' => 'https://picsum.photos/800'],
-            ['name' => 'Product 5', 'price' => '$40', 'image' => 'https://picsum.photos/800'],
-            ['name' => 'Product 6', 'price' => '$15', 'image' => 'https://picsum.photos/800'],
-            ['name' => 'Product 7', 'price' => '$60', 'image' => 'https://picsum.photos/800'],
-            ['name' => 'Product 8', 'price' => '$30', 'image' => 'https://picsum.photos/800'],
-            ['name' => 'Product 1', 'price' => '$20', 'image' => 'https://picsum.photos/800'],
-            ['name' => 'Product 2', 'price' => '$35', 'image' => 'https://picsum.photos/800'],
-            ['name' => 'Product 3', 'price' => '$50', 'image' => 'https://picsum.photos/800'],
-            ['name' => 'Product 4', 'price' => '$25', 'image' => 'https://picsum.photos/800'],
-            ['name' => 'Product 5', 'price' => '$40', 'image' => 'https://picsum.photos/800'],
-            ['name' => 'Product 6', 'price' => '$15', 'image' => 'https://picsum.photos/800'],
-            ['name' => 'Product 7', 'price' => '$60', 'image' => 'https://picsum.photos/800'],
-            ['name' => 'Product 8', 'price' => '$30', 'image' => 'https://picsum.photos/800'],
-            ['name' => 'Product 1', 'price' => '$20', 'image' => 'https://picsum.photos/800'],
-            ['name' => 'Product 2', 'price' => '$35', 'image' => 'https://picsum.photos/800'],
-            ['name' => 'Product 3', 'price' => '$50', 'image' => 'https://picsum.photos/800'],
-            ['name' => 'Product 4', 'price' => '$25', 'image' => 'https://picsum.photos/800'],
-            ['name' => 'Product 5', 'price' => '$40', 'image' => 'https://picsum.photos/800'],
-            ['name' => 'Product 6', 'price' => '$15', 'image' => 'https://picsum.photos/800'],
-            ['name' => 'Product 7', 'price' => '$60', 'image' => 'https://picsum.photos/800'],
-            ['name' => 'Product 8', 'price' => '$30', 'image' => 'https://picsum.photos/800'],
-        ];
-                foreach ($products as $product) {
-                    echo "<div class='card'>
-                            <img src='{$product['image']}' alt='{$product['name']}'>
-                            <h2>{$product['name']}</h2>
-                            <p>{$product['price']}</p>
-                            <button class='btn'>Add to cart</button>
-                        </div>";
-                }
+                        foreach ($products as $product) {
+                            echo "<div class='card'>
+                                    <a href='" . route('marketplace.product', ['id' => $product['id']]) . "'>
+                                        <img src='{$product['image']}' alt='{$product['name']}'>
+                                    </a>
+                                    <a href='" . route('marketplace.product', ['id' => $product['id']]) . "'>
+                                        <h2>{$product['name']}</h2>
+                                    </a>
+                                    <p>{$product['price']}</p>
+                                    <button class='btn'>Add to cart</button>
+                                </div>";
+                        }
                     ?>
                 </div>
             </div>
         </div>
 
-        {{-- {{ $products->links() }} --}}
+        {{ $products->links() }}
     </section>
 </x-layout>
 

@@ -8,7 +8,8 @@ use Illuminate\Http\Request;
 class MarketplaceController extends Controller
 {
     public function index() {
-        $products = Product::orderBy('created_at', 'desc')->paginate(10);
+        $perPage = request()->get('perPage', 20);
+        $products = Product::orderBy('created_at', 'desc')->paginate($perPage);;
         return view('marketplace.index', ["products" => $products]);
     }
 
