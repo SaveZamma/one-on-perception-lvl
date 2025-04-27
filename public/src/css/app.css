@@ -70,6 +70,15 @@ a:hover {
 }
 
 .card {
+    border: lightgray 1px solid;
+    border-radius: 10px;
+}
+.card-border {
+    border: lightgray 1px solid;
+    border-radius: 10px;
+    padding: 5%;
+}
+.card-no-border {
     border-radius: 10px;
     margin: 1%;
     overflow: hidden;
@@ -127,6 +136,16 @@ li {
 .tm-10 {
     margin-top: 10px;;
 }
+.pad-2 {
+    padding: 2%;
+}
+.full-width {
+    width: 100%;
+}
+.v-align-center {
+    flex-wrap: wrap;
+    align-items: center;
+}
 
 /* COLOR */
 .primary {
@@ -159,11 +178,20 @@ li {
     border: 1px solid #fffa;
     border-radius: 10px;
     backdrop-filter: blur(5px);
+}
+.with-shadow-sm {
+    box-shadow: 0 3px 5px 0 rgba(14, 42, 61, 0.37);
+}
+.with-shadow-lg {
     box-shadow: 0 8px 32px 0 rgba(14, 42, 61, 0.37);
-    
 }
 
 /* BUTTONS */
+button {
+    border: 0px;
+    background-color: transparent;
+    cursor: pointer;
+}
 .gradient-bg-btn {
     display: block;
     color: white;
@@ -178,6 +206,25 @@ li {
 .gradient-bg-btn:hover {
     background: #ffffff15;
 }
+.btn-primary {
+    background: var(--primary);
+    color: white;
+    fill: white;
+    padding: 3%;
+    margin: 10% 5% 0;
+    font-family: Raleway;
+    font-weight: bold;
+}
+.btn-secondary {
+    background: var(--secondary);
+    border-radius: 10px;
+    color: white;
+    fill: white;
+    padding: 2%;
+    font-family: Raleway;
+    font-weight: bold;
+    gap: 10px;
+}
 .btn-ternary {
     background: var(--dark-ternary);
     color: white;
@@ -185,6 +232,10 @@ li {
     margin: 10% 5% 0;
     font-family: Raleway;
     font-weight: bold;
+}
+
+rounded-10 {
+    border-radius: 10px;
 }
 
 /* DESKTOP */

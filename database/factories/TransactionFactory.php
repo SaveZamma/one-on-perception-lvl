@@ -19,7 +19,7 @@ class TransactionFactory extends Factory
     {
         return [
             'order_id' => OrderFactory::new(),
-            'amount' => 0,
+            'amount' => fake()->randomFloat(2),
             'currency' => fake()->currencyCode()
         ];
     }

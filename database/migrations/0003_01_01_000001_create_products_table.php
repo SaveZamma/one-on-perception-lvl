@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('description')->nullable();
-            $table->foreignId('category_id')->constrained('categories');
+            $table->string('imagePath');
             $table->timestamps();
         });
     }

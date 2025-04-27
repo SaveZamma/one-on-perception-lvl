@@ -2,7 +2,9 @@
 
 namespace Database\Seeders;
 
+use App\Models\Category;
 use App\Models\User;
+use App\Models\WishlistProduct;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -17,17 +19,18 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
-
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
-        ]);
-
         // Reference the other seeders that must be called
         $this->call([
             ShopSeeder::class,
             ProductSeeder::class,
+            CategorySeeder::class,
+            CategoryProductSeeder::class,
+            UserSeeder::class,
+            AddressSeeder::class,
+            OrderSeeder::class,
+            TransactionSeeder::class,
+            WishlistSeeder::class,
+            WishlistProductSeeder::class,
         ]);
     }
 }
