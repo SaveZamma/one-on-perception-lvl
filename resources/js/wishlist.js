@@ -40,8 +40,8 @@ function loadWishlistItems() {
 function addRemoveItem(productId, shouldRemove, button) {
     try {
         const route = shouldRemove 
-            ? "wishlist/remove"
-            : "wishlist/add";
+            ? "/marketplace/wishlist/remove"
+            : "/marketplace/wishlist/add";
         fetch(route, {
             method: 'POST',
             headers: {

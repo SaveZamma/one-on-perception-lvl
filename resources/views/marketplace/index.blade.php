@@ -39,10 +39,12 @@
                         <div class="row">
                             @foreach($productChunk as $product)
                                 <div class='card col-sm-6 col-md-4'>
-                                    <img src='{{ $product['imagePath'] }}' alt='{{ $product['name'] }}'>
-                                    <h2>{{ $product['name'] }}</h2>
-                                    <p>{{ $product['price'] }}</p>
-                                    <button class='btn'>Add to cart</button>
+                                    <a href="{{ route('marketplace.product', ['id' => $product['id']]) }}">
+                                        <img src='{{ $product['imagePath'] }}' alt='{{ $product['name'] }}'>
+                                        <h2>{{ $product['name'] }}</h2>
+                                        <p>{{ $product['price'] }}</p>
+                                        <button class='btn'>Add to cart</button>
+                                    </a>
                                 </div>;
                             @endforeach
                         </div>
