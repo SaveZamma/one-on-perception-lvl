@@ -50,7 +50,13 @@ class ProductFactory extends Factory
         return [
             "name" => fake()->randomElement($colors) . " " . fake()->randomElement($productTemplate),
             "description" => fake()->text(),
-            "imagePath" => "https://picsum.photos/500/300?random=" . fake()->unique()->randomNumber()
+            "imagePath" => "https://picsum.photos/500/300?random=" . fake()->unique()->randomNumber(),
+            'storage_id' => StorageFactory::new(),
+            'quantity' => random_int(0, 100),
+            'price' => rand(0, 10000) / 100,
+            'currency' => fake()->currencyCode(),
+            'new' => boolval(random_int(0, 1)),
+            'visible' => boolval(random_int(0, 1)),
         ];
     }
 }
