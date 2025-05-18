@@ -193,6 +193,61 @@ input:focus {
     background-color: #2563eb;
 }
 
+.seller-button-container {
+    text-align: right;
+    margin-bottom: 20px;
+}
+
+.seller-btn {
+    background-color: #3b82f6;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 25px;
+    font-family: Raleway, sans-serif;
+    font-size: 14px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.seller-btn:hover {
+    background-color: #2563eb;
+}
+
+.become-seller {
+    text-align: center;
+    padding: 50px 20px;
+}
+
+.become-seller h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.become-seller p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    color: #555;
+}
+
+.become-seller-btn {
+    background-color: #3b82f6;
+    color: white;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 25px;
+    font-size: 1rem;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.become-seller-btn:hover {
+    background-color: #2563eb;
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
     .search {

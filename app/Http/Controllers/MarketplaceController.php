@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use App\Models\Wishlist;
 use App\Models\WishlistProduct;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
@@ -14,6 +15,8 @@ class MarketplaceController extends Controller
     public function index(Request $request) {
         $perPage = $request->get('perPage', 20);
         $search = $request->get('search', '');
+
+        $categories = Category::all();
 
         $products = Product::query()
             ->when($search, function ($query, $search) {
@@ -25,6 +28,7 @@ class MarketplaceController extends Controller
 
         return view('marketplace.index', [
             "products" => $products,
+            "categories" => $categories,
             "search" => $search,
         ]);
     }
