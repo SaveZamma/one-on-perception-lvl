@@ -10,8 +10,8 @@ class Storage extends Model
 {
     use HasFactory;
 
-    public function dealer():HasOne
+    public function shop():HasOne
     {
-        return $this->hasOne(Dealer::class);
+        return $this->hasOne(Shop::class);
     }
 }

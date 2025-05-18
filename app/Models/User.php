@@ -50,9 +50,9 @@ class User extends Authenticatable
         ];
     }
 
-    public function dealer(): HasOne
+    public function shop(): HasOne
     {
-        return $this->hasOne(Dealer::class);
+        return $this->hasOne(Shop::class);
     }
 
     public function orders(): HasMany
