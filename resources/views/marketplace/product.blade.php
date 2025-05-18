@@ -8,7 +8,7 @@
 @endsection
 
 @section('page-content')
-    <div class="product-page container">
+    <div class="gradient-bg" style="min-height:100vh;display:flex;align-items:center;justify-content:center;">
         <div class="product-card card">
             <img src="{{ $product->imagePath }}" alt="{{ $product->name }}" class="product-img">
 
