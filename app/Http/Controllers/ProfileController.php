@@ -16,7 +16,7 @@ class ProfileController extends Controller
     }
 
     public function myOrders() {
-        $orders = Order::where('user_id', Auth::id());
+        $orders = Order::where('user_id', Auth::id())->get();
         return view('profile/orders', ["orders" => $orders]);
     }
     
