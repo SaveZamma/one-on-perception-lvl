@@ -248,7 +248,13 @@ input:focus {
     background-color: #2563eb;
 }
 
-/* Responsive Design */
+.background-padding {
+    border-radius: 2rem;
+    padding: 2.5rem;
+    margin: 1.5rem;
+    box-sizing: border-box;
+}
+
 @media (max-width: 768px) {
     .search {
         flex-direction: column;

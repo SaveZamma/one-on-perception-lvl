@@ -9,6 +9,13 @@
         <div class="product-card card">
             <img src="{{ $product->imagePath }}" alt="{{ $product->name }}" class="product-img">
             <h1 class="product-title">{{ $product->name }}</h1>
+            
+            <div class="product-categories">
+                @foreach($product->categories as $category)
+                    <span class="category-tag">{{ ucfirst($category->name) }}</span>
+                @endforeach
+            </div>
+            
             <p class="product-description">{{ $product->description }}</p>
             <p class="product-price">€ {{ $product->price }}</p>
             <button class="btn btn-primary">Add to Wishlist</button>

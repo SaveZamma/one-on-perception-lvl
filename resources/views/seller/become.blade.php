@@ -1,4 +1,3 @@
-{{-- filepath: c:\Users\tommy\Documents\GitHub\one-on-perception-lvl\resources\views\seller\index.blade.php --}}
 @extends('components.layout')
 
 @section('styles')

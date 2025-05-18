@@ -174,6 +174,7 @@ li {
     background-blend-mode: overlay, overlay, overlay, normal;
     color: white;
 }
+
 .glass {
     border: 1px solid #fffa;
     border-radius: 10px;
