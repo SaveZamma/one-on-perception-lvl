@@ -8,7 +8,7 @@
     <div class="gradient-bg background-padding">
         <section class="dashboard">
             <h2>Shop by category</h2>
-            <div class="search">
+            <div class="search glass">
                 <div class="pagination">
                     <form method="GET" id="pagination-form" class="pagination-control">
                         <label for="perPage">Products per page:</label>
