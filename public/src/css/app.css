@@ -118,6 +118,9 @@ aside {
     z-index: 10;
     text-align: center;
 }
+.notification h3, .notification p {
+    margin: 5px;
+}
 
 /* LAYOUT */
 .fill-height {

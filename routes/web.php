@@ -22,6 +22,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile/orders', [ProfileController::class, 'myOrders'])->name('profile.orders');
     Route::get('/profile/payments', [ProfileController::class, 'myPayments'])->name('profile.payments');
     Route::get('/profile/wishlist', [ProfileController::class, 'myWishlist'])->name('profile.wishlist');
+    Route::get('/profile/notification', [ProfileController::class, 'myNotif'])->name('profile.notification');
     Route::get('/profile/wishlist/getUserWishlists', [ProfileController::class, 'getUserWishlists'])->name('profile.getUserWishlists');
     Route::get('marketplace/my', [MarketplaceController::class, 'showProduct'])->name('marketplace.my');
     Route::get('/seller/dashboard', [SellerController::class, 'index'])->name('seller.dashboard');
