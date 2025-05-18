@@ -11,6 +11,7 @@
     --dark-secondary: #821a1a;
     --dark-ternary: #7e1748;
     --light-primary: #a5eae5;
+    --light-primary-transparent: #a5eae582;
     --light-secondary: #ffc8c8;
     --light-ternary: #fbcfeb;
 }
@@ -174,6 +175,7 @@ li {
     background-blend-mode: overlay, overlay, overlay, normal;
     color: white;
 }
+
 .glass {
     border: 1px solid #fffa;
     border-radius: 10px;
