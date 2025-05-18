@@ -5,16 +5,32 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use App\Models\Wishlist;
 use App\Models\WishlistProduct;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
 class MarketplaceController extends Controller
 {
-    public function index() {
-        $perPage = request()->get('perPage', 20);
-        $products = Product::orderBy('created_at', 'desc')->paginate($perPage);;
-        return view('marketplace.index', ["products" => $products]);
+    public function index(Request $request) {
+        $perPage = $request->get('perPage', 20);
+        $search = $request->get('search', '');
+
+        $categories = Category::all();
+
+        $products = Product::query()
+            ->when($search, function ($query, $search) {
+                $query->where('name', 'like', "%{$search}%")
+                      ->orWhere('description', 'like', "%{$search}%");
+            })
+            ->orderBy('created_at', 'desc')
+            ->paginate($perPage);
+
+        return view('marketplace.index', [
+            "products" => $products,
+            "categories" => $categories,
+            "search" => $search,
+        ]);
     }
 
     public function showProduct($id) {
