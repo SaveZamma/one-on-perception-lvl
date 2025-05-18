@@ -25,7 +25,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile/notification', [ProfileController::class, 'myNotif'])->name('profile.notification');
     Route::get('/profile/wishlist/getUserWishlists', [ProfileController::class, 'getUserWishlists'])->name('profile.getUserWishlists');
     Route::get('marketplace/my', [MarketplaceController::class, 'showProduct'])->name('marketplace.my');
-    Route::get('/seller/dashboard', [SellerController::class, 'index'])->name('seller.dashboard');
+    Route::match(['get', 'post'], '/seller', [SellerController::class, 'index'])->middleware('auth')->name('seller.dashboard');
 });
 
 Route::middleware('guest')->group(function () {
