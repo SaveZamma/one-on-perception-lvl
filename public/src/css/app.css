@@ -101,6 +101,22 @@ li {
     text-align: start;
     background-color: #a00a;
 }
+aside {
+    display: none;
+    width: 80%;
+    position: absolute;
+    background: #fff5;
+    height: 100%;
+    padding: 10%;
+    /* display: flex; */
+    flex-direction: column;
+    gap: 1%;
+    border: 1px solid #cdcdcd !important;
+    left: 0px;
+    border-radius: 0px 10px !important;
+    z-index: 10;
+    text-align: center;
+}
 
 /* LAYOUT */
 .fill-height {
@@ -240,6 +256,11 @@ rounded-10 {
 
 /* DESKTOP */
 @media (min-width: 600px) {
+    aside {
+        width: fit-content;
+        padding: 2% 5%;
+    }
+
     .fill-landing {
         padding: 5%;
     }

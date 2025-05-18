@@ -43,11 +43,13 @@
             </section>
         </main>
 
-        <form action="{{ route('logout') }}" method="POST">
-            @csrf
-            <button type="submit" class="glass fill-width with-shadow-sm logout-btn">
-                Log out
-            </button>
-        </form>
+        <div class="bottom-bar">
+            <form action="{{ route('logout') }}" method="POST">
+                @csrf
+                <button type="submit" class="glass fill-width with-shadow-sm logout-btn">
+                    Log out
+                </button>
+            </form>
+        </div>
     </div>
 @endsection
