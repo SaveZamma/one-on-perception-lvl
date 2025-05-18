@@ -17,6 +17,7 @@ class ShopFactory extends Factory
     public function definition(): array
     {
         return [
+            'user_id' => UserFactory::new(),
             'name' => fake()->company(),
             'description' => fake()->realText(),
             'email' => fake()->email()
