@@ -13,11 +13,13 @@
 <body>
 @include('partials.header')
 
-@section('page-content')
-{{--    here you can write default page-content, that will be shown only if no page-content is passed    --}}
-{{-- to use properly this directive insert @extends('layout') directive in your content file and add @section('page-content') <YOUR CONTENT> @endsection()--}}
-    <h5>You have not provided any page-content</h5>
-@show
+<div class="container">
+    @section('page-content')
+        {{--    here you can write default page-content, that will be shown only if no page-content is passed    --}}
+        {{-- to use properly this directive insert @extends('layout') directive in your content file and add @section('page-content') <YOUR CONTENT> @endsection()--}}
+        <h5>You have not provided any page-content</h5>
+    @show
+</div>
 
 @yield('scripts')
 </body>

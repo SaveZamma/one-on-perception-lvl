@@ -34,3 +34,8 @@ Route::middleware('guest')->group(function () {
     Route::post('/login', [AuthController::class, 'login'])->name('login');
     Route::post('/register', [AuthController::class, 'register'])->name('register');
 });
+
+
+//Route::get('shopping-cart', function () { return view('shopping-cart.index');})->name('shopping-cart');
+//Route::get('add-to-cart/{id}', [\App\Http\Controllers\ProductController::class, 'addToCart'])->name('add.to.cart');
+
