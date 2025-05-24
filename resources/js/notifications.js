@@ -45,12 +45,11 @@ function deleteNotification(btn) {
                     background: "linear-gradient(to right, #29A3A3, #FE7171)",
                 },
             }).showToast();
-            btn.parentElement.parentElement.remove()
             const ul = btn.parentElement.parentElement.parentElement;
-            if (ul.children.length == 0) {
-                const parentSection = ul.parentElement;
-                parentSection.innerHTML = `<p>You have zero notification.</p>`;
+            if (ul.children.length == 1) { //is last element
+                ul.innerHTML = `<p>You have zero notification.</p>`;
             }
+            btn.parentElement.parentElement.remove()
         }
     });
 }
