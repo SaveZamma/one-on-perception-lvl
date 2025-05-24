@@ -36,6 +36,9 @@ Route::middleware('guest')->group(function () {
 });
 
 
-//Route::get('shopping-cart', function () { return view('shopping-cart.index');})->name('shopping-cart');
-//Route::get('add-to-cart/{id}', [\App\Http\Controllers\ProductController::class, 'addToCart'])->name('add.to.cart');
+Route::get('shopping-cart', [\App\Http\Controllers\ProductController::class, 'getCart'])->name('shopping-cart');
+Route::get('add-to-cart/{id}', [\App\Http\Controllers\ProductController::class, 'addToCart'])->name('product.addToCart');
+Route::get('checkout', [\App\Http\Controllers\ProductController::class, 'getCheckout'])->name('checkout');
+Route::post('checkout', [\App\Http\Controllers\ProductController::class, 'postCheckout'])->name('checkout');
+
 
