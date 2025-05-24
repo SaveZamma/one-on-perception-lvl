@@ -11,7 +11,8 @@
         @foreach ($notifications as $n)
             <li class="card-border fx-row fx-space-between v-align-center" style="padding: 0.2rem 1rem;">
                 <div class="notification fx-col">
-                    <h3>{{$n['created_at']->format('d M Y H:i')}} - {{$n['title']}}</h3>
+                    <span class="infotext">{{$n['created_at']->format('d M Y H:i')}}</span>
+                    <h3>{{$n['title']}}</h3>
                     <p>{{$n['text']}}</p>
                 </div>
                 <div class="fx-row">

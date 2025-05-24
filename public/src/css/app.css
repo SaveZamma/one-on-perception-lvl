@@ -14,6 +14,7 @@
     --light-primary-transparent: #a5eae582;
     --light-secondary: #ffc8c8;
     --light-ternary: #fbcfeb;
+    --dark-grey-primary: #406568;
 }
 
 
@@ -101,6 +102,12 @@ li {
     padding: 2% 5%;
     text-align: start;
     background-color: #a00a;
+}
+span.infotext
+{
+    color: var(--primary);
+    font-size: small;
+    margin: 3px 0 3px 5px;
 }
 aside {
     display: none;
