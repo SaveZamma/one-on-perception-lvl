@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MarketplaceController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\SellerController;
 
 Route::get('/', function () { return view('landing'); })->name('landing');
@@ -13,9 +14,6 @@ Route::get('marketplace', [MarketplaceController::class, 'index'])->name('market
 Route::get('marketplace/{id}', [MarketplaceController::class, 'showProduct'])->name('marketplace.product');
 Route::get('/marketplace/product/{id}', [MarketplaceController::class, 'showProduct'])->name('marketplace.product');
 
-Route::post('marketplace/wishlist/add', [MarketplaceController::class, 'addToWishlist'])->name('marketplace.wishlist.add');
-Route::post('marketplace/wishlist/remove', [MarketplaceController::class, 'removeFromWishlist'])->name('marketplace.wishlist.remove');
-
 // Protected routes (needs to be logged in)
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'profile'])->name('profile');
@@ -23,9 +21,14 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile/payments', [ProfileController::class, 'myPayments'])->name('profile.payments');
     Route::get('/profile/wishlist', [ProfileController::class, 'myWishlist'])->name('profile.wishlist');
     Route::get('/profile/notification', [ProfileController::class, 'myNotif'])->name('profile.notification');
+    Route::post('/notification/toggleRead', [NotificationController::class, 'toggleReadNotification'])->name('notification.toggle');
+    Route::post('/notification/delete', [NotificationController::class, 'deleteNotification'])->name('notification.delete');
     Route::get('/profile/wishlist/getUserWishlists', [ProfileController::class, 'getUserWishlists'])->name('profile.getUserWishlists');
+    Route::post('marketplace/wishlist/add', [MarketplaceController::class, 'addToWishlist'])->name('marketplace.wishlist.add');
+    Route::post('marketplace/wishlist/remove', [MarketplaceController::class, 'removeFromWishlist'])->name('marketplace.wishlist.remove');
     Route::get('marketplace/my', [MarketplaceController::class, 'showProduct'])->name('marketplace.my');
     Route::match(['get', 'post'], '/seller', [SellerController::class, 'index'])->middleware('auth')->name('seller.dashboard');
+
 });
 
 Route::middleware('guest')->group(function () {
