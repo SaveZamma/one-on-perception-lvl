@@ -126,7 +126,6 @@ class ProductController extends Controller
                     'user_id' => Auth::id(),
                     'address_id' => 1,
                     'name' => $request->input('name'),
-                    'payment-id' => 0,
                     'date' => new \DateTime('now'),
                     'title' => 'Ordine di Pippo',
                     'shipping_code' => '0',

@@ -35,10 +35,12 @@ class Order extends Model
     protected $fillable = [
         'user_id', // TODO: consider if this is a vulnerability
         'address_id', // TODO: consider if this is a vulnerability
+        'name',
         'date',
         'title',
         'shipping_code',
         'status',
+        'cart'
     ];
 
     public function orderedProducts(): HasMany

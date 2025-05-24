@@ -16,7 +16,6 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained('users');
             $table->foreignId('address_id')->constrained('addresses');
             $table->string('name');
-            $table->string('payment-id');
             $table->date('date');
             $table->char('title', 50);
             $table->string('shipping_code');
