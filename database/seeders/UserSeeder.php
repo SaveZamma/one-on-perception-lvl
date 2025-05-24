@@ -21,6 +21,9 @@ class UserSeeder extends Seeder
             'password' => Hash::make('niclapagliuca'),
             'avatar' => 'https://api.dicebear.com/7.x/thumbs/svg'
         ]);
+        User::factory()->create([ 'username' => 'annie.bevilacqua', 'password' => 'admin' ]);
+        User::factory()->create([ 'username' => 'tommy.tommolo', 'password' => 'admin' ]);
+        User::factory()->create([ 'username' => 'zammatore.salvataro', 'password' => 'admin' ]);
         User::factory()->count(10)->create();
     }
 }

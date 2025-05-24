@@ -10,11 +10,17 @@ use Illuminate\Support\Facades\Auth;
 class NotificationController extends Controller
 {
     public function sendNotification(Request $request) {
-        // TODO
-
+        $title = $request->input('title');
+        $text = $request->input('text');
+        Notification::create([
+            'user_id' => Auth::id(),
+            'title' => $title,
+            'text' => $text,
+        ]);
+        return response()->json(['message' => 'Notification sent']);
     }
 
-    public function readNotification(Request $request) {
+    public function toggleReadNotification(Request $request) {
         $notifId = $request->input('notification_id');
         $notification = Notification::find($notifId);
         if ($notification == null) {
@@ -23,7 +29,7 @@ class NotificationController extends Controller
                 'product' => $notifId
             ]);
         }
-        $notification->read = true;
+        $notification->read = !$notification->read;
         $notification->save();
         return response()->json([
             'status' => 'ok',
