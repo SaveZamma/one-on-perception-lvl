@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Notification;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
@@ -21,6 +22,13 @@ class AuthController extends Controller
         ]);
         $user = User::create($validated);
         Auth::login($user);
+
+        Notification::create([
+            'user_id' => $user->id,
+            'title' => 'Welcome to our platform',
+            'text' => 'Thank you for joining our platform. We hope you enjoy your experience.'
+        ]);
+
         return redirect()->intended('profile');
     }
 
