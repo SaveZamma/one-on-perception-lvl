@@ -4,7 +4,6 @@ const cartBtn = document.getElementById("header-cart-btn");
 const notifsBtn = document.getElementById("header-notifications-btn");
 const profileBtn = document.getElementById("header-profile-btn");
 
-let hasNotifications = false;
 
 checkNotifications();
 setInterval(checkNotifications, 30000);
@@ -51,17 +50,14 @@ function checkNotifications() {
     .then(notifications => notifications.filter(n => !n.read))
     .then(n => {
         if (n.length > 0) {
-            hasNotifications = true;
             if (document.getElementById("header-notifications-btn-span") == null) {
                 const txt = n.length > 99 ? "99" : n.length;
-                addSpan(notifsBtn, "header-notifications-btn-span", n.length);
+                addSpan(notifsBtn, "header-notifications-btn-span", txt);
             }        
         } else {
-            hasNotifications = false;
             if (document.getElementById("header-notifications-btn-span") != null) {
                 document.getElementById("header-notifications-btn-span").remove();
             }
         }
-    }).then(x => console.log(x))
-
+    })
 }
