@@ -21,6 +21,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile/payments', [ProfileController::class, 'myPayments'])->name('profile.payments');
     Route::get('/profile/wishlist', [ProfileController::class, 'myWishlist'])->name('profile.wishlist');
     Route::get('/profile/notification', [ProfileController::class, 'myNotif'])->name('profile.notification');
+    Route::get('/notification/get', [NotificationController::class, 'getNotifications'])->name('notification.get');
     Route::post('/notification/toggleRead', [NotificationController::class, 'toggleReadNotification'])->name('notification.toggle');
     Route::post('/notification/delete', [NotificationController::class, 'deleteNotification'])->name('notification.delete');
     Route::get('/profile/wishlist/getUserWishlists', [ProfileController::class, 'getUserWishlists'])->name('profile.getUserWishlists');
