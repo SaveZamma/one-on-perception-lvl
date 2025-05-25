@@ -41,6 +41,7 @@ function deleteNotification(btn) {
             Toastify({
                 text: "Notification deleted",
                 duration: 2000,
+                close: true,
                 style: {
                     background: "linear-gradient(to right, #29A3A3, #FE7171)",
                 },
@@ -73,6 +74,7 @@ function toggleRead(btn) {
             Toastify({
                 text: "Done!",
                 duration: 2000,
+                close: true,
                 style: {
                     background: "linear-gradient(to right, #29A3A3, #FE7171)",
                 },
