@@ -11,6 +11,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
+use Stripe\Stripe;
 
 class ProductController extends Controller
 {
@@ -110,7 +111,19 @@ class ProductController extends Controller
             } else {
                 $cart = new ShoppingCart(Session::get('cart'));
 
-                // make payment...
+                Stripe::setApiKey('sk_test_51RSKAx04dVDtB2GgwfzW1bewyPutz9R5r3ZnTnKR2ih08GPWFLr8dxv6ULYYLXV0OL7YEzg8c0NbSnM2JYmLtPOD00sLkPjb7s');
+
+                try {
+                    $stripe = new \Stripe\StripeClient('sk_test_51RSKAx04dVDtB2GgwfzW1bewyPutz9R5r3ZnTnKR2ih08GPWFLr8dxv6ULYYLXV0OL7YEzg8c0NbSnM2JYmLtPOD00sLkPjb7s');
+
+                    $charge = $stripe->charges->create([
+                        'amount' => $cart->totalPrice * 100, // because stripes works with cents
+                        'currency' => 'usd',
+                        'source' => $request->input('stripeToken'),
+                    ]);
+                } catch (\Exception $e) {
+                    return redirect()->route('checkout')->with('error', $e->getMessage());
+                }
 
                 $order = new Order();
                 $cart = new ShoppingCart(Session::get('cart'));
