@@ -65,6 +65,7 @@ function addRemoveItem(productId, shouldRemove, button) {
                 Toastify({
                     text: shouldRemove ? "Removed from wishlist" : "Added to wishlist!",
                     duration: 2000,
+                    close: true,
                     style: {
                         background: "linear-gradient(to right, #29A3A3, #FE7171)",
                       },

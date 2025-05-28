@@ -14,6 +14,7 @@
     --light-primary-transparent: #a5eae582;
     --light-secondary: #ffc8c8;
     --light-ternary: #fbcfeb;
+    --dark-grey-primary: #406568;
 }
 
 
@@ -102,19 +103,25 @@ li {
     text-align: start;
     background-color: #a00a;
 }
+span.infotext
+{
+    color: var(--primary);
+    font-size: small;
+    margin: 3px 0 3px 5px;
+}
 aside {
     display: none;
     width: 80%;
     position: absolute;
     background: #fff5;
     height: 100%;
-    padding: 10%;
+    padding: 45% 10%;
     /* display: flex; */
     flex-direction: column;
-    gap: 1%;
+    gap: 5%;
     border: 1px solid #cdcdcd !important;
     left: 0px;
-    border-radius: 0px 10px !important;
+    border-radius: 0px 10px 10px 0px !important;
     z-index: 10;
     text-align: center;
 }
@@ -263,7 +270,9 @@ rounded-10 {
 @media (min-width: 600px) {
     aside {
         width: fit-content;
-        padding: 2% 5%;
+        padding: 10% 5%;
+        max-height: 60%;
+        gap: 5%;
     }
 
     .fill-landing {

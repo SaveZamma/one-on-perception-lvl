@@ -10,6 +10,53 @@ function mapToJsonOrNull(response) {
         : null;
 }
 
+function addSpan(father, id, text = "") {
+    const span = document.createElement("span");
+    span.innerText = text;
+    span.id = id;
+    span.style = `
+        color: white;
+        background: var(--secondary);
+        border-radius: 100px;
+        display: block;
+        text-align: center;
+        font-size: xx-small;
+        height: 10px;
+        padding: 0 0 2px 0;
+        width: 12px;
+        position: relative;
+        left: 8px;
+        top: -20px;
+        border: 1px white solid;`;
+    father.appendChild(span);
+}
+
+function checkNotifications() {
+    const route = "/notification/get";
+     fetch(route, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRF-TOKEN': csrfToken,
+        },
+    })
+    .then(response => mapToJsonOrNull(response))
+    .then(data => data == null ? [] : data.data )
+    .then(notifications => notifications.filter(n => !n.read))
+    .then(n => {
+        if (n.length > 0) {
+            if (document.getElementById("header-notifications-btn-span") == null) {
+                const txt = n.length > 99 ? "99" : n.length;
+                addSpan(notifsBtn, "header-notifications-btn-span", txt);
+            }        
+        } else {
+            if (document.getElementById("header-notifications-btn-span") != null) {
+                document.getElementById("header-notifications-btn-span").remove();
+            }
+        }
+    })
+}
+
 function changeReadBtnIcon(btn, showOpen)
 {
     const open = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" alt="open envelope" class="primary button">
@@ -41,6 +88,7 @@ function deleteNotification(btn) {
             Toastify({
                 text: "Notification deleted",
                 duration: 2000,
+                close: true,
                 style: {
                     background: "linear-gradient(to right, #29A3A3, #FE7171)",
                 },
@@ -70,9 +118,11 @@ function toggleRead(btn) {
         if (data === null) {
             throw new Error('Failed to toggle notification read');
         } else {
+            checkNotifications();
             Toastify({
                 text: "Done!",
                 duration: 2000,
+                close: true,
                 style: {
                     background: "linear-gradient(to right, #29A3A3, #FE7171)",
                 },

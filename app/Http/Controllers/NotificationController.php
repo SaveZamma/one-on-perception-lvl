@@ -9,6 +9,12 @@ use Illuminate\Support\Facades\Auth;
 
 class NotificationController extends Controller
 {
+
+    public function getNotifications() {
+        $notifications = Notification::where('user_id', Auth::id())->get();
+        return response()->json($notifications);
+    }
+
     public function sendNotification(Request $request) {
         $title = $request->input('title');
         $text = $request->input('text');
