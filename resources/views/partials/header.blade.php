@@ -1,4 +1,5 @@
 <meta name="csrf-token" content="{{ csrf_token() }}">
+<meta name="auth" content="{{ Auth::user() }}">
 @vite('resources/js/aside.js')
 @vite('resources/js/headButtons.js')
 <nav class="top-navbar">
