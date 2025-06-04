@@ -8,7 +8,7 @@
 @endsection
 
 @section('page-content')
-    <div class="gradient-bg" style="min-height:100vh;display:flex;align-items:center;justify-content:center;">
+    <main class="gradient-bg" style="min-height:100vh;display:flex;align-items:center;justify-content:center;">
         <div class="product-card card">
             <img src="{{ $product->imagePath }}" alt="{{ $product->name }}" class="product-img">
 
@@ -32,5 +32,5 @@
             <p class="product-description">{{ $product->description }}</p>
             <p class="product-price">€ {{ $product->price }}</p>
         </div>
-    </div>
+    </main>
 @endsection

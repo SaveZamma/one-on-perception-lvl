@@ -3,8 +3,8 @@
     <link rel="stylesheet" href="{{ \Illuminate\Support\Facades\URL::to('src/css/profile.css') }}">
 @endsection
 @section('page-content')
-    <div class="profile-page-container">
-        <main>
+    <main class="profile-page-container">
+        <section>
             <section class="profile-section-card">
                 <header class="fx-col">
                     <img class="profile-pic" src="{{ Auth::user()->avatar }}" alt="Profile Picture">
@@ -47,15 +47,15 @@
                     <p>Notification</p>
                 </a>
             </section>
-        </main>
+        </section>
 
-        <div class="bottom-bar">
+        <section class="bottom-bar">
             <form action="{{ route('logout') }}" method="POST">
                 @csrf
                 <button type="submit" class="glass fill-width with-shadow-sm logout-btn">
                     Log out
                 </button>
             </form>
-        </div>
-    </div>
+        </section>
+    </main>
 @endsection

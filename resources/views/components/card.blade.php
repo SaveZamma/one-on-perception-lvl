@@ -1,4 +1,4 @@
-<div @class(['card'])>
+<section @class(['card'])>
     {{ $slot }}
     <a {{ $attributes }}>View</a>
-</div>
+</section>
