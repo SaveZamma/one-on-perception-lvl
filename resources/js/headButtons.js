@@ -1,9 +1,9 @@
 const csrfToken = document.querySelector('meta[name="csrf-token"]').content;
+const authUser = document.querySelector('meta[name="auth"]').content;
 
 const cartBtn = document.getElementById("header-cart-btn");
 const notifsBtn = document.getElementById("header-notifications-btn");
 const profileBtn = document.getElementById("header-profile-btn");
-
 
 checkNotifications();
 setInterval(checkNotifications, 30000);
@@ -37,6 +37,8 @@ function mapToJsonOrNull(response) {
 }
 
 function checkNotifications() {
+    if (!authUser) return;
+
     const route = "/notification/get";
      fetch(route, {
         method: 'GET',
