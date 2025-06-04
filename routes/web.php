@@ -29,8 +29,8 @@ Route::middleware('auth')->group(function () {
     Route::post('marketplace/wishlist/remove', [MarketplaceController::class, 'removeFromWishlist'])->name('marketplace.wishlist.remove');
     Route::get('marketplace/my', [MarketplaceController::class, 'showProduct'])->name('marketplace.my');
     Route::match(['get', 'post'], '/seller', [SellerController::class, 'index'])->middleware('auth')->name('seller.dashboard');
-    Route::get('/checkout', [\App\Http\Controllers\ProductController::class, 'getCheckout'])->name('checkout');
-    Route::post('/checkout', [\App\Http\Controllers\ProductController::class, 'postCheckout'])->name('checkout');
+    Route::get('/checkout', [\App\Http\Controllers\CheckoutController::class, 'getCheckout'])->name('checkout');
+    Route::post('/checkout', [\App\Http\Controllers\CheckoutController::class, 'postCheckout'])->name('checkout');
 });
 
 Route::middleware('guest')->group(function () {
@@ -40,8 +40,7 @@ Route::middleware('guest')->group(function () {
     Route::post('/register', [AuthController::class, 'register'])->name('register');
 });
 
-
-Route::get('shopping-cart', [\App\Http\Controllers\ProductController::class, 'getCart'])->name('shopping-cart');
-Route::get('add-to-cart/{id}', [\App\Http\Controllers\ProductController::class, 'addToCart'])->name('product.addToCart');
+Route::get('shopping-cart', [\App\Http\Controllers\ShoppingCartController::class, 'getCart'])->name('shopping-cart');
+Route::get('add-to-cart/{id}', [\App\Http\Controllers\ShoppingCartController::class, 'addToCart'])->name('product.addToCart');
 
 

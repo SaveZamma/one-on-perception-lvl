@@ -14,13 +14,13 @@ return new class extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained('users');
-            $table->foreignId('address_id')->constrained('addresses');
             $table->string('name');
             $table->date('date');
             $table->char('title', 50);
             $table->string('shipping_code');
             $table->tinyInteger('status');
             $table->text('cart');
+            $table->text('address');
             $table->timestamps();
         });
     }

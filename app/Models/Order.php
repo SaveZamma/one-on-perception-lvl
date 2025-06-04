@@ -34,13 +34,13 @@ class Order extends Model
 
     protected $fillable = [
         'user_id', // TODO: consider if this is a vulnerability
-        'address_id', // TODO: consider if this is a vulnerability
         'name',
         'date',
         'title',
         'shipping_code',
         'status',
-        'cart'
+        'cart',
+        'address'
     ];
 
     public function orderedProducts(): HasMany
@@ -51,11 +51,6 @@ class Order extends Model
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
-    }
-
-    public function address(): BelongsTo
-    {
-        return $this->belongsTo(Address::class);
     }
 
     protected $casts = [

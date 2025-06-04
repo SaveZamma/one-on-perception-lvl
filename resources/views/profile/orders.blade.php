@@ -6,6 +6,9 @@
         <p>You haven't placed any order yet.</p>
     @else
     <ul class="products-list">
+        @if(\Illuminate\Support\Facades\Session::has('success'))
+            <h4>{{\Illuminate\Support\Facades\Session::get('success')}}</h4>
+        @endif
         @foreach ($orders as $order)
             <li class="card-border fx-row fx-space-between" style="padding: 0.2rem 1rem;">
                 <p>Order title: <strong>{{ $order['title'] }}</strong></p>
