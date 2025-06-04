@@ -30,8 +30,8 @@
                                 <span class="caret"></span>
                                 <ul class="dropdown-menu">
 {{--                                    <li><a href="{{route('add-to-cart/{}')}}">Reduce</a></li>--}}
-                                    <li><a href="#">Reduce</a></li>
-                                    <li><a href="#">Increase</a></li>
+                                    <li><a href="{{route('shopping-cart.reduceByOne', ['id' => $product['item']['id']])}}">Reduce</a></li>
+                                    <li><a href="{{route('shopping-cart.removeItem', ['id' => $product['item']['id']])}}">Remove from Cart</a></li>
                                 </ul>
                             </button>
                         </li>

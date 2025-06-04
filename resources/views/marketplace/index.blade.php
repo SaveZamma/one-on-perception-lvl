@@ -48,7 +48,7 @@
                                 <h2>{{ $product['name'] }}</h2>
                                 <p>€ {{ $product['price'] }}</p>
                                 <button class="btn">Add to cart</button>
-                                <a href="{{ route('product.addToCart', ['id' => $product->id]) }}" class="btn" role="button">The Real Madrid of Add to Cart</a>
+                                <a href="{{ route('shopping-cart.addToCart', ['id' => $product->id]) }}" class="btn" role="button">The Real Madrid of Add to Cart</a>
                             </a>
                         @endforeach
                     </div>
