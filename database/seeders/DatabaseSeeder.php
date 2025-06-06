@@ -21,11 +21,11 @@ class DatabaseSeeder extends Seeder
     {
         // Reference the other seeders that must be called
         $this->call([
+            UserSeeder::class,
+            ProductSeeder::class,
             ShopSeeder::class,
             CategorySeeder::class,
-            ProductSeeder::class,
             CategoryProductSeeder::class,
-            UserSeeder::class,
             OrderSeeder::class,
             TransactionSeeder::class,
             WishlistSeeder::class,

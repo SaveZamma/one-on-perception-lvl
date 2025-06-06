@@ -2,8 +2,6 @@
 
 namespace Database\Factories;
 
-use App\Models\Category;
-use App\Models\Product;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -18,11 +16,8 @@ class CategoryProductFactory extends Factory
      */
     public function definition(): array
     {
-//        $categories = Category::all();
-//        $products = Product::all();
-
         return [
-            'product_id' => rand(1, 50),
+            'product_id' => rand(1, 5),
             'category_id' => rand(1, 5)
         ];
     }
