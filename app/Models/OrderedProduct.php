@@ -13,7 +13,7 @@ class OrderedProduct extends Model
     protected $fillable = [
         'product_id',
         'order_id',
-        'storage_id',
+        'shop_id',
         'quantity'
     ];
 
@@ -22,9 +22,9 @@ class OrderedProduct extends Model
         return $this->belongsTo(Product::class);
     }
 
-    public function storage(): BelongsTo
+    public function shop(): BelongsTo
     {
-        return $this->belongsTo(Storage::class);
+        return $this->belongsTo(Shop::class);
     }
 
     public function order(): BelongsTo

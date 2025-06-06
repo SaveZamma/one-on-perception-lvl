@@ -22,7 +22,7 @@ class OrderedProductFactory extends Factory
         return [
             'product_id' => ProductFactory::new(),
             'order_id' => OrderFactory::new(),
-            'storage_id' => StorageFactory::new(),
+            'shop_id' => ShopFactory::new(),
             'quantity' => random_int(1, 10)
         ];
     }

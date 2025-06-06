@@ -6,19 +6,43 @@ use App\Models\Product;
 use App\ShoppingCart;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Session;
 
 class ShoppingCartController extends Controller
 {
+    private string $cookieName = 'shopping_cart';
+
+    private function getCartFromCookie(): ShoppingCart
+    {
+        $cart = Cookie::get($this->cookieName);
+        return new ShoppingCart($cart ? json_decode($cart, true) : null);
+    }
+
+    private function putCartToCookie(ShoppingCart $cart)
+    {
+        // Set cookie expiration to, for example, 7 days (in minutes)
+        $expiration = 60 * 24 * 7;
+
+        return Cookie::queue($this->cookieName, json_encode($cart), $expiration);
+    }
+
+
+
     public function addToCart(Request $request, $id): RedirectResponse
     {
         $product = Product::query()->find($id);
         $oldCart = Session::has('cart') ? Session::get('cart') : null;
+        $oldCartCC = $this->getCartFromCookie();
 
         $cart = new ShoppingCart($oldCart);
         $cart->add($product, $product->id);
 
         $request->session()->put('cart', $cart);
+
+        $this->putCartToCookie($cart);
+
+        dd($this->getCartFromCookie());
 
         return redirect()->route('marketplace.index');
     }

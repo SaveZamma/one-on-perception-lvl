@@ -14,7 +14,6 @@ class WishlistProductSeeder extends Seeder
      */
     public function run(): void
     {
-        WishlistProduct::truncate();
         WishlistProduct::factory()->create([
             'user_id' => 1
         ]);
