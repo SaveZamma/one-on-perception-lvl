@@ -154,7 +154,7 @@ input:focus {
 
 .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, auto));
+    grid-template-columns: repeat(auto-fit, minmax(200px, 200px));
     gap: 20px;
     justify-content: center;
     align-items: stretch;
@@ -277,4 +277,64 @@ input:focus {
     padding: 2.5rem;
     margin: 1.5rem;
     box-sizing: border-box;
+}
+
+.category-multiselect {
+    position: relative;
+    display: inline-block;
+    width: 220px;
+}
+
+.dropdown-btn {
+    width: 100%;
+    padding: 8px 12px;
+    background: #fff;
+    border: 1px solid #bbb;
+    border-radius: 6px;
+    cursor: pointer;
+    text-align: center;
+    font-size: 1rem;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    min-width: 100%;
+    max-height: 220px;
+    overflow-y: auto;
+    border-radius: 6px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    z-index: 10;
+    margin-top: 2px;
+    padding: 8px 0;
+    background: var(--light-primary-transparent);
+}
+
+.dropdown-content label {
+    display: flex;
+    align-items: center;
+    padding: 6px 16px;
+    cursor: pointer;
+    font-size: 0.98rem;
+    background: var(--light-primary);
+    color: var(--dark-primary);
+    border-radius: 20px;
+    margin: 4px 8px;
+    justify-self: left;
+    transition: background 0.2s, color 0.2s;
+    min-width: 0;
+    word-break: break-word;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
+.dropdown-content label:hover {
+    background: var(--dark-primary);
+    color: white;
+}
+
+.dropdown-content input[type="checkbox"] {
+    margin-right: 8px;
 }

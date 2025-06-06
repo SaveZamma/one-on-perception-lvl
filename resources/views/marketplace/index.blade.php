@@ -26,14 +26,29 @@
                 </div>
                 <div class="search-bar">
                     <form method="GET" id="search-form" class="search-bar">
-                        <select id="product-category" name="category" onchange="document.getElementById('search-form').submit()">
-                            <option value="all" {{ request('category', 'all') == 'all' ? 'selected' : '' }}>All</option>
-                            @foreach ($categories as $category)
-                                <option value="{{ $category->id }}" {{ request('category') == $category->id ? 'selected' : '' }}>
-                                    {{ $category->name }}
-                                </option>
-                            @endforeach
-                        </select>
+                        <div class="category-multiselect">
+                            <button type="button" onclick="toggleDropdown()" class="dropdown-btn">Select categories</button>
+                            <div id="dropdown-content" class="dropdown-content" style="display:none;">
+                                @foreach ($categories as $category)
+                                    <label>
+                                        <input type="checkbox" name="category[]" value="{{ $category->id }}"
+                                            {{ (is_array(request('category')) && in_array($category->id, request('category'))) ? 'checked' : '' }}>
+                                        {{ $category->name }}
+                                    </label><br>
+                                @endforeach
+                            </div>
+                        </div>
+                        <script>
+                        function toggleDropdown() {
+                            var content = document.getElementById('dropdown-content');
+                            content.style.display = content.style.display === 'none' ? 'block' : 'none';
+                        }
+                        document.addEventListener('click', function(e) {
+                            if (!e.target.closest('.category-multiselect')) {
+                                document.getElementById('dropdown-content').style.display = 'none';
+                            }
+                        });
+                        </script>
                         <input type="text" name="search" placeholder="Search for products"
                                value="{{ request('search', '') }}" />
                         <button type="submit">Search</button>

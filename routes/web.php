@@ -6,6 +6,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\SellerController;
+use App\Http\Controllers\ProductController;
 
 Route::get('/', function () { return view('landing'); })->name('landing');
 
@@ -31,6 +32,11 @@ Route::middleware('auth')->group(function () {
     Route::match(['get', 'post'], '/seller', [SellerController::class, 'index'])->middleware('auth')->name('seller.dashboard');
     Route::get('/checkout', [\App\Http\Controllers\CheckoutController::class, 'getCheckout'])->name('checkout');
     Route::post('/checkout', [\App\Http\Controllers\CheckoutController::class, 'postCheckout'])->name('checkout');
+    Route::get('/seller/products/create', [ProductController::class, 'create'])->middleware('auth')->name('seller.products.create');
+    Route::post('/seller/products', [ProductController::class, 'store'])->middleware('auth')->name('seller.products.store');
+    Route::get('/seller/products/{product}/edit', [ProductController::class, 'edit'])->middleware('auth')->name('seller.products.edit');
+    Route::put('/seller/products/{product}', [ProductController::class, 'update'])->middleware('auth')->name('seller.products.update');
+    Route::get('/seller/dashboard', [SellerController::class, 'dashboard'])->name('seller.dashboard')->middleware('auth');
 });
 
 Route::middleware('guest')->group(function () {

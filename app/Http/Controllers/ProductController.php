@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
+use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
@@ -21,15 +22,41 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        return view('seller.product-editor');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreProductRequest $request)
+    public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'description' => 'nullable|string',
+            'price' => 'required|numeric',
+            'currency' => 'required|string|max:3',
+        ]);
+
+        $user = auth()->user();
+        $shop = $user->shop;
+
+        if (!$shop) {
+            return redirect()->route('seller.dashboard')->with('error', 'You must have a shop to add products.');
+        }
+
+        $product = new Product();
+        $product->shop_id = $shop->id;
+        $product->name = $request->input('name');
+        $product->description = $request->input('description');
+        $product->price = $request->input('price');
+        $product->currency = $request->input('currency');
+        if ($request->hasFile('image')) {
+            $path = $request->file('image')->store('products', 'public');
+            $product->imagePath = $path;
+        }
+        $product->save();
+
+        return redirect()->route('seller.dashboard')->with('success', 'Product added!');
     }
 
     /**
@@ -45,7 +72,7 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        //
+        return view('seller.product-editor', compact('product'));
     }
 
     /**

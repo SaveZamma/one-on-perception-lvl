@@ -13,24 +13,24 @@ use Illuminate\Support\Facades\Auth;
 class MarketplaceController extends Controller
 {
     public function index(Request $request) {
-        $perPage = $request->get('perPage', 20);
-        $search = $request->get('search', '');
+        $query = Product::query();
+        $categories = $request->input('category', []);
+
+        if (is_array($categories) && !in_array('all', $categories) && count($categories) > 0) {
+            $query->whereHas('categories', function ($q) use ($categories) {
+                $q->whereIn('categories.id', $categories);
+            });
+        }
+
+        if ($request->filled('search')) {
+            $query->where('name', 'ILIKE', '%' . $request->input('search') . '%');
+        }
+
+        $perPage = (int) $request->input('perPage', 24);
+        $products = $query->paginate($perPage)->appends($request->except('page'));
 
         $categories = Category::all();
-
-        $products = Product::query()
-            ->when($search, function ($query, $search) {
-                $query->where('name', 'like', "%{$search}%")
-                      ->orWhere('description', 'like', "%{$search}%");
-            })
-            ->orderBy('created_at', 'desc')
-            ->paginate($perPage);
-
-        return view('marketplace.index', [
-            "products" => $products,
-            "categories" => $categories,
-            "search" => $search,
-        ]);
+        return view('marketplace.index', compact('products', 'categories'));
     }
 
     public function showProduct($id) {

@@ -42,4 +42,14 @@ class SellerController extends Controller
 
         return view('seller.become');
     }
+
+    public function dashboard()
+    {
+        $user = Auth::user();
+        $shop = $user->shop;
+
+        $products = $shop ? $shop->products()->latest()->get() : collect();
+
+        return view('seller.dashboard', compact('products'));
+    }
 }
