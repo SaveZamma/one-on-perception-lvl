@@ -21,9 +21,8 @@ class ShoppingCartController extends Controller
 
     private function putCartToCookie(ShoppingCart $cart)
     {
-        // Set cookie expiration to, for example, 7 days (in minutes)
+        // Set cookie expiration to 7 days (in minutes)
         $expiration = 60 * 24 * 7;
-
         return Cookie::queue($this->cookieName, json_encode($cart), $expiration);
     }
 
@@ -32,32 +31,23 @@ class ShoppingCartController extends Controller
     public function addToCart(Request $request, $id): RedirectResponse
     {
         $product = Product::query()->find($id);
-        $oldCart = Session::has('cart') ? Session::get('cart') : null;
-        $oldCartCC = $this->getCartFromCookie();
+        $cart = $this->getCartFromCookie();
 
-        $cart = new ShoppingCart($oldCart);
         $cart->add($product, $product->id);
 
-        $request->session()->put('cart', $cart);
-
         $this->putCartToCookie($cart);
-
-        dd($this->getCartFromCookie());
-
         return redirect()->route('marketplace.index');
     }
 
     public function reduceByOne($id)
     {
-        $oldCart = Session::has('cart') ? Session::get('cart') : null;
-
-        $cart = new ShoppingCart($oldCart);
+        $cart = $this->getCartFromCookie();
         $cart->reduceByOne($id);
 
         if (count($cart->items) > 0) {
-            Session::put('cart', $cart);
+            $this->putCartToCookie($cart);
         } else {
-            Session::forget('cart');
+            Cookie::expire($this->cookieName);
         }
 
         return redirect()->route('shopping-cart');
@@ -65,15 +55,13 @@ class ShoppingCartController extends Controller
 
     public function removeItem($id)
     {
-        $oldCart = Session::has('cart') ? Session::get('cart') : null;
-        $cart = new ShoppingCart($oldCart);
-
+        $cart = $this->getCartFromCookie();
         $cart->removeItem($id);
 
         if (count($cart->items) > 0) {
-            Session::put('cart', $cart);
+            $this->putCartToCookie($cart);
         } else {
-            Session::forget('cart');
+            Cookie::expire($this->cookieName);
         }
 
         return redirect()->route('shopping-cart');
@@ -81,10 +69,10 @@ class ShoppingCartController extends Controller
 
     public function getCart()
     {
-        if (!Session::has('cart')) {
+        if (!Cookie::has($this->cookieName)) {
             return view('shopping-cart.index');
         } else {
-            $cart = new ShoppingCart(Session::get('cart'));
+            $cart = $this->getCartFromCookie();
             return view('shopping-cart.index', ['products' => $cart->items, 'totalPrice' => $cart->totalPrice]);
         }
     }

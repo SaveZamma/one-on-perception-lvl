@@ -13,9 +13,9 @@ class ShoppingCart
     public function __construct($oldCart)
     {
         if (!!$oldCart) {
-            $this->items = $oldCart->items;
-            $this->totalQty = $oldCart->totalQty;
-            $this->totalPrice = $oldCart->totalPrice;
+            $this->items = $oldCart['items'];
+            $this->totalQty = $oldCart['totalQty'];
+            $this->totalPrice = $oldCart['totalPrice'];
         }
     }
 

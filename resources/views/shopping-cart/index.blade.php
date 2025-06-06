@@ -16,7 +16,7 @@
         </div>
     @endif
 
-    @if(\Illuminate\Support\Facades\Session::has('cart'))
+    @if(\Illuminate\Support\Facades\Cookie::has('shopping_cart'))
         <ul class="products-list">
             @foreach($products as $product)
                 <li class="card-border fx-row fx-space-between">

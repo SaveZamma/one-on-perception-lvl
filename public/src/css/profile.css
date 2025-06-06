@@ -52,6 +52,7 @@ section {
     background-color: var(--light-secondary);
     font-weight: bold;
     color: var(--dark-secondary);
+    margin-bottom: 5%;
 }
 .logout-btn:hover {
     background-color: var(--secondary);
@@ -73,7 +74,7 @@ section {
     .bottom-bar, .bottom-bar form {
         width: 100%;
     }
-    
+
     .profile-section-card {
         display: flex;
         flex-direction: column;

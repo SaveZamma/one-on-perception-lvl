@@ -17,7 +17,7 @@
         <p>{{\Illuminate\Support\Facades\Session::get('checkout-error')}}</p>
     @endif
 
-    <form action="{{route('checkout')}}" method="post" id="checkout-form">
+    <form class="checkout-form" action="{{route('checkout')}}" method="post">
 
         <label for="title">Title</label>
         <input  type="text" id="title" class="form-control" name="title">

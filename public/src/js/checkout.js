@@ -1,5 +1,5 @@
 "use strict";
-var $form = $('#checkout-form');
+var $form = $('.checkout-form');
 
 const CARD_NUMBER_LENGTH = 16;
 const CARD_CVC_LENGTH = 3;
