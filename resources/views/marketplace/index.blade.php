@@ -1,5 +1,8 @@
 @extends('components.layout')
 
+<meta name="csrf-token" content="{{ csrf_token() }}">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
 @section('styles')
     <link rel="stylesheet" href="{{ \Illuminate\Support\Facades\URL::to('src/css/marketplace.css') }}">
 @endsection
@@ -10,10 +13,10 @@
             <h2>Shop by category</h2>
             <div class="search glass">
                 <div class="pagination">
-                    <form method="GET" id="pagination-form" class="pagination-control">
+                    <form method="GET" id="pagination-form" class="pagination">
                         <label for="perPage">Products per page:</label>
                         <select name="perPage" id="perPage" onchange="document.getElementById('pagination-form').submit()">
-                            @foreach ([10, 20, 50, 100] as $size)
+                           @foreach ([12, 24, 48, 96] as $size)
                                 <option value="{{ $size }}" {{ request('perPage', 20) == $size ? 'selected' : '' }}>
                                     {{ $size }}
                                 </option>
@@ -41,12 +44,24 @@
             <div class="container">
                 <h1 class="title">Product Marketplace</h1>
                 <div class="products-container">
+                    @php
+                        $currencySymbols = [
+                            'EUR' => '€',
+                            'USD' => '$',
+                            'AUD' => '$',
+                            'CAD' => '$',
+                            'NZD' => '$'
+                        ];
+                    @endphp
                     <div class="grid">
                         @foreach ($products as $product)
+                            @php
+                               $symbol = $currencySymbols[$product['currency']] ?? $product['currency'];
+                            @endphp
                             <a class="card" href="{{ route('marketplace.product', ['id' => $product['id']]) }}">
                                 <img src="{{ $product['imagePath'] }}" alt="{{ $product['name'] }}">
                                 <h2>{{ $product['name'] }}</h2>
-                                <p>€ {{ $product['price'] }}</p>
+                                <p>{{ $symbol }} {{ $product['price'] }}</p>
                                 <button class="btn">Add to cart</button>
                                 <a href="{{ route('shopping-cart.addToCart', ['id' => $product->id]) }}" class="btn" role="button">The Real Madrid of Add to Cart</a>
                             </a>

@@ -23,6 +23,8 @@ li.product {
     width: 100%;
     margin-top: 60%;
     padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
     background: linear-gradient(to top, black, transparent);
     color: white;
 }
@@ -62,6 +64,7 @@ li.product {
 
 .search-bar {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     gap: 10px;
 }
@@ -147,8 +150,22 @@ input:focus {
 
 .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(200px, auto));
+    gap: 20px;justify-content: center;
+}
+
+@media (max-width: 600px) {
+    .grid {
+        gap: 10px;
+    }
+    .card {
+        max-width: 98vw;
+        padding: 4px;
+    }
+    .card img {
+        max-width: 100%;
+        height: auto;
+    }
 }
 
 .card {
@@ -253,18 +270,4 @@ input:focus {
     padding: 2.5rem;
     margin: 1.5rem;
     box-sizing: border-box;
-}
-
-@media (max-width: 768px) {
-    .search {
-        flex-direction: column;
-        align-items: stretch;
-        gap: 10px;
-    }
-
-    .search select,
-    .search input,
-    .search button {
-        width: 100%;
-    }
 }
