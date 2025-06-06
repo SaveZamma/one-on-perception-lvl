@@ -35,7 +35,7 @@
                             @endforeach
                         </select>
                         <input type="text" name="search" placeholder="Search for products"
-                            value="{{ request('search', '') }}" />
+                               value="{{ request('search', '') }}" />
                         <button type="submit">Search</button>
                     </form>
                 </div>
@@ -57,14 +57,15 @@
                         @foreach ($products as $product)
                             @php
                                $symbol = $currencySymbols[$product['currency']] ?? $product['currency'];
-                            @endphp
-                            <a class="card" href="{{ route('marketplace.product', ['id' => $product['id']]) }}">
-                                <img src="{{ $product['imagePath'] }}" alt="{{ $product['name'] }}">
-                                <h2>{{ $product['name'] }}</h2>
-                                <p>{{ $symbol }} {{ $product['price'] }}</p>
-                                <button class="btn">Add to cart</button>
-                                <a href="{{ route('shopping-cart.addToCart', ['id' => $product->id]) }}" class="btn" role="button">The Real Madrid of Add to Cart</a>
-                            </a>
+                            @endphp                            
+                            <form action="{{route('shopping-cart.addToCart', ['id' => $product->id])}}" method="GET">
+                                <a class="card" href="{{ route('marketplace.product', ['id' => $product['id']]) }}">
+                                    <img src="{{ $product['imagePath'] }}" alt="{{ $product['name'] }}">
+                                    <h2>{{ $product['name'] }}</h2>
+                                    <p>{{ $symbol }} {{ $product['price'] }}</p>
+                                    <button type="submit" class="btn">Add to cart</button>
+                                </a>
+                            </form>
                         @endforeach
                     </div>
                 </div>
