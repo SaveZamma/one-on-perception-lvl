@@ -7,7 +7,6 @@ use App\ShoppingCart;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cookie;
-use Illuminate\Support\Facades\Session;
 
 class ShoppingCartController extends Controller
 {

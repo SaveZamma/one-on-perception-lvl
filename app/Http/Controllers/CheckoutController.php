@@ -7,16 +7,19 @@ use App\Order;
 use App\ShoppingCart;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Session;
 
 class CheckoutController extends Controller
 {
+    private string $cartCookieName = 'shopping_cart';
+
     public function getCheckout()
     {
-        if (!Session::has('cart')) {
+        if (!Cookie::has($this->cartCookieName)) {
             return view('shopping-cart.index');
         } else {
-            $cart = new ShoppingCart(Session::get('cart'));
+            $cart = new ShoppingCart(json_decode(Cookie::get($this->cartCookieName), true));
             return view('shopping-cart.checkout', ['totalPrice' => $cart->totalPrice]);
         }
     }
@@ -24,10 +27,10 @@ class CheckoutController extends Controller
     public function postCheckout(Request $request)
     {
         try {
-            if (!Session::has('cart')) {
+            if (!Cookie::has($this->cartCookieName)) {
                 return view('marketplace.index');
             } else {
-                $cart = new ShoppingCart(Session::get('cart'));
+                $cart = new ShoppingCart(json_decode(Cookie::get($this->cartCookieName), true));
 
                 $address = new Address(
                     $request->input('country'),
@@ -55,7 +58,7 @@ class CheckoutController extends Controller
                     'address' => serialize($address),
                 ]);
 
-                Session::forget('cart');
+                Cookie::queue(Cookie::forget($this->cartCookieName));
                 Session::forget('address');
                 return redirect()->route('profile.orders')->with('success', 'Successfully purchased products!');
             }
