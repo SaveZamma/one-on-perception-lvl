@@ -88,8 +88,5 @@
 
             {{ $products->links() }}
         </section>
-        <div class="seller-button-container">
-            <a href="{{ route('seller.dashboard') }}" class="btn seller-btn">Go to Seller Dashboard</a>
-        </div>
     </main>
 @endsection
