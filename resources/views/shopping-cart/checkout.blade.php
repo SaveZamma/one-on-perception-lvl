@@ -2,7 +2,8 @@
 @vite('resources/js/wishlist.js')
 
 @section('styles')
-    <link rel="stylesheet" href="{{ \Illuminate\Support\Facades\URL::to('src/css/product.css') }}">
+    <link rel="stylesheet" href="{{ \Illuminate\Support\Facades\URL::to('src/css/checkout.css') }}">
+    <link rel="stylesheet" href="{{ \Illuminate\Support\Facades\URL::to('src/css/form.css') }}">
 @endsection
 
 @section('page-content')
@@ -10,105 +11,89 @@
         <h1>{{\Illuminate\Support\Facades\Session::get('error')}}</h1>
     @endif
 
-    <div class="row">
-        <div class="col-sm-6 col-md-4 col-md-offset-4 col-sm-offset-3">
-            <h1>Checkout</h1>
+    <h1>Checkout</h1>
 
-            @if(\Illuminate\Support\Facades\Session::has('checkout-error'))
-                <p>{{\Illuminate\Support\Facades\Session::get('checkout-error')}}</p>
-            @endif
+    @if(\Illuminate\Support\Facades\Session::has('checkout-error'))
+        <p>{{\Illuminate\Support\Facades\Session::get('checkout-error')}}</p>
+    @endif
 
-            <form action="{{route('checkout')}}" method="post" id="checkout-form">
-                <div class="row">
-                    <div class="col-xs-12">
-                        <div class="form-group">
-                            <label for="title">Title</label>
-                            <input  type="text" id="title" class="form-control" name="title">
-                        </div>
-                    </div>
+    <form action="{{route('checkout')}}" method="post" id="checkout-form">
 
-                    <hr>
+        <label for="title">Title</label>
+        <input  type="text" id="title" class="form-control" name="title">
 
-                    <div class="col-xs-12">
-                        <div class="form-group">
-                            <label for="card-name">Card holder name</label>
-                            <input  type="text" id="card-name" class="form-control" required>
-                        </div>
-                    </div>
-                    <div class="col-xs-12">
-                        <div class="form-group">
-                            <label for="card-number">Card Number</label>
-                            <input  type="text" id="card-number" class="form-control" required>
-                        </div>
-                    </div>
-                    <div class="col-xs-12">
-                        <div class="row">
-                            <div class="col-xs-6">
-                                <div class="form-group">
-                                    <label for="card-expiry-month">Expiry</label>
-                                    <input  type="month" id="card-expiry-month" class="form-control" required>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xs-12">
-                        <div class="form-group">
-                            <label for="card-cvc">CVC</label>
-                            <input  type="text" id="card-cvc" class="form-control" required>
-                        </div>
-                    </div>
+        <fieldset class="data-payment-fieldset">
+            <legend>Payment Data</legend>
+            <label for="card-name">Card holder name</label>
+            <input  type="text" id="card-name" class="form-control" required>
+            <label for="card-number">Card Number</label>
+            <input  type="text" id="card-number" class="form-control" required>
+            <label for="card-expiry-month">Expiry</label>
+            <input  type="month" id="card-expiry-month" class="form-control" required>
+            <label for="card-cvc">CVC</label>
+            <input  type="text" id="card-cvc" class="form-control" required>
+        </fieldset>
 
-                    <hr>
+        <fieldset>
+            <legend>Shipping Address</legend>
 
-                    <h4>Shipping Address</h4>
-                    <div class="row">
-                        <div class="form-group">
-                            <label for="country">Country:</label>
-                            <select id="country" class="form-control" required name="country">
-                                <option>ITALY</option>
-                                <option>NORWAY</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="city">City:</label>
-                            <input type="text" id="address-city" class="form-control" required name="city">
-                        </div>
-                        <div class="form-group">
-                            <label for="zip">Zip Code:</label>
-                            <input type="text" id="address-zip" class="form-control" required name="zip">
-                        </div>
-                        <div class="form-group">
-                            <label for="street">Street:</label>
-                            <input type="text" id="address-street" class="form-control" required name="street">
-                        </div>
-                        <div class="form-group">
-                            <label for="number">Number:</label>
-                            <input type="text" id="address-number" class="form-control" required name="number">
-                        </div>
-                        <div class="form-group">
-                            <label for="latitude">Latitude:</label>
-                            <input type="number" id="latitude" class="form-control" name="lat">
-                        </div>
-                        <div class="form-group">
-                            <label for="longitude">Longitude:</label>
-                            <input type="number" id="longitude" class="form-control" name="lng">
-                        </div>
-                    </div>
-                </div>
+            <label for="country">Country:</label>
+            <select id="country" class="form-control" required name="country">
+                <option>ITALY</option>
+                <option>NORWAY</option>
+            </select>
 
-                @csrf
+            <div class="form-control">
+                <label for="city">City:</label>
+                <input type="text" id="address-city" required name="city">
+            </div>
 
-                <h4>Your total: ${{$totalPrice}}</h4>
-                <div id="charge-error" class="alert alert-danger {{!\Illuminate\Support\Facades\Session::has('error') ? 'hidden' : ''}}">
-                    {{\Illuminate\Support\Facades\Session::get('error')}}
-                </div>
+            <div class="form-control">
+                <label for="zip">Zip Code:</label>
+                <input type="text" id="address-zip" required name="zip">
+            </div>
 
-                <button type="submit" class="btn btn-success">Buy Now</button>
-            </form>
+            <div class="form-control">
+                <label for="street">Street:</label>
+                <input type="text" id="address-street" required name="street">
+            </div>
+
+            <div class="form-control">
+                <label for="number">Number:</label>
+                <input type="text" id="address-number" required name="number">
+            </div>
+
+            <div class="form-control">
+                <label for="latitude">Latitude:</label>
+                <input type="number" id="latitude" name="lat">
+            </div>
+
+            <div class="form-control">
+                <label for="longitude">Longitude:</label>
+                <input type="number" id="longitude" name="lng">
+            </div>
+        </fieldset>
+
+
+        @csrf
+
+        <h4>Your total: ${{$totalPrice}}</h4>
+        <div id="charge-error" class="alert alert-danger {{!\Illuminate\Support\Facades\Session::has('error') ? 'hidden' : ''}}">
+            {{\Illuminate\Support\Facades\Session::get('error')}}
         </div>
-    </div>
+
+        <button type="submit" class="btn btn-success">Buy Now</button>
+    </form>
+
+    <template>
+        <gmp-map center="37.4220656,-122.0840897" zoom="10" map-id="DEMO_MAP_ID" style="height: 400px"></gmp-map>
+    </template>
 @endsection
 
 @section('scripts')
     <script type="text/javascript" src="{{\Illuminate\Support\Facades\URL::to('src/js/checkout.js')}}"></script>
+    <script
+        src="https://maps.googleapis.com/maps/api/js?libraries=maps,marker"
+        defer
+    ></script>
 @endsection

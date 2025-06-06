@@ -24,6 +24,7 @@ section {
     flex-wrap: wrap;
     gap: 10px;
     align-content: baseline;
+    justify-content: center;
 }
 .profile-pic {
     border-radius: 50px;

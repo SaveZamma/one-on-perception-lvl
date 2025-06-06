@@ -1,0 +1,22 @@
+fieldset {
+    border: 1px solid #b6b6b6;
+    border-radius: 8px;
+    padding: 10px;
+    display: flex;
+
+    margin-top: 20px;
+    flex-direction: column;
+    align-items: flex-start;
+    width: -webkit-fill-available;
+}
+
+legend {
+    padding: 0 10px;
+    background-color: white;
+    color: #000000;
+    font-weight: bold;
+}
+
+input {
+    border-style: solid;
+}
