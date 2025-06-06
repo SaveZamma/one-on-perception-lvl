@@ -67,12 +67,14 @@ li.product {
     flex-wrap: wrap;
     align-items: center;
     gap: 10px;
+    margin-bottom: 0px;
 }
 
 .pagination {
     display: flex;
     align-items: center;
     gap: 10px;
+    margin-bottom: 0px;
 }
 
 .search select {
