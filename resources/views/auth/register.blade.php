@@ -4,36 +4,36 @@
 @endsection
 
 @section('page-content')
-    <div class="gradient-bg centered fill-landing fill-height form-outer-container">
+    <main class="gradient-bg centered fill-landing fill-height form-outer-container">
         <h1>Welcome!</h1>
-        <div class="form-container glass with-shadow-lg">
+        <section class="form-container glass with-shadow-lg">
             <form action="{{ route('register') }}" method="POST">
                 @csrf
-                <div class="form-control">
+                <fieldset class="form-control">
                     <label for="username">Username:</label>
                     <input type="text" required
                       name="username" id="username"
                       value="{{ old('name') }}"
                     >
-                </div>
-                <div class="form-control">
+                </fieldset>
+                <fieldset class="form-control">
                     <label for="email">Email:</label>
                     <input type="email" required
                       name="email" id="email"
                       value="{{ old('email') }}"
                     >
-                </div>
-                <div class="form-control">
+                </fieldset>
+                <fieldset class="form-control">
                     <label for="password">Password:</label>
                     <input type="password" name="password" id="password" required>
-                </div>
-                <div class="form-control">
+                </fieldset>
+                <fieldset class="form-control">
                     <label for="password_confirmation">Confirm password:</label>
                     <input type="password"
                       name="password_confirmation" id="password_confirmation"
                       required
                     >
-                </div>
+                </fieldset>
                 <p>
                     Already have an account? <a href="{{ route('show.login') }}">Login</a>
                 </p>
@@ -55,7 +55,7 @@
                     </ul>
                 @endif
             </form>
-        </div>
-    </div>
+        </section>
+    </main>
 
 @endsection

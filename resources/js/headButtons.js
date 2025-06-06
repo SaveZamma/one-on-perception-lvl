@@ -1,9 +1,8 @@
 const csrfToken = document.querySelector('meta[name="csrf-token"]').content;
 const authUser = document.querySelector('meta[name="auth"]').content;
 
-const cartBtn = document.getElementById("header-cart-btn");
-const notifsBtn = document.getElementById("header-notifications-btn");
-const profileBtn = document.getElementById("header-profile-btn");
+const cartBtn = document.querySelector("button.header-cart-btn");
+const notifsBtn = document.querySelector("button.header-notifications-btn");
 
 checkNotifications();
 setInterval(checkNotifications, 30000);

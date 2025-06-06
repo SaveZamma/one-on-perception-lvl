@@ -5,7 +5,7 @@
 @endsection
 
 @section('page-content')
-    <div class="gradient-bg background-padding">
+    <main class="gradient-bg background-padding">
         <section class="dashboard">
             <h2>Shop by category</h2>
             <div class="search glass">
@@ -60,5 +60,5 @@
         <div class="seller-button-container">
             <a href="{{ route('seller.dashboard') }}" class="btn seller-btn">Go to Seller Dashboard</a>
         </div>
-    </div>
+    </main>
 @endsection

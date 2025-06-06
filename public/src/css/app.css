@@ -55,6 +55,9 @@ button {
     color: var(--dark-primary);
     fill: var(--dark-primary);
 }
+fieldset {
+    border: none;
+}
 
 h1 {
     font-family: Rakkas, sans-serif;
