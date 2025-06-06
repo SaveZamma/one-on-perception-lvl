@@ -15,21 +15,34 @@
                     <a href="{{ route('seller.products.create') }}" class="btn primary">Add New Product</a>
                 </div>
 
-                <h2 class="subtitle" style="margin-bottom: 20px;">Your insertions</h2>
-                <div class="products-container">
-                    <div class="grid">
-                        @forelse ($products as $product)
-                            <div class="card">
-                                <img src="{{ asset('storage/' . $product->imagePath) }}" alt="{{ $product->name }}" class="product-img" style="margin-bottom: 10px;">
-                                <h2 style="font-size: 1.2rem; margin: 10px 0 5px 0;">{{ $product->name }}</h2>
-                                <p style="font-weight: bold; color: var(--dark-primary); margin-bottom: 5px;">
-                                    {{ $product->currency }} {{ $product->price }}
-                                </p>
-                                <a href="{{ route('seller.products.edit', $product->id) }}" class="btn" style="margin-top: auto;">Edit insertion</a>
-                            </div>
-                        @empty
-                            <p style="margin: 30px auto; text-align: center;">You have no products yet.</p>
-                        @endforelse
+                <div class="container">
+                    <h1 class="title">Your insertions</h1>
+                    <div class="products-container">
+                        @php
+                            $currencySymbols = [
+                                'EUR' => '€',
+                                'USD' => '$',
+                                'AUD' => '$',
+                                'CAD' => '$',
+                                'NZD' => '$'
+                            ];
+                        @endphp
+                        <div class="grid">
+                            @forelse ($products as $product)
+                                @php
+                                $symbol = $currencySymbols[$product['currency']] ?? $product['currency'];
+                                @endphp                            
+                                <form>
+                                    <a class="card" href="{{ route('seller.products.edit', $product->id) }}">
+                                        <img src="{{ asset('storage/' . $product['imagePath']) }}" alt="{{ $product['name'] }}">
+                                        <h2>{{ $product['name'] }}</h2>
+                                        <p>{{ $symbol }} {{ $product['price'] }}</p>
+                                    </a>
+                                </form>
+                            @empty
+                                <p style="margin: 30px auto; text-align: center;">You have no products yet.</p>
+                            @endforelse
+                        </div>
                     </div>
                 </div>
             </div>

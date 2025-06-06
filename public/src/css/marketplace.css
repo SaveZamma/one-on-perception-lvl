@@ -160,6 +160,13 @@ input:focus {
     align-items: stretch;
 }
 
+.grid-seller {
+    display: grid;
+    gap: 20px;
+    justify-content: center;
+    justify-items: center;
+}
+
 @media (max-width: 600px) {
     .grid {
         gap: 10px;
