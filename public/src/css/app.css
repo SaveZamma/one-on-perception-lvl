@@ -273,8 +273,24 @@ button {
     font-weight: bold;
 }
 
-rounded-10 {
+.rounded-10 {
     border-radius: 10px;
+}
+
+.icon-counter {
+    color: white;
+    background: var(--secondary);
+    border-radius: 100px;
+    display: block;
+    text-align: center;
+    font-size: xx-small;
+    height: 10px;
+    padding: 0 0 2px 0;
+    width: 12px;
+    position: relative;
+    left: 12px;
+    top: -26px;
+    border: 1px white solid;
 }
 
 /* DESKTOP */

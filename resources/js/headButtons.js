@@ -12,20 +12,21 @@ function addSpan(father, id, text = "") {
     const span = document.createElement("span");
     span.innerText = text;
     span.id = id;
-    span.style = `
-        color: white;
-        background: var(--secondary);
-        border-radius: 100px;
-        display: block;
-        text-align: center;
-        font-size: xx-small;
-        height: 10px;
-        padding: 0 0 2px 0;
-        width: 12px;
-        position: relative;
-        left: 8px;
-        top: -20px;
-        border: 1px white solid;`;
+    span.classList.add('icon-counter');
+    // span.style = `
+    //     color: white;
+    //     background: var(--secondary);
+    //     border-radius: 100px;
+    //     display: block;
+    //     text-align: center;
+    //     font-size: xx-small;
+    //     height: 10px;
+    //     padding: 0 0 2px 0;
+    //     width: 12px;
+    //     position: relative;
+    //     left: 8px;
+    //     top: -20px;
+    //     border: 1px white solid;`;
     father.appendChild(span);
 }
 
