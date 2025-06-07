@@ -76,13 +76,13 @@
                         @foreach ($products as $product)
                             @php
                                $symbol = $currencySymbols[$product['currency']] ?? $product['currency'];
-                            @endphp                            
-                            <form action="{{route('shopping-cart.addToCart', ['id' => $product->id])}}" method="GET">
+                            @endphp
+                            <form>
                                 <a class="card" href="{{ route('marketplace.product', ['id' => $product['id']]) }}">
                                     <img src="{{ $product['imagePath'] }}" alt="{{ $product['name'] }}">
                                     <h2>{{ $product['name'] }}</h2>
                                     <p>{{ $symbol }} {{ $product['price'] }}</p>
-                                    <button type="submit" class="btn">Add to cart</button>
+                                    <a href="{{route('shopping-cart.addToCart', ['id' => $product->id])}}" type="submit" class="btn">Add to cart</a>
                                 </a>
                             </form>
                         @endforeach

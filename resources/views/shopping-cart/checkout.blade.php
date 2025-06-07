@@ -4,6 +4,7 @@
 @section('styles')
     <link rel="stylesheet" href="{{ \Illuminate\Support\Facades\URL::to('src/css/checkout.css') }}">
     <link rel="stylesheet" href="{{ \Illuminate\Support\Facades\URL::to('src/css/form.css') }}">
+    <link rel="stylesheet" href="{{ \Illuminate\Support\Facades\URL::to('src/css/google-map.css') }}">
 @endsection
 
 @section('page-content')
@@ -72,22 +73,19 @@
                 <label for="longitude">Longitude:</label>
                 <input type="number" id="longitude" name="lng">
             </div>
-        </fieldset>
 
+            <div class="maps">
+                <gmp-map center="37.4220656,-122.0840897" zoom="10" map-id="DEMO_MAP_ID" class="google-map"></gmp-map>
+            </div>
+
+        </fieldset>
 
         @csrf
 
         <h4>Your total: ${{$totalPrice}}</h4>
-        <div id="charge-error" class="alert alert-danger {{!\Illuminate\Support\Facades\Session::has('error') ? 'hidden' : ''}}">
-            {{\Illuminate\Support\Facades\Session::get('error')}}
-        </div>
 
         <button type="submit" class="btn btn-success">Buy Now</button>
     </form>
-
-    <template>
-        <gmp-map center="37.4220656,-122.0840897" zoom="10" map-id="DEMO_MAP_ID" style="height: 400px"></gmp-map>
-    </template>
 @endsection
 
 @section('scripts')

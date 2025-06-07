@@ -6,7 +6,6 @@ const CARD_CVC_LENGTH = 3;
 const ADDRESS_ZIP_LENGTH = 5;
 
 $form.submit(function(event) {
-    $('#charge-error').addClass('hidden');
     $form.find('button').prop('disabled', true);
 
     if (validateData()) {
@@ -15,24 +14,6 @@ $form.submit(function(event) {
 
     $form.find('button').prop('disabled', false);
 });
-
-function stripeResponseHandler(status, response) {
-    if (!!response.error) {
-        let chargeError = $('#charge-error');
-        chargeError.removeClass('hidden');
-        chargeError.text(response.error.message);
-
-        $form.find('button').prop('disabled', false);
-    } else {
-        var token = response.id;
-
-        $form.append($('<input type="hidden" id="stripeToken"/>')).val(token);
-
-        sessionStorage.setItem('pippo', 'gambadilegno');
-
-        $form.get(0).submit();
-    }
-}
 
 function validateData () {
     let isValid = validateCardData() && validateShippingAddress();

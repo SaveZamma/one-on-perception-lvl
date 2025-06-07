@@ -2,8 +2,6 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Casts\Json;
-
 class ShoppingCart
 {
     public $items;
