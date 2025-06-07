@@ -32,8 +32,9 @@ function loadWishlistItems() {
             'X-CSRF-TOKEN': csrfToken,
         },
     }).then(response => mapToJsonOrNull(response))
-    .then(data => data.data)
-    .then(data => inWishlist = JSON.parse(data.wishlistProducts).map(w => w.product_id))
+    .then(data => data?.data)
+    .then(data => 
+        inWishlist = data == undefined ? [] : JSON.parse(data.wishlistProducts).map(w => w.product_id))
     .then(() => true);
 }
 
