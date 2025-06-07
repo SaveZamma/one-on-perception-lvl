@@ -26,6 +26,18 @@ class NotificationController extends Controller
         return response()->json(['message' => 'Notification sent']);
     }
 
+    public function sendNotificationTo(Request $request) {
+        $title = $request->input('title');
+        $text = $request->input('text');
+        $user = $request->input('userId');
+        Notification::create([
+            'user_id' => $user,
+            'title' => $title,
+            'text' => $text,
+        ]);
+        return response()->json(['message' => 'Notification sent']);
+    }
+
     public function toggleReadNotification(Request $request) {
         $notifId = $request->input('notification_id');
         $notification = Notification::find($notifId);
