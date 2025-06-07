@@ -9,17 +9,17 @@
         <section class="form-container glass with-shadow-lg">
             <form action="{{ route('login') }}" method="POST">
                 @csrf
-                <fieldset class="form-control">
+                <p class="form-control">
                     <label for="email">Email:</label>
                     <input type="email" required
                       name="email" id="email"
                       value="{{ old('email') }}"
                     >
-                </fieldset>
-                <fieldset class="form-control">
+                </p>
+                <p class="form-control">
                     <label for="password">Password:</label>
                     <input type="password" name="password" id="password" required>
-                </fieldset>
+                </p>
                 <p>
                     Don't have an account? <a href="{{ route('show.register') }}">Register</a>
                 </p>
