@@ -2,7 +2,9 @@ const csrfToken = document.querySelector('meta[name="csrf-token"]').content;
 
 let deleteBtns = document.querySelectorAll('button.delete-btn');
 let readBtns = document.querySelectorAll('button.read-btn');
+let notifsBtn = document.querySelector('button.header-notifications-btn');
 
+setInterval(checkNotifications, 3000);
 
 function mapToJsonOrNull(response) {
     return response.ok 
@@ -14,20 +16,7 @@ function addSpan(father, id, text = "") {
     const span = document.createElement("span");
     span.innerText = text;
     span.id = id;
-    span.style = `
-        color: white;
-        background: var(--secondary);
-        border-radius: 100px;
-        display: block;
-        text-align: center;
-        font-size: xx-small;
-        height: 10px;
-        padding: 0 0 2px 0;
-        width: 12px;
-        position: relative;
-        left: 8px;
-        top: -20px;
-        border: 1px white solid;`;
+    span.classList.add('icon-counter');
     father.appendChild(span);
 }
 

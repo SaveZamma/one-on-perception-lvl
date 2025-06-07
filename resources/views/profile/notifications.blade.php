@@ -1,6 +1,9 @@
 @extends('components.layout')
 <meta name="csrf-token" content="{{ csrf_token() }}">
-@vite('resources/js/notifications.js')
+
+@section('scripts')
+    <script type="text/javascript" src="{{\Illuminate\Support\Facades\URL::to('src/js/notifications.js')}}"></script>
+@endsection
 
 @section('page-content')
     <h2>Notifications</h2>

@@ -1,5 +1,8 @@
 @extends('components.layout')
-@vite('resources/js/wishlist.js')
+
+@section('scripts')
+    <script type="text/javascript" src="{{\Illuminate\Support\Facades\URL::to('src/js/wishlist.js')}}"></script>
+@endsection
 
 @section('styles')
     <link rel="stylesheet" href="{{ \Illuminate\Support\Facades\URL::to('src/css/product.css') }}">
