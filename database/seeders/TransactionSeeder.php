@@ -13,7 +13,6 @@ class TransactionSeeder extends Seeder
      */
     public function run(): void
     {
-        Transaction::truncate(); 
         Transaction::factory()->create([
             'order_id' => 1,
         ]);

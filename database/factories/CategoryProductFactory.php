@@ -5,9 +5,9 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Storage>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Model>
  */
-class StorageFactory extends Factory
+class CategoryProductFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -17,7 +17,8 @@ class StorageFactory extends Factory
     public function definition(): array
     {
         return [
-            'shop_id' => ShopFactory::new()
+            'product_id' => rand(1, 5),
+            'category_id' => rand(1, 5)
         ];
     }
 }

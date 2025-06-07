@@ -26,7 +26,8 @@ class AuthController extends Controller
         Notification::create([
             'user_id' => $user->id,
             'title' => 'Welcome to our platform',
-            'text' => 'Thank you for joining our platform. We hope you enjoy your experience.'
+            'text' => 'Thank you for joining our platform. We hope you enjoy your experience.',
+            'read' => true
         ]);
 
         return redirect()->intended('profile');

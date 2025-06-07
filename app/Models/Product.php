@@ -20,21 +20,22 @@ class Product extends Model
         'name',
         'description',
         'category_id',
-        'storage_id', // TODO consider if this is a vulnerability
+        'shop_id',
         'quantity',
         'price',
         'new',
         'visible'
     ];
 
-    public function categories(): BelongsToMany
+    public function categories()
     {
-        return $this->belongsToMany(Category::class, 'category_product');
+        return $this->belongsToMany(Category::class, 'category_product', 'product_id', 'category_id')
+            ->using(CategoryProduct::class);
     }
 
-    public function storage(): BelongsTo
+    public function shop(): BelongsTo
     {
-        return $this->belongsTo(Storage::class);
+        return $this->belongsTo(Shop::class);
     }
 
     public function orderedProducts(): HasMany

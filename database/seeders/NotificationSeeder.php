@@ -13,7 +13,6 @@ class NotificationSeeder extends Seeder
      */
     public function run(): void
     {
-        Notification::truncate();
         Notification::factory()->create([
             'user_id' => 1,
             'title' => 'Welcome to our platform',

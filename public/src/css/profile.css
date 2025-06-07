@@ -24,6 +24,7 @@ section {
     flex-wrap: wrap;
     gap: 10px;
     align-content: baseline;
+    justify-content: center;
 }
 .profile-pic {
     border-radius: 50px;
@@ -51,6 +52,7 @@ section {
     background-color: var(--light-secondary);
     font-weight: bold;
     color: var(--dark-secondary);
+    margin-bottom: 5%;
 }
 .logout-btn:hover {
     background-color: var(--secondary);
@@ -72,7 +74,7 @@ section {
     .bottom-bar, .bottom-bar form {
         width: 100%;
     }
-    
+
     .profile-section-card {
         display: flex;
         flex-direction: column;

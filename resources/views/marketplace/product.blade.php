@@ -30,7 +30,18 @@
             </div>
             
             <p class="product-description">{{ $product->description }}</p>
-            <p class="product-price">€ {{ $product->price }}</p>
+            @php
+                $currencySymbols = [
+                    'EUR' => '€',
+                    'USD' => '$',
+                    'AUD' => '$',
+                    'CAD' => '$',
+                    'NZD' => '$'
+                ];
+                $symbol = $currencySymbols[$product->currency] ?? $product->currency;
+            @endphp
+
+            <p class="product-price">{{ $symbol }} {{ $product->price }}</p>
         </div>
     </main>
 @endsection

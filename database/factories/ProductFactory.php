@@ -10,8 +10,8 @@ use Illuminate\Database\Eloquent\Factories\Factory;
  */
 class ProductFactory extends Factory
 {
-    
-    
+
+
     /**
      * Define the model's default state.
      *
@@ -51,7 +51,7 @@ class ProductFactory extends Factory
             "name" => fake()->randomElement($colors) . " " . fake()->randomElement($productTemplate),
             "description" => fake()->text(),
             "imagePath" => "https://picsum.photos/500/300?random=" . fake()->unique()->randomNumber(),
-            'storage_id' => StorageFactory::new(),
+            'shop_id' => ShopFactory::new(),
             'quantity' => random_int(0, 100),
             'price' => rand(0, 10000) / 100,
             'currency' => fake()->currencyCode(),

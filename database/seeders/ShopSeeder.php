@@ -13,7 +13,6 @@ class ShopSeeder extends Seeder
      */
     public function run(): void
     {
-        Shop::truncate();
         Shop::factory()->count(10)->create();
     }
 }

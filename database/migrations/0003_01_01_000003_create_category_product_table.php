@@ -14,9 +14,9 @@ return new class extends Migration
         Schema::create('category_product', function (Blueprint $table) {
             $table->foreignId('product_id')->constrained()->onDelete('cascade');
             $table->foreignId('category_id')->constrained()->onDelete('cascade');
-        
+
             $table->primary(['product_id', 'category_id']); // 👈 Composite primary key
-        });        
+        });
     }
 
     /**

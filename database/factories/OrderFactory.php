@@ -20,11 +20,13 @@ class OrderFactory extends Factory
     {
         return [
             'user_id' => UserFactory::new(),
-            'address_id' => AddressFactory::new(),
+            'name' => fake()->name,
             'date' => fake()->date(),
             'title' => fake()->name(),
             'shipping_code' => Str::random(10),
-            'status' => fake()->randomElement(OrderStatus::cases())->value
+            'status' => fake()->randomElement(OrderStatus::cases())->value,
+            'cart' => '',
+            'address' => ''
         ];
     }
 }
