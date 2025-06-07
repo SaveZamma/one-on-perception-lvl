@@ -1,0 +1,16 @@
+template.maps {
+    display: inline-block;
+    position: relative;
+    width: 100%;
+}
+
+div.maps {
+    display: inline-block;
+    position: relative;
+    width: 100%;
+}
+
+.google-map {
+    width: 100%;
+    height: 400px;
+}
