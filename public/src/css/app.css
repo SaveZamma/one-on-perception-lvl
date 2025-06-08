@@ -17,10 +17,6 @@
     --dark-grey-primary: #406568;
 }
 
-
-html, body, main {
-    height: 100%;
-}
 body {
     padding: 0;
     margin: 0% 2%;
