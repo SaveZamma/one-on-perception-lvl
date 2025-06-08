@@ -16,8 +16,8 @@
                     <form method="GET" id="pagination-form" class="pagination">
                         <label for="perPage" class="primary-dark">Products per page:</label>
                         <select name="perPage" id="perPage" onchange="document.getElementById('pagination-form').submit()">
-                           @foreach ([12, 24, 48, 96] as $size)
-                                <option value="{{ $size }}" {{ request('perPage', 20) == $size ? 'selected' : '' }}>
+                           @foreach ([10, 20, 50, 100] as $size)
+                                <option value="{{ $size }}" {{ request('perPage', 10) == $size ? 'selected' : '' }}>
                                     {{ $size }}
                                 </option>
                             @endforeach
@@ -82,7 +82,7 @@
                                     <img src="{{ $product['imagePath'] }}" alt="{{ $product['name'] }}">
                                     <h2>{{ $product['name'] }}</h2>
                                     <p>{{ $symbol }} {{ $product['price'] }}</p>
-                                    <a href="{{route('shopping-cart.addToCart', ['id' => $product->id])}}" type="submit" class="btn">Add to cart</a>
+                                    <div href="{{route('shopping-cart.addToCart', ['id' => $product->id])}}" type="submit" class="btn">Add to cart</div>
                                 </a>
                             </form>
                         @endforeach
