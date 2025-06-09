@@ -38,6 +38,17 @@ class ShoppingCartController extends Controller
         return redirect()->route('marketplace.index');
     }
 
+    public function increaseByOne($id): RedirectResponse
+    {
+        $product = Product::query()->find($id);
+        $cart = $this->getCartFromCookie();
+
+        $cart->add($product, $product->id);
+
+        $this->putCartToCookie($cart);
+        return redirect()->route('shopping-cart');
+    }
+
     public function reduceByOne($id)
     {
         $cart = $this->getCartFromCookie();

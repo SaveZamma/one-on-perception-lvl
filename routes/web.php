@@ -48,6 +48,7 @@ Route::middleware('guest')->group(function () {
 
 Route::get('shopping-cart', [\App\Http\Controllers\ShoppingCartController::class, 'getCart'])->name('shopping-cart');
 Route::get('add-to-cart/{id}', [\App\Http\Controllers\ShoppingCartController::class, 'addToCart'])->name('shopping-cart.addToCart');
+Route::get('increase-by-one/{id}', [\App\Http\Controllers\ShoppingCartController::class, 'increaseByOne'])->name('shopping-cart.increaseByOne');
 Route::get('reduce-by-one/{id}', [\App\Http\Controllers\ShoppingCartController::class, 'reduceByOne'])->name('shopping-cart.reduceByOne');
 Route::get('remove-item/{id}', [\App\Http\Controllers\ShoppingCartController::class, 'removeItem'])->name('shopping-cart.removeItem');
 
