@@ -1,9 +1,5 @@
 @extends('components.layout')
 
-@section('scripts')
-    <script type="text/javascript" src="{{\Illuminate\Support\Facades\URL::to('src/js/wishlist.js')}}"></script>
-@endsection
-
 @section('styles')
     <link rel="stylesheet" href="{{ \Illuminate\Support\Facades\URL::to('src/css/checkout.css') }}">
     <link rel="stylesheet" href="{{ \Illuminate\Support\Facades\URL::to('src/css/form.css') }}">
@@ -77,9 +73,10 @@
                 <input type="number" id="longitude" name="lng">
             </div>
 
-            <div class="maps">
-                <gmp-map center="37.4220656,-122.0840897" zoom="10" map-id="DEMO_MAP_ID" class="google-map"></gmp-map>
+            <div class="google-map">
+                <div id="map"></div>
             </div>
+
 
         </fieldset>
 
@@ -97,4 +94,5 @@
         src="https://maps.googleapis.com/maps/api/js?libraries=maps,marker"
         defer
     ></script>
+
 @endsection

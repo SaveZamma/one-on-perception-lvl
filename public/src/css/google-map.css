@@ -8,9 +8,14 @@ div.maps {
     display: inline-block;
     position: relative;
     width: 100%;
+    height: 400px;
 }
 
 .google-map {
     width: 100%;
     height: 400px;
+}
+
+#map {
+    height: 100%;
 }

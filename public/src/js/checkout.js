@@ -1,5 +1,8 @@
 "use strict";
-var $form = $('.checkout-form');
+
+let mapsLoaded = true;
+let mapMarkers = [];
+let $form = $('.checkout-form');
 
 const CARD_NUMBER_LENGTH = 16;
 const CARD_CVC_LENGTH = 3;
@@ -52,5 +55,48 @@ function validateShippingAddress() {
     const isStreetValid = street !== undefined && street !== '';
     const isNumberValid = number !== undefined && number !== '';
 
+    //Via Cesare Pavese, 50, 47521 Cesena FC
+
     return isCountryValid && isCityValid && isZipValid && isStreetValid && isNumberValid;
+}
+
+let map;
+
+$(document).ready(function (...args) {
+    const cesenaCampusLatLng = {lat: 44.147760, lng: 12.234989};
+    map = new google.maps.Map(document.getElementById("map"), {
+        center: cesenaCampusLatLng,
+        zoom: 13,
+    });
+
+    map.addListener("click", (e) => {
+        console.log(e);
+        placeMarkerAndPanTo(e.latLng, map);
+    });
+})
+
+function placeMarkerAndPanTo(latLng, map) {
+    const m = new google.maps.Marker({
+        position: latLng,
+        map: map,
+    });
+    map.panTo(latLng);
+
+    mapMarkers.forEach(m => m.setMap(null));
+    mapMarkers = [];
+    mapMarkers.push(m);
+
+    $('#latitude').val(latLng.lat);
+    $('#longitude').val(latLng.lng);
+}
+
+function gm_authFailure() {
+    mapsLoaded = false;
+
+    $(".google-map").css('display', 'none');
+    $('#latitude').css('display', 'none');
+    $('#longitude').css('display', 'none');
+
+    $("label[for='latitude']").css('display', 'none');
+    $("label[for='longitude']").css('display', 'none');
 }
