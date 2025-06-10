@@ -78,9 +78,33 @@ class ProductController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateProductRequest $request, Product $product)
+    public function update(Request $request, Product $product)
     {
-        //
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'description' => 'nullable|string',
+            'price' => 'required|numeric',
+            'currency' => 'required|string|max:3',
+        ]);
+
+        $user = auth()->user();
+        $shop = $user->shop;
+
+        if (!$shop || $product->shop_id !== $shop->id) {
+            return redirect()->route('seller.dashboard')->with('error', 'Unauthorized action.');
+        }
+
+        $product->name = $request->input('name');
+        $product->description = $request->input('description');
+        $product->price = $request->input('price');
+        $product->currency = $request->input('currency');
+        if ($request->hasFile('image')) {
+            $path = $request->file('image')->store('products', 'public');
+            $product->imagePath = $path;
+        }
+        $product->save();
+
+        return redirect()->route('seller.dashboard')->with('success', 'Product updated!');
     }
 
     /**

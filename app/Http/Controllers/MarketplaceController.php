@@ -26,7 +26,7 @@ class MarketplaceController extends Controller
             $query->where('name', 'ILIKE', '%' . $request->input('search') . '%');
         }
 
-        $perPage = (int) $request->input('perPage', 24);
+        $perPage = (int) $request->input('perPage', 10);
         $products = $query->paginate($perPage)->appends($request->except('page'));
 
         $categories = Category::all();

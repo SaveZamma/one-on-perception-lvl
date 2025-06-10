@@ -24,10 +24,6 @@ li.product {
     min-width: 45%;
 }
 
-.card {
-
-}
-
 .card-title-container {
     width: 100%;
     margin-top: 60%;
@@ -167,13 +163,6 @@ input:focus {
     gap: 20px;
     justify-content: center;
     align-items: stretch;
-}
-
-.grid-seller {
-    display: grid;
-    gap: 20px;
-    justify-content: center;
-    justify-items: center;
 }
 
 .card {

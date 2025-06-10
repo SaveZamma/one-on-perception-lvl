@@ -2,30 +2,34 @@
 @extends('components.layout')
 
 @section('styles')
-    <link rel="stylesheet" href="{{ \Illuminate\Support\Facades\URL::to('src/css/marketplace.css') }}">
+    <link rel="stylesheet" href="{{ \Illuminate\Support\Facades\URL::to('src/css/product.css') }}">
 @endsection
 
 @section('page-content')
     <main class="gradient-bg background-padding">
         <section class="dashboard">
             <div class="container">
-                <h1 class="title">
-                    {{ isset($product) ? 'Edit insertion' : 'Add new insertion' }}
-                </h1>
-                <form method="POST" action="{{ isset($product) ? route('seller.products.update', $product->id) : route('seller.products.store') }}" enctype="multipart/form-data" class="grid-seller">
-                    @csrf
-                    @if(isset($product))
+                <div class="card">
+                    <h1 class="title">
+                        {{ isset($product) ? 'Edit insertion' : 'Add new insertion' }}
+                    </h1>
+                    <form method="POST" action="{{ isset($product) ? route('seller.products.update', $product->id) : route('seller.products.store') }}" enctype="multipart/form-data" class="grid-seller">
+                        @csrf
+                        @if(isset($product))
                         @method('PUT')
                     @endif
+                    <img
+                    id="image-preview"
+                    src="{{ isset($product) && $product->imagePath ? asset('storage/' . $product->imagePath) : '' }}"
+                    alt="Current image"
+                    class="product-img"
+                    {{ isset($product) && $product->imagePath ? '' : 'display:none;' }}"
+                    >
                     
-                    @if(isset($product) && $product->imagePath)
-                        <img src="{{ asset('storage/' . $product->imagePath) }}" alt="Current image" class="product-img">
-                    @endif
-
                     <table>
                         <tr>
                             <td>
-                                <label for="name" class="form-label">Product Name</label>
+                                <a for="name" class="form-a">Product Name</a>
                             </td>
                             <td>
                                 <input type="text" id="name" name="name" placeholder="Product Name" required class="form-control" value="{{ old('name', $product->name ?? '') }}">
@@ -33,7 +37,7 @@
                         </tr>
                         <tr>
                             <td>
-                                <label for="description" class="form-label">Description</label>
+                                <a for="description" class="form-a">Description</a>
                             </td>
                             <td>
                                 <textarea id="description" name="description" placeholder="Product Description" class="form-control" rows="3">{{ old('description', $product->description ?? '') }}</textarea>
@@ -41,7 +45,7 @@
                         </tr>
                         <tr>
                             <td>
-                                <label for="price" class="form-label">Price</label>
+                                <a for="price" class="form-a">Price</a>
                             </td>
                             <td>
                                 <input type="number" id="price" name="price" placeholder="Price" step="0.01" required class="form-control" value="{{ old('price', $product->price ?? '') }}">
@@ -49,27 +53,45 @@
                         </tr>
                         <tr>
                             <td>
-                                <label for="currency" class="form-label">Currency</label>
+                                <a for="currency" class="form-a">Currency</a>
                             </td>
                             <td>
-                                <input type="text" id="currency" name="currency" placeholder="Currency (e.g. EUR, USD)" required class="form-control" value="{{ old('currency', $product->currency ?? '') }}">
+                                <input type="text" id="currency" name="currency" placeholder="Currency (e.g. EUR, USD)" required class="form-control" maxlength="3" value="{{ old('currency', $product->currency ?? '') }}">
                             </td>
                         </tr>
                         <tr>
                             <td>
-                                <label for="image" class="form-label">Product Image</label>
+                                <a for="image" class="form-a">Product Image</a>
                             </td>
                             <td>
-                                <input type="file" id="image" name="image" class="form-control">
+                                <a for="image" class="btn primary" style="display:inline-block; cursor:pointer; margin-bottom:0;">
+                                    Choose Image
+                                    <input type="file" id="image" name="image" class="form-control" style="display:none;" onchange="previewImage(event)">
+                                </a>
                             </td>
                         </tr>
                     </table>
                     <button type="submit" class="btn primary">
                         {{ isset($product) ? 'Update insertion' : 'Add insertion' }}
                     </button>
-                    <button href="{{ route('seller.dashboard') }}" class="btn primary">Back to Dashboard</button>
+                    <a href="{{ route('seller.dashboard') }}" class="btn primary">Back to Dashboard</a>
                 </form>
             </div>
+        </div>
         </section>
     </main>
+    <script>
+        function previewImage(event) {
+            const input = event.target;
+            const preview = document.getElementById('image-preview');
+            if (input.files && input.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    preview.src = e.target.result;
+                    preview.style.display = 'block';
+                }
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+    </script>
 @endsection

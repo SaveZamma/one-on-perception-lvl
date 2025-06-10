@@ -13,7 +13,7 @@
 @endsection
 
 @section('page-content')
-    <main class="gradient-bg" style="min-height:100vh;display:flex;align-items:center;justify-content:center;">
+    <main class="gradient-bg background-padding" style="min-height:100vh;display:flex;align-items:center;justify-content:center;">
         <div class="product-card card">
             <img src="{{ $product->imagePath }}" alt="{{ $product->name }}" class="product-img">
 
