@@ -18,8 +18,11 @@
                 @if(isset($product))
                     @method('PUT')
                 @endif
-                <img id="image-preview" alt="Current image" class="product-img"
-                    src="{{ isset($product) && $product->imagePath ? asset('storage/' . $product->imagePath) : '' }}"
+                <img
+                    id="image-preview"
+                    alt="Current image"
+                    class="product-img"
+                    src="{{ isset($product) && $product->imagePath ? asset('storage/' . $product->imagePath) : 'data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2280%22 height=%2280%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%22%23999%22 stroke-width=%222%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22><rect x=%223%22 y=%223%22 width=%2218%22 height=%2218%22 rx=%222%22 ry=%222%22/><circle cx=%228.5%22 cy=%228.5%22 r=%221.5%22/><polyline points=%2216 15 13 12 8 17%22/></svg>' }}"
                 />
                 <table>
                     <tr>
@@ -61,7 +64,15 @@
                         <td>
                             <label for="image" class="btn glass with-shadow-sm" style="display:inline-block; cursor:pointer; margin-bottom:0;">
                                 Choose Image
-                                <input type="file" id="image" name="image" class="form-control" style="display:none;" onchange="previewImage(event)">
+                                <input
+                                    type="file"
+                                    id="image"
+                                    name="image"
+                                    class="form-control"
+                                    style="opacity:0;position:absolute;width:1px;height:1px;left:0;top:0;"
+                                    onchange="previewImage(event)"
+                                    @if (!isset($product)) required @endif
+                                >
                             </label>
                         </td>
                     </tr>

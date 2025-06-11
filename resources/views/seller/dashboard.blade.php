@@ -32,6 +32,9 @@
                             <img src="{{ asset('storage/' . $product['imagePath']) }}" alt="{{ $product['name'] }}">
                             <h2>{{ $product['name'] }}</h2>
                             <p>{{ $symbol }} {{ $product['price'] }}</p>
+                            <span title="Quantity available">
+                                In stock: {{ $product->quantity }}
+                            </span>
                             <form action="{{ route('seller.products.destroy', $product->id) }}" method="POST" style="margin-top: 0.5rem;">
                                 @csrf
                                 @method('DELETE')

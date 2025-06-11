@@ -38,6 +38,7 @@ class ProductController extends Controller
             'description' => 'nullable|string',
             'price' => 'required|numeric',
             'currency' => 'required|string|in:EUR,USD,AUD,CAD,NZD',
+            'image' => 'required|image|max:10240',
             'category' => 'array',
             'category.*' => 'exists:categories,id',
         ]);
@@ -104,6 +105,7 @@ class ProductController extends Controller
             'description' => 'nullable|string',
             'price' => 'required|numeric',
             'currency' => 'required|string|in:EUR,USD,AUD,CAD,NZD',
+            'image' => 'nullable|image|max:10240',
             'category' => 'array',
             'category.*' => 'exists:categories,id',
         ]);

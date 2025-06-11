@@ -63,12 +63,16 @@
                     @endphp
                     <li>
                         <a class="card" href="{{ route('marketplace.product', ['id' => $product['id']]) }}">
-                            <img src="{{ $product['imagePath'] }}" alt="{{ $product['name'] }}">
+                            <img
+                                src="{{ $product['imagePath'] }}"
+                                alt="{{ $product['name'] }}"
+                                onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,<svg xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;80&quot; height=&quot;80&quot; viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot; stroke=&quot;#999&quot; stroke-width=&quot;2&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot;><rect x=&quot;3&quot; y=&quot;3&quot; width=&quot;18&quot; height=&quot;18&quot; rx=&quot;2&quot; ry=&quot;2&quot;/><circle cx=&quot;8.5&quot; cy=&quot;8.5&quot; r=&quot;1.5&quot;/><polyline points=&quot;16 15 13 12 8 17&quot;/></svg>'"
+                            >
                             <h2>{{ $product['name'] }}</h2>
                             <p>{{ $symbol }} {{ $product['price'] }}</p>
-                            <a href="{{route('shopping-cart.addToCart', ['id' => $product->id])}}" class="btn">
+                            <button href="{{route('shopping-cart.addToCart', ['id' => $product->id])}}" class="btn">
                                 Add to cart
-                            </a>
+                            </button>
                         </a>
                     </li>
                 @endforeach
