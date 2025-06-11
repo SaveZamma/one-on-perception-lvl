@@ -354,12 +354,12 @@ input:focus {
 
 /* DESKTOP */
 @media (min-width: 600px) {
-    .grid {
+    /* .grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(200px, 200px));
         gap: 20px;
         justify-content: center;
         align-items: stretch;
-    }
+    } */
     
 }
