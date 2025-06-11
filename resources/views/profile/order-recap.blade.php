@@ -14,14 +14,16 @@
 @section('page-content')
     <section class="cart">
         <ul class="products-list">
-            @foreach($cart->items as $item)
+            @foreach($cart->items as $key => $node)
                 <li class="card-border fx-col">
-                    <p class="product-title">
-                        <strong>{{$item['item']['name']}}</strong>
-                        <span class="label label-success">{{$item['price']}} $</span>
-                    </p>
+                    <a href="{{ route('marketplace.product', ['id' =>  $key]) }}">
+                        <p class="product-title">
+                            <strong>{{$node['item']['name']}}</strong>
+                            <span class="label label-success">{{$node['price']}} $</span>
+                        </p>
 
-                    <span>{{$item['qty']}}</span>
+                        <span>{{$node['qty']}}</span>
+                    </a>
                 </li>
             @endforeach
         </ul>
