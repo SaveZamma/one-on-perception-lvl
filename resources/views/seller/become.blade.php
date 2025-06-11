@@ -8,7 +8,7 @@
     <section class="become-seller">
         <h1>Become a Seller</h1>
         <p>Join our marketplace and start selling your products today!</p>
-        <form method="POST" action="{{ route('seller.dashboard') }}">
+        <form method="POST" action="{{ route('seller.index') }}">
             @csrf
             <input type="text" name="name" placeholder="Shop Name" required class="form-control" style="margin-bottom:10px;">
             <input type="text" name="email" placeholder="Shop Contact Email" required class="form-control" style="margin-bottom:10px;">

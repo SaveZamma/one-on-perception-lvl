@@ -70,9 +70,11 @@
                             />
                             <h2>{{ $product['name'] }}</h2>
                             <p>{{ $symbol }} {{ $product['price'] }}</p>
-                            <button href="{{route('shopping-cart.addToCart', ['id' => $product->id])}}" class="btn">
-                                Add to cart
-                            </button>
+                             <form action="{{ route('shopping-cart.addToCart', ['id' => $product['id']]) }}" method="GET">
+                                <button type="submit" class="btn">
+                                    Add to cart
+                                </button>
+                            </form>
                         </a>
                     </li>
                 @endforeach

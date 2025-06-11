@@ -39,5 +39,5 @@
     <a href="{{ route('marketplace.index')}}">Marketplace</a>
     <a href="{{ route('profile')}}">Profile</a>
     <a href="{{ route('profile.orders')}}">Orders</a>
-    <a href="{{ route('seller.dashboard')}}">Seller dashboard</a>
+    <a href="{{ route('seller.index')}}">Seller dashboard</a>
 </aside>

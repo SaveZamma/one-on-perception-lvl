@@ -29,7 +29,7 @@ Route::middleware('auth')->group(function () {
     Route::post('marketplace/wishlist/add', [MarketplaceController::class, 'addToWishlist'])->name('marketplace.wishlist.add');
     Route::post('marketplace/wishlist/remove', [MarketplaceController::class, 'removeFromWishlist'])->name('marketplace.wishlist.remove');
     Route::get('marketplace/my', [MarketplaceController::class, 'showProduct'])->name('marketplace.my');
-    Route::match(['get', 'post'], '/seller', [SellerController::class, 'index'])->middleware('auth')->name('seller.dashboard');
+    Route::match(['get', 'post'], '/seller', [SellerController::class, 'index'])->middleware('auth')->name('seller.index');
     Route::get('/checkout', [\App\Http\Controllers\CheckoutController::class, 'getCheckout'])->name('checkout');
     Route::post('/checkout', [\App\Http\Controllers\CheckoutController::class, 'postCheckout'])->name('checkout');
     Route::get('/seller/products/create', [ProductController::class, 'create'])->middleware('auth')->name('seller.products.create');

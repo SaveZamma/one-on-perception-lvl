@@ -16,16 +16,16 @@ class SellerController extends Controller
         $user = Auth::user();
 
         if ($user->shop) {
-            return view('seller.dashboard');
+            return redirect()->route('seller.dashboard');
         }
-
+        
         if ($request->isMethod('post')) {
             $request->validate([
                 'name' => 'required|string|max:255',
                 'description' => 'nullable|string',
                 'email' => 'required|string|max:255',
             ]);
-
+            
             if ($user->shop) {
                 return redirect()->route('seller.dashboard')->with('error', 'You already have a shop.');
             }
