@@ -1,5 +1,9 @@
 @extends('components.layout')
 
+@section('styles')
+    <link rel="stylesheet" href="{{ \Illuminate\Support\Facades\URL::to('src/css/order-recap.css') }}">
+@endsection
+
 @section('page-content')
     <h2>My Orders</h2>
 {{--    @if ($orders->count() == 0)--}}
