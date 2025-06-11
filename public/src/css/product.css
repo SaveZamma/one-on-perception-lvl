@@ -95,9 +95,15 @@ table {
     gap: 8px;
 }
 
+.category-box {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
 .category-tag {
     background: var(--primary, #4facfe);
-    color: #fff;
+    color: white;
     border-radius: 999px;
     padding: 4px 14px;
     font-size: 13px;
@@ -106,6 +112,47 @@ table {
     display: inline-block;
     letter-spacing: 0.5px;
     box-shadow: 0 1px 3px rgba(0,0,0,0.07);
+    margin: 2px;
+}
+
+
+.dropdown-content {
+    border-radius: 6px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    z-index: 10;
+    margin-top: 2px;
+    padding: 8px;
+    background: var(--light-primary-transparent);
+    border: 1px solid #cecece;
+}
+
+.dropdown-content label {
+    display: flex;
+    align-items: center;
+    padding: 6px 16px;
+    cursor: pointer;
+    font-size: 0.98rem;
+    background: var(--light-primary);
+    color: var(--dark-primary);
+    border-radius: 20px;
+    border: 1px var(--dark-grey-primary) solid;
+    justify-self: left;
+    transition: background 0.2s, color 0.2s;
+    min-width: 0;
+    word-break: break-word;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
+.dropdown-content label:hover {
+    background: var(--dark-primary);
+    color: white;
+}
+
+.dropdown-content input[type="checkbox"] {
+    margin-right: 8px;
 }
 
 .product-header-box {

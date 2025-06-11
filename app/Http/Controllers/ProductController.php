@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\Category;
 use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
 use Illuminate\Http\Request;
@@ -22,7 +23,8 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('seller.product-editor');
+        $categories = Category::all();
+        return view('seller.product-editor', compact('categories'));
     }
 
     /**
@@ -35,6 +37,8 @@ class ProductController extends Controller
             'description' => 'nullable|string',
             'price' => 'required|numeric',
             'currency' => 'required|string|max:3',
+            'category' => 'array',
+            'category.*' => 'exists:categories,id',
         ]);
 
         $user = auth()->user();
@@ -56,6 +60,11 @@ class ProductController extends Controller
         }
         $product->save();
 
+        // Attach categories
+        if ($request->has('category')) {
+            $product->categories()->sync($request->input('category'));
+        }
+
         return redirect()->route('seller.dashboard')->with('success', 'Product added!');
     }
 
@@ -72,7 +81,9 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        return view('seller.product-editor', compact('product'));
+        $categories = Category::all();
+        $selectedCategories = $product->categories()->pluck('id')->toArray();
+        return view('seller.product-editor', compact('product', 'categories', 'selectedCategories'));
     }
 
     /**
@@ -85,6 +96,8 @@ class ProductController extends Controller
             'description' => 'nullable|string',
             'price' => 'required|numeric',
             'currency' => 'required|string|max:3',
+            'category' => 'array',
+            'category.*' => 'exists:categories,id',
         ]);
 
         $user = auth()->user();
@@ -103,6 +116,13 @@ class ProductController extends Controller
             $product->imagePath = $path;
         }
         $product->save();
+
+        // Sync categories
+        if ($request->has('category')) {
+            $product->categories()->sync($request->input('category'));
+        } else {
+            $product->categories()->sync([]);
+        }
 
         return redirect()->route('seller.dashboard')->with('success', 'Product updated!');
     }

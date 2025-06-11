@@ -69,6 +69,15 @@
                         </td>
                     </tr>
                 </table>
+                <div class="category-box dropdown-content">
+                    @foreach ($categories as $category)
+                        <label class="category-tag">
+                            <input type="checkbox" name="category[]" value="{{ $category->id }}"
+                                {{ (isset($selectedCategories) && in_array($category->id, $selectedCategories)) ? 'checked' : '' }}>
+                            {{ $category->name }}
+                        </label>
+                    @endforeach
+                </div>
                 <button type="submit" class="btn glass with-shadow-sm">
                     {{ isset($product) ? 'Update insertion' : 'Add insertion' }}
                 </button>
@@ -89,5 +98,14 @@
                 reader.readAsDataURL(input.files[0]);
             }
         }
+        function toggleDropdown() {
+            var content = document.getElementById('dropdown-content');
+            content.style.display = content.style.display === 'none' ? 'block' : 'none';
+        }
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.category-multiselect')) {
+                document.getElementById('dropdown-content').style.display = 'none';
+            }
+        });
     </script>
 @endsection
