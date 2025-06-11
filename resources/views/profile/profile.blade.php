@@ -1,7 +1,9 @@
 @extends('components.layout')
+
 @section('styles')
     <link rel="stylesheet" href="{{ \Illuminate\Support\Facades\URL::to('src/css/profile.css') }}">
 @endsection
+
 @section('page-content')
     <main class="profile-page-container">
         <section>

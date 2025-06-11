@@ -1,8 +1,15 @@
-let aside = document.querySelector('aside.side-menu');
-let btn = document.querySelector('svg.menu-switch');
-let isVisible =  false;
+let aside;
+let btn;
+let isVisible;
 
-btn.addEventListener('click', toggleAside);
+$(document).ready(function () {
+    aside = document.querySelector('aside.side-menu');
+    btn = document.querySelector('svg.menu-switch');
+    isVisible =  false;
+
+    btn.addEventListener('click', toggleAside);
+})
+
 
 function toggleAside(){
     if(isVisible){

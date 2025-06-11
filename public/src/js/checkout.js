@@ -17,7 +17,6 @@ $(document).ready(function (...args) {
     });
 
     map.addListener("click", (e) => {
-        console.log(e);
         placeMarkerAndPanTo(e.latLng, map);
     });
 })
@@ -98,4 +97,45 @@ function gm_authFailure() {
 
     $("label[for='latitude']").css('display', 'none');
     $("label[for='longitude']").css('display', 'none');
+}
+
+function validateCountry() {
+    const country = $('#country').val();
+
+    const lat = $('#latitude').val();
+    const lng = $('#longitude').val();
+
+    if (lat !== 0 && lng !== 0) {
+    }
+
+    const isCountryValid = country !== undefined && country !== '';
+    const isCityValid = city !== undefined && city !== '';
+    const isZipValid = zip !== undefined && zip !== '' && zip.length === ADDRESS_ZIP_LENGTH && /^\d+$/.test(zip);
+    const isStreetValid = street !== undefined && street !== '';
+    const isNumberValid = number !== undefined && number !== '';
+
+    //Via Cesare Pavese, 50, 47521 Cesena FC
+
+    return isCountryValid && isCityValid && isZipValid && isStreetValid && isNumberValid;
+}
+
+function validateStreet() {
+    const country = $('#country').val();
+    const city = $('#address-city').val();
+    const zip = $('#address-zip').val();
+    const street = $('#address-street').val();
+    const number = $('#address-number').val();
+
+    if ($('#latitude').val() == undefined) $('#latitude').val(0);
+    if ($('#longitude').val() == undefined) $('#longitude').val(0);
+
+    const isCountryValid = country !== undefined && country !== '';
+    const isCityValid = city !== undefined && city !== '';
+    const isZipValid = zip !== undefined && zip !== '' && zip.length === ADDRESS_ZIP_LENGTH && /^\d+$/.test(zip);
+    const isStreetValid = street !== undefined && street !== '';
+    const isNumberValid = number !== undefined && number !== '';
+
+    //Via Cesare Pavese, 50, 47521 Cesena FC
+
+    return isCountryValid && isCityValid && isZipValid && isStreetValid && isNumberValid;
 }

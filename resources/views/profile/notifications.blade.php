@@ -1,5 +1,4 @@
 @extends('components.layout')
-<meta name="csrf-token" content="{{ csrf_token() }}">
 
 @section('scripts')
     <script type="text/javascript" src="{{\Illuminate\Support\Facades\URL::to('src/js/notifications.js')}}"></script>
