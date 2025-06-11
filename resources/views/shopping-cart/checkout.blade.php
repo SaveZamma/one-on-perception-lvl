@@ -7,18 +7,17 @@
 @endsection
 
 @section('page-content')
-@if(\Illuminate\Support\Facades\Session::has('error'))
-<h1>{{\Illuminate\Support\Facades\Session::get('error')}}</h1>
-@endif
+    @if(\Illuminate\Support\Facades\Session::has('error'))
+        <h1>{{\Illuminate\Support\Facades\Session::get('error')}}</h1>
+    @endif
 
-<h1>Checkout</h1>
+    <h1>Checkout</h1>
 
-@if(\Illuminate\Support\Facades\Session::has('checkout-error'))
-<p>{{\Illuminate\Support\Facades\Session::get('checkout-error')}}</p>
-@endif
+    @if(\Illuminate\Support\Facades\Session::has('checkout-error'))
+        <p>{{\Illuminate\Support\Facades\Session::get('checkout-error')}}</p>
+    @endif
 
-<main>
-    <section>
+    <main>
         <form class="checkout-form" action="{{route('checkout')}}" method="post">
             <p>
                 <label for="title">Title</label>
@@ -52,7 +51,7 @@
                 <label for="longitude">Longitude:</label>
                 <input class="form-control" type="number" id="longitude" name="lng">
             </fieldset>
-            
+
             <fieldset class="data-payment-fieldset">
                 <legend>Payment Data</legend>
 
@@ -68,21 +67,20 @@
                 <label for="card-cvc">CVC</label>
                 <input  type="text" id="card-cvc" class="form-control" required>
             </fieldset>
-        </form>
-    </section>
 
-    <section class="google-map">
-        <div id="map"></div>
-    </section>
-</main>
-    
-    <section class="fx-col total">
-        @csrf
-        <h4>Your total: ${{$totalPrice}}</h4>
-        <button type="submit" class="btn btn-primary glass with-shadow-sm btn-success">
-            Buy Now
-        </button>
-    </section>
+            <section class="google-map">
+                <div id="map"></div>
+            </section>
+
+            <section class="fx-col total">
+                @csrf
+                <h4>Your total: ${{$totalPrice}}</h4>
+                <button type="submit" class="btn btn-primary glass with-shadow-sm btn-success">
+                    Buy Now
+                </button>
+            </section>
+        </form>
+    </main>
 @endsection
 
 @section('scripts')
