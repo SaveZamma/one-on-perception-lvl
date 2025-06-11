@@ -297,7 +297,7 @@ button {
 }
 
 /* FORM CONTROLS */
-input.form-control {
+input.form-control, select.form-control {
     border: 1.5px solid var(--primary);
     border-radius: 12px;
     background: var(--light-primary-transparent);
@@ -308,6 +308,9 @@ input.form-control {
     outline: none;
     box-shadow: 0 2px 8px rgba(41, 163, 163, 0.06);
     padding: 0.5em 1em;
+}
+option[selected] {
+    background-color: var(--primary);
 }
 
 input.form-control:focus {
