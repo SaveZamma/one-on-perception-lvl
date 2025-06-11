@@ -35,7 +35,7 @@ class ShoppingCartController extends Controller
 
             $this->putCartToCookie($cart);
 
-            return redirect()->route('marketplace.index');
+            return redirect()->back();
         } else {
             return redirect()->back()->with('error', 'Product out of stock');
         }
