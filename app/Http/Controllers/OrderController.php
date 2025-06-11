@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Order;
 use App\Http\Requests\StoreOrderRequest;
 use App\Http\Requests\UpdateOrderRequest;
+use Illuminate\Http\Request;
 
 class OrderController extends Controller
 {
@@ -62,5 +63,11 @@ class OrderController extends Controller
     public function destroy(Order $order)
     {
         //
+    }
+
+    public function getOrderRecap(Request $request, $id)
+    {
+        $order = Order::query()->findOrFail($id);
+        return view('profile.order-recap', ['cart' => unserialize($order->cart), 'totalPrice' => unserialize($order->cart)->totalPrice]);
     }
 }

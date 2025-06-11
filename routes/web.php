@@ -47,6 +47,7 @@ Route::middleware('guest')->group(function () {
     Route::post('/register', [AuthController::class, 'register'])->name('register');
 });
 
+Route::get('order-recap/{id}', [\App\Http\Controllers\OrderController::class, 'getOrderRecap'])->name('order-recap.index');
 Route::get('shopping-cart', [\App\Http\Controllers\ShoppingCartController::class, 'getCart'])->name('shopping-cart');
 Route::get('add-to-cart/{id}', [\App\Http\Controllers\ShoppingCartController::class, 'addToCart'])->name('shopping-cart.addToCart');
 Route::get('increase-by-one/{id}', [\App\Http\Controllers\ShoppingCartController::class, 'increaseByOne'])->name('shopping-cart.increaseByOne');
