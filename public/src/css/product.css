@@ -36,6 +36,10 @@ h1 {
     border-radius: 10px;
 }
 
+label {
+    color: var(--dark-primary);
+}
+
 .title {
     text-align: center;
     font-size: 24px;

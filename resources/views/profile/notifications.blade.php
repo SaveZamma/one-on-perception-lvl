@@ -7,7 +7,7 @@
 @section('page-content')
     <h2>Notifications</h2>
     @if ($notifications->count() == 0)
-        <p>You have zero notification.</p>
+        <p>You have zero notifications.</p>
     @else
     <ul class="products-list fx-col" style="gap:10px;">
         @foreach ($notifications as $n)

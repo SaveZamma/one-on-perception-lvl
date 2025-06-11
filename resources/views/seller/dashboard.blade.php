@@ -50,3 +50,20 @@
         </section>
     </main>
 @endsection
+
+@section('scripts')
+    @parent
+    <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    @if(session('success'))
+        <script>
+            Toastify({
+                text: "{{ session('success') }}",
+                duration: 2000,
+                close: true,
+                style: {
+                    background: "linear-gradient(to right, #29A3A3, #FE7171)",
+                },
+            }).showToast();
+        </script>
+    @endif
+@endsection

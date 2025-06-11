@@ -1,8 +1,6 @@
-const csrfToken = document.querySelector('meta[name="csrf-token"]').content;
-
 let deleteBtns = document.querySelectorAll('button.delete-btn');
 let readBtns = document.querySelectorAll('button.read-btn');
-let notifsBtn = document.querySelector('button.header-notifications-btn');
+let hasBeenReadBtns = document.querySelector('button.header-notifications-btn');
 
 setInterval(checkNotifications, 3000);
 
@@ -36,7 +34,7 @@ function checkNotifications() {
         if (n.length > 0) {
             if (document.getElementById("header-notifications-btn-span") == null) {
                 const txt = n.length > 99 ? "99" : n.length;
-                addSpan(notifsBtn, "header-notifications-btn-span", txt);
+                addSpan(hasBeenReadBtns, "header-notifications-btn-span", txt);
             }        
         } else {
             if (document.getElementById("header-notifications-btn-span") != null) {

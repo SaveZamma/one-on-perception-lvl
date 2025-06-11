@@ -7,6 +7,7 @@ use App\Models\Category;
 use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
 use Illuminate\Http\Request;
+use App\Models\Notification;
 
 class ProductController extends Controller
 {
@@ -36,7 +37,7 @@ class ProductController extends Controller
             'name' => 'required|string|max:255',
             'description' => 'nullable|string',
             'price' => 'required|numeric',
-            'currency' => 'required|string|max:3',
+            'currency' => 'required|string|in:EUR,USD,AUD,CAD,NZD',
             'category' => 'array',
             'category.*' => 'exists:categories,id',
         ]);
@@ -65,6 +66,13 @@ class ProductController extends Controller
             $product->categories()->sync($request->input('category'));
         }
 
+        Notification::create([
+            'user_id' => $user->id,
+            'title' => 'Product listed!',
+            'text' => 'Your product "' . $product->name . '" has been successfully listed in your shop.',
+            'read' => false,
+        ]);
+        
         return redirect()->route('seller.dashboard')->with('success', 'Product added!');
     }
 
@@ -95,7 +103,7 @@ class ProductController extends Controller
             'name' => 'required|string|max:255',
             'description' => 'nullable|string',
             'price' => 'required|numeric',
-            'currency' => 'required|string|max:3',
+            'currency' => 'required|string|in:EUR,USD,AUD,CAD,NZD',
             'category' => 'array',
             'category.*' => 'exists:categories,id',
         ]);

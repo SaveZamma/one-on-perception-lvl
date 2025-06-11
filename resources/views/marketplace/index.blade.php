@@ -2,6 +2,7 @@
 
 @section('styles')
     <link rel="stylesheet" href="{{ \Illuminate\Support\Facades\URL::to('src/css/marketplace.css') }}">
+    <script type="text/javascript" src="{{\Illuminate\Support\Facades\URL::to('src/js/marketplace.js')}}"></script>
 @endsection
 
 @section('page-content')
@@ -34,17 +35,6 @@
                             @endforeach
                         </div>
                     </div>
-                    <script>
-                    function toggleDropdown() {
-                        var content = document.getElementById('dropdown-content');
-                        content.style.display = content.style.display === 'none' ? 'block' : 'none';
-                    }
-                    document.addEventListener('click', function(e) {
-                        if (!e.target.closest('.category-multiselect')) {
-                            document.getElementById('dropdown-content').style.display = 'none';
-                        }
-                    });
-                    </script>
                     <input type="text" name="search" placeholder="Search for products"
                             value="{{ request('search', '') }}" />
                     <button type="submit">

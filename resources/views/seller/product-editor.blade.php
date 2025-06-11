@@ -1,4 +1,3 @@
-{{-- filepath: resources/views/seller/product-editor.blade.php --}}
 @extends('components.layout')
 
 @section('styles')
@@ -22,12 +21,10 @@
                 <img id="image-preview" alt="Current image" class="product-img"
                     src="{{ isset($product) && $product->imagePath ? asset('storage/' . $product->imagePath) : '' }}"
                 />
-                    {{-- {{ isset($product) && $product->imagePath ? '' : 'display:none;' }}" --}}
-            
                 <table>
                     <tr>
                         <td>
-                            <a for="name" class="form-a">Product Name</a>
+                            <label for="name" class="form-a">Product Name</label>
                         </td>
                         <td>
                             <input type="text" id="name" name="name" placeholder="Product Name" required class="form-control" value="{{ old('name', $product->name ?? '') }}">
@@ -35,7 +32,7 @@
                     </tr>
                     <tr>
                         <td>
-                            <a for="description" class="form-a">Description</a>
+                            <label for="description" class="form-a">Description</label>
                         </td>
                         <td>
                             <textarea id="description" name="description" placeholder="Product Description" class="form-control" rows="3">{{ old('description', $product->description ?? '') }}</textarea>
@@ -43,7 +40,7 @@
                     </tr>
                     <tr>
                         <td>
-                            <a for="price" class="form-a">Price</a>
+                            <label for="price" class="form-a">Price</label>
                         </td>
                         <td>
                             <input type="number" id="price" name="price" placeholder="Price" step="0.01" required class="form-control" value="{{ old('price', $product->price ?? '') }}">
@@ -51,7 +48,7 @@
                     </tr>
                     <tr>
                         <td>
-                            <a for="currency" class="form-a">Currency</a>
+                            <label for="currency" class="form-a">Currency</label>
                         </td>
                         <td>
                             <input type="text" id="currency" name="currency" placeholder="Currency (e.g. EUR, USD)" required class="form-control" maxlength="3" value="{{ old('currency', $product->currency ?? '') }}">
@@ -59,20 +56,20 @@
                     </tr>
                     <tr>
                         <td>
-                            <a for="image" class="form-a">Product Image</a>
+                            <label for="image" class="form-a">Product Image</label>
                         </td>
                         <td>
-                            <a for="image" class="btn glass with-shadow-sm" style="display:inline-block; cursor:pointer; margin-bottom:0;">
+                            <label for="image" class="btn glass with-shadow-sm" style="display:inline-block; cursor:pointer; margin-bottom:0;">
                                 Choose Image
                                 <input type="file" id="image" name="image" class="form-control" style="display:none;" onchange="previewImage(event)">
-                            </a>
+                            </label>
                         </td>
                     </tr>
                 </table>
                 <div class="category-box dropdown-content">
                     @foreach ($categories as $category)
-                        <label class="category-tag">
-                            <input type="checkbox" name="category[]" value="{{ $category->id }}"
+                        <label class="category-tag" for="cat-{{ $category->id }}">
+                            <input type="checkbox" id="cat-{{ $category->id }}" name="category[]" value="{{ $category->id }}"
                                 {{ (isset($selectedCategories) && in_array($category->id, $selectedCategories)) ? 'checked' : '' }}>
                             {{ $category->name }}
                         </label>
@@ -98,14 +95,5 @@
                 reader.readAsDataURL(input.files[0]);
             }
         }
-        function toggleDropdown() {
-            var content = document.getElementById('dropdown-content');
-            content.style.display = content.style.display === 'none' ? 'block' : 'none';
-        }
-        document.addEventListener('click', function(e) {
-            if (!e.target.closest('.category-multiselect')) {
-                document.getElementById('dropdown-content').style.display = 'none';
-            }
-        });
     </script>
 @endsection
