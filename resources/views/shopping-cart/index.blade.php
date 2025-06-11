@@ -17,7 +17,7 @@
                 <li class="card-border fx-col">
                     <p class="product-title">
                         <strong>{{$product['item']['name']}}</strong>
-                        <span class="label label-success">{{$product['price']}}</span>
+                        <span class="label label-success">{{$product['price']}} $</span>
                     </p>
                     <span class="product-actions fx-row">
                         <span class="qty-edit">
@@ -45,7 +45,7 @@
         </ul>
         <hr>
         <section class="checkout fx-row fx-space-between">
-            <p class="cart-total"><strong>Total: {{$totalPrice}}</strong></p>
+            <p class="cart-total"><strong>Total: {{$totalPrice}} $</strong></p>
             <a type="button" href="{{route('checkout')}}" class="btn btn-checkout">
                 Checkout
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" alt="right arrow">
