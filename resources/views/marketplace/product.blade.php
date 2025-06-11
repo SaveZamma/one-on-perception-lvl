@@ -1,9 +1,5 @@
 @extends('components.layout')
 
-@section('meta')
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-@endsection
-
 @section('scripts')
     <script type="text/javascript" src="{{\Illuminate\Support\Facades\URL::to('src/js/wishlist.js')}}"></script>
 @endsection
@@ -33,7 +29,7 @@
                     <span class="category-tag">{{ ucfirst($category->name) }}</span>
                 @endforeach
             </section>
-            
+
             <p class="product-description">{{ $product->description }}</p>
             @php
                 $currencySymbols = [

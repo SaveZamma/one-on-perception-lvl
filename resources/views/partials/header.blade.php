@@ -1,11 +1,3 @@
-<meta name="csrf-token" content="{{ csrf_token() }}">
-<meta name="auth" content="{{ Auth::user() }}">
-
-@section('scripts')
-    <script type="text/javascript" src="{{\Illuminate\Support\Facades\URL::to('src/js/aside.js')}}"></script>
-    <script type="text/javascript" src="{{\Illuminate\Support\Facades\URL::to('src/js/headButtons.js')}}"></script>
-@endsection
-
 <nav class="top-navbar">
     <section class="nav-section">
         <svg class="primary menu-switch" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" alt="menu" style="cursor: pointer">

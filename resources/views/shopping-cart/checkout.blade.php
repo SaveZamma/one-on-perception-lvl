@@ -7,84 +7,82 @@
 @endsection
 
 @section('page-content')
-    @if(\Illuminate\Support\Facades\Session::has('error'))
-        <h1>{{\Illuminate\Support\Facades\Session::get('error')}}</h1>
-    @endif
+@if(\Illuminate\Support\Facades\Session::has('error'))
+<h1>{{\Illuminate\Support\Facades\Session::get('error')}}</h1>
+@endif
 
-    <h1>Checkout</h1>
+<h1>Checkout</h1>
 
-    @if(\Illuminate\Support\Facades\Session::has('checkout-error'))
-        <p>{{\Illuminate\Support\Facades\Session::get('checkout-error')}}</p>
-    @endif
+@if(\Illuminate\Support\Facades\Session::has('checkout-error'))
+<p>{{\Illuminate\Support\Facades\Session::get('checkout-error')}}</p>
+@endif
 
-    <form class="checkout-form" action="{{route('checkout')}}" method="post">
+<main>
+    <section>
+        <form class="checkout-form" action="{{route('checkout')}}" method="post">
+            <p>
+                <label for="title">Title</label>
+                <input  type="text" id="title" class="form-control" name="title">
+            </p>
 
-        <label for="title">Title</label>
-        <input  type="text" id="title" class="form-control" name="title">
+            <fieldset>
+                <legend>Shipping Address</legend>
 
-        <fieldset class="data-payment-fieldset">
-            <legend>Payment Data</legend>
-            <label for="card-name">Card holder name</label>
-            <input  type="text" id="card-name" class="form-control" required>
-            <label for="card-number">Card Number</label>
-            <input  type="text" id="card-number" class="form-control" required>
-            <label for="card-expiry-month">Expiry</label>
-            <input  type="month" id="card-expiry-month" class="form-control" required>
-            <label for="card-cvc">CVC</label>
-            <input  type="text" id="card-cvc" class="form-control" required>
-        </fieldset>
+                <label for="country">Country:</label>
+                <select id="country" class="form-control" required name="country">
+                    <option>ITALY</option>
+                    <option>NORWAY</option>
+                </select>
 
-        <fieldset>
-            <legend>Shipping Address</legend>
-
-            <label for="country">Country:</label>
-            <select id="country" class="form-control" required name="country">
-                <option>ITALY</option>
-                <option>NORWAY</option>
-            </select>
-
-            <p class="form-control">
                 <label for="city">City:</label>
-                <input type="text" id="address-city" required name="city">
-            </p>
+                <input class="form-control" type="text" id="address-city" required name="city">
 
-            <p class="form-control">
                 <label for="zip">Zip Code:</label>
-                <input type="text" id="address-zip" required name="zip">
-            </p>
+                <input class="form-control" type="text" id="address-zip" required name="zip">
 
-            <p class="form-control">
                 <label for="street">Street:</label>
-                <input type="text" id="address-street" required name="street">
-            </p>
+                <input class="form-control" type="text" id="address-street" required name="street">
 
-            <p class="form-control">
                 <label for="number">Number:</label>
-                <input type="text" id="address-number" required name="number">
-            </p>
+                <input class="form-control" type="text" id="address-number" required name="number">
 
-            <p class="form-control">
                 <label for="latitude">Latitude:</label>
-                <input type="number" id="latitude" name="lat">
-            </p>
+                <input class="form-control" type="number" id="latitude" name="lat">
 
-            <p class="form-control">
                 <label for="longitude">Longitude:</label>
-                <input type="number" id="longitude" name="lng">
-            </p>
+                <input class="form-control" type="number" id="longitude" name="lng">
+            </fieldset>
+            
+            <fieldset class="data-payment-fieldset">
+                <legend>Payment Data</legend>
 
-            <section class="google-map">
-                <div id="map"></div>
-            </section>
+                <label for="card-name">Card holder name</label>
+                <input  type="text" id="card-name" class="form-control" required>
 
-        </fieldset>
+                <label for="card-number">Card Number</label>
+                <input  type="text" id="card-number" class="form-control" required>
 
+                <label for="card-expiry-month">Expiry</label>
+                <input  type="month" id="card-expiry-month" class="form-control" required>
+
+                <label for="card-cvc">CVC</label>
+                <input  type="text" id="card-cvc" class="form-control" required>
+            </fieldset>
+        </form>
+    </section>
+
+    <section class="google-map">
+        <div id="map"></div>
+    </section>
+</main>
+    
+    <section class="fx-col total">
         @csrf
-
         <h4>Your total: ${{$totalPrice}}</h4>
-
-        <button type="submit" class="btn btn-success">Buy Now</button>
-    </form>
+        <button type="submit" class="btn btn-primary glass with-shadow-sm btn-success">
+            Buy Now
+        </button>
+    </section>
 @endsection
 
 @section('scripts')
@@ -93,5 +91,4 @@
         src="https://maps.googleapis.com/maps/api/js?libraries=maps,marker"
         defer
     ></script>
-
 @endsection

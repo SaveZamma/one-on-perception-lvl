@@ -19,9 +19,6 @@
                             @foreach ($products as $product)
                                 @if ($product->wishlist_id == $wishlist['id'])
                                     <li class="card pad-2">
-                                        {{-- <img src="{{$product->imagePath}}" alt="{{$product->name}}"> --}}
-                                        {{-- <p class="price-tag"><strong>{{ $product->price }}</strong></p> --}}
-
                                         <a href="{{ route('marketplace.product', ['id' => $product->id]) }}">
                                             {{ $product->name }}
                                         </a>
@@ -32,7 +29,7 @@
                     </ul>
 
                 </li>
-            @endforeach    
+            @endforeach
         @endif
     </ul>
 @endsection
