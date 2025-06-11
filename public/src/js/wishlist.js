@@ -1,9 +1,9 @@
-const csrfToken = document.querySelector('meta[name="csrf-token"]').content;
+csrfToken = document.querySelector('meta[name="csrf-token"]').content;
 let inWishlist = [];
 
 function mapToJsonOrNull(response) {
-    return response.ok 
-        ? response.json().then(data => ({ data: data, status: response.status })) 
+    return response.ok
+        ? response.json().then(data => ({ data: data, status: response.status }))
         : null;
 }
 
@@ -33,14 +33,14 @@ function loadWishlistItems() {
         },
     }).then(response => mapToJsonOrNull(response))
     .then(data => data?.data)
-    .then(data => 
+    .then(data =>
         inWishlist = data == undefined ? [] : JSON.parse(data.wishlistProducts).map(w => w.product_id))
     .then(() => true);
 }
 
 function addRemoveItem(productId, shouldRemove, button) {
     try {
-        const route = shouldRemove 
+        const route = shouldRemove
             ? "/marketplace/wishlist/remove"
             : "/marketplace/wishlist/add";
         fetch(route, {
@@ -96,7 +96,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // Update the icon before the call to improve UX
             // The icon will be updated again after the call according to the result of the operation
             setButtonIcon(button);
-            addRemoveItem(+productId, isInWishlist, button);            
+            addRemoveItem(+productId, isInWishlist, button);
         });
     });
 });

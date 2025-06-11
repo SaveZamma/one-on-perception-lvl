@@ -1,5 +1,5 @@
-const csrfToken = document.querySelector('meta[name="csrf-token"]').content;
-const authUser = document.querySelector('meta[name="auth"]').content;
+csrfToken = document.querySelector('meta[name="csrf-token"]').content;
+authUser = document.querySelector('meta[name="auth"]').content;
 
 const cartBtn = document.querySelector("button.header-cart-btn");
 const notifsBtn = document.querySelector("button.header-notifications-btn");
@@ -31,8 +31,8 @@ function addSpan(father, id, text = "") {
 }
 
 function mapToJsonOrNull(response) {
-    return response.ok 
-        ? response.json().then(data => ({ data: data, status: response.status })) 
+    return response.ok
+        ? response.json().then(data => ({ data: data, status: response.status }))
         : null;
 }
 
@@ -55,7 +55,7 @@ function checkNotifications() {
             if (document.getElementById("header-notifications-btn-span") == null) {
                 const txt = n.length > 99 ? "99" : n.length;
                 addSpan(notifsBtn, "header-notifications-btn-span", txt);
-            }        
+            }
         } else {
             if (document.getElementById("header-notifications-btn-span") != null) {
                 document.getElementById("header-notifications-btn-span").remove();
