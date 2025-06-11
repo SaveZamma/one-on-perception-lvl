@@ -6,6 +6,18 @@
 @endsection
 
 @section('page-content')
+    @if(\Illuminate\Support\Facades\Session::has('error'))
+        <script>
+            Toastify({
+                text: '{{\Illuminate\Support\Facades\Session::get('error')}}',
+                duration: 2000,
+                close: true,
+                style: {
+                    background: "linear-gradient(to right, #29A3A3, #FE7171)",
+                },
+            }).showToast();
+        </script>
+    @endif
     <main class="gradient-bg background-padding dashboard">
         <h2>Shop by category</h2>
         <search class="search glass">
