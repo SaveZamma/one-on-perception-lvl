@@ -74,7 +74,7 @@
 
             <section class="fx-col total">
                 @csrf
-                <h4>Your total: ${{$totalPrice}}</h4>
+                <h4>Your total: ${{$totalPrice}} $</h4>
                 <button type="submit" class="btn btn-primary glass with-shadow-sm btn-success">
                     Buy Now
                 </button>
