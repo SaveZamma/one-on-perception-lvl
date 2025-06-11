@@ -16,7 +16,7 @@
         <ul class="products-list">
             @foreach($cart->items as $key => $node)
                 <li class="card-border fx-col">
-                    <a href="{{ route('marketplace.product', ['id' =>  $key]) }}">
+                    <a href="{{ route('marketplace.product', ['id' =>  $key]) }}" title="Product Page">
                         <p class="product-title">
                             <strong>{{$node['item']['name']}}</strong>
                             <span class="label label-success">{{$node['price']}} $</span>
