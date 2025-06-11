@@ -25,6 +25,16 @@ $(document).ready(function (...args) {
     map.addListener("click", (e) => {
         placeMarkerAndPanTo(e.latLng, map);
     });
+
+    const m = new google.maps.Marker({
+        position: cesenaCampusLatLng,
+        map: map,
+    });
+    map.panTo(cesenaCampusLatLng);
+
+    mapMarkers.forEach(m => m.setMap(null));
+    mapMarkers = [];
+    mapMarkers.push(m);
 })
 
 $form.submit(function(event) {
