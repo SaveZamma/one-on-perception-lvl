@@ -36,6 +36,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/seller/products', [ProductController::class, 'store'])->middleware('auth')->name('seller.products.store');
     Route::get('/seller/products/{product}/edit', [ProductController::class, 'edit'])->middleware('auth')->name('seller.products.edit');
     Route::put('/seller/products/{product}', [ProductController::class, 'update'])->middleware('auth')->name('seller.products.update');
+    Route::delete('/seller/products/{product}', [ProductController::class, 'destroy'])->name('seller.products.destroy');
     Route::get('/seller/dashboard', [SellerController::class, 'dashboard'])->name('seller.dashboard')->middleware('auth');
 });
 

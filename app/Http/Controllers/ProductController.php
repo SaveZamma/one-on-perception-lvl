@@ -112,6 +112,16 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        //
+        $user = auth()->user();
+        $shop = $user->shop;
+
+        // Ensure the product belongs to the user's shop
+        if (!$shop || $product->shop_id !== $shop->id) {
+            return redirect()->route('seller.dashboard')->with('error', 'Unauthorized action.');
+        }
+
+        $product->delete();
+
+        return redirect()->route('seller.dashboard')->with('success', 'Product deleted successfully!');
     }
 }

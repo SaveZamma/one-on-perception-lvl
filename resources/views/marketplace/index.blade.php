@@ -74,16 +74,18 @@
                     @php
                         $symbol = $currencySymbols[$product['currency']] ?? $product['currency'];
                     @endphp
-                    <form>
+                    <li>
                         <a class="card" href="{{ route('marketplace.product', ['id' => $product['id']]) }}">
                             <img src="{{ $product['imagePath'] }}" alt="{{ $product['name'] }}">
                             <h2>{{ $product['name'] }}</h2>
                             <p>{{ $symbol }} {{ $product['price'] }}</p>
-                            <button href="{{route('shopping-cart.addToCart', ['id' => $product->id])}}" type="submit" class="btn">
-                                Add to cart
-                            </button>
+                            <form action="{{ route('shopping-cart.addToCart', ['id' => $product['id']]) }}" method="GET">
+                                <button type="submit" class="btn">
+                                    Add to cart
+                                </button>
+                            </form>
                         </a>
-                    </form>
+                    </li>
                 @endforeach
             </ul>
         </section>
