@@ -26,15 +26,21 @@ class NotificationController extends Controller
         return response()->json(['message' => 'Notification sent']);
     }
 
-    public function sendNotificationTo(Request $request) {
-        $title = $request->input('title');
-        $text = $request->input('text');
-        $user = $request->input('userId');
-        Notification::create([
+    public function sendNotificationTo($title, $text, $user) {
+        Notification::query()->create([
             'user_id' => $user,
             'title' => $title,
             'text' => $text,
+            'read' => false
         ]);
+
+//        Notification::create([
+//            'user_id' => $user->id,
+//            'title' => 'Welcome to our platform',
+//            'text' => 'Thank you for joining our platform. We hope you enjoy your experience.',
+//
+//        ]);
+
         return response()->json(['message' => 'Notification sent']);
     }
 
@@ -64,7 +70,7 @@ class NotificationController extends Controller
                 'product' => $notifId
             ]);
         }
-        $notification->delete();        
+        $notification->delete();
         return response()->json([
             'status' => 'ok',
             'product' => $notifId

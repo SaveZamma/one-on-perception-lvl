@@ -25,28 +25,35 @@ class ShoppingCartController extends Controller
         return Cookie::queue($this->cookieName, json_encode($cart), $expiration);
     }
 
-
-
     public function addToCart(Request $request, $id): RedirectResponse
     {
-        $product = Product::query()->find($id);
-        $cart = $this->getCartFromCookie();
+        if ($this->allowAddToCart($id)) {
+            $product = Product::query()->find($id);
+            $cart = $this->getCartFromCookie();
 
-        $cart->add($product, $product->id);
+            $cart->add($product, $product->id);
 
-        $this->putCartToCookie($cart);
-        return redirect()->route('marketplace.index');
+            $this->putCartToCookie($cart);
+
+            return redirect()->route('marketplace.index');
+        } else {
+            return redirect()->back()->with('error', 'Product out of stock');
+        }
     }
 
     public function increaseByOne($id): RedirectResponse
     {
-        $product = Product::query()->find($id);
-        $cart = $this->getCartFromCookie();
+        if ($this->allowAddToCart($id)) {
+            $product = Product::query()->find($id);
+            $cart = $this->getCartFromCookie();
 
-        $cart->add($product, $product->id);
+            $cart->add($product, $product->id);
 
-        $this->putCartToCookie($cart);
-        return redirect()->route('shopping-cart');
+            $this->putCartToCookie($cart);
+            return redirect()->back();
+        } else {
+            return redirect()->back()->with('error', 'Product out of stock');
+        }
     }
 
     public function reduceByOne($id)
@@ -60,7 +67,7 @@ class ShoppingCartController extends Controller
             Cookie::expire($this->cookieName);
         }
 
-        return redirect()->route('shopping-cart');
+        return redirect()->back();
     }
 
     public function removeItem($id)
@@ -74,7 +81,7 @@ class ShoppingCartController extends Controller
             Cookie::expire($this->cookieName);
         }
 
-        return redirect()->route('shopping-cart');
+        return redirect()->back();
     }
 
     public function getCart()
@@ -85,5 +92,18 @@ class ShoppingCartController extends Controller
             $cart = $this->getCartFromCookie();
             return view('shopping-cart.index', ['products' => $cart->items, 'totalPrice' => $cart->totalPrice]);
         }
+    }
+
+    private function allowAddToCart($product_id): bool
+    {
+        $cart = $this->getCartFromCookie();
+        if (!!$cart->items && array_key_exists($product_id, $cart->items)) {
+            $qty = $cart->items[$product_id]['qty'] + 1;
+        } else {
+            $qty = 1;
+        }
+
+        $productController = new ProductController();
+        return $productController->allowPick($product_id, $qty);
     }
 }

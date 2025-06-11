@@ -152,4 +152,38 @@ class ProductController extends Controller
 
         return redirect()->route('seller.dashboard')->with('success', 'Product deleted successfully!');
     }
+
+    public function allowPickOne($product_id): bool
+    {
+        return $this->allowPick($product_id, 1);
+    }
+
+    public function allowPick($product_id, $qty): bool
+    {
+        $product = Product::query()->findOrFail($product_id);
+        return $product->quantity >= $qty;
+    }
+
+
+
+    public function reduceByOne($product_id)
+    {
+        $this->reduceByQty($product_id, 1);
+    }
+
+    public function reduceByQty($product_id, $qty)
+    {
+        try {
+            $product = Product::query()->findOrFail($product_id);
+
+            if ($product->quantity >= $qty) {
+                $product->quantity -= $qty;
+                $product->save();
+            } else {
+                return redirect()->back()->with('error', 'Product out of stock');
+            }
+        } catch (\Exception $e) {
+            return redirect()->back()->with('exception', $e->getMessage());
+        }
+    }
 }

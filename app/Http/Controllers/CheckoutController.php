@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Address;
+use App\Models\Shop;
 use App\ShoppingCart;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -38,6 +39,16 @@ class CheckoutController extends Controller
                     $request->input('number'),
                     $request->input('zip')
                 );
+
+                foreach ($cart->items as $item) {
+                    $shop_id = $item['item']['shop_id'];
+                    $shop = Shop::query()->find($shop_id);
+                    $notificationController = new NotificationController();
+                    $notificationController->sendNotificationTo('Purchase', json_encode(['product_id' => $item['item']['id'],'qty' => $item['qty']]), $shop->user_id);
+
+                    $productController = new ProductController();
+                    $productController->reduceByQty($item['item']['id'], $item['qty']);
+                }
 
                 Session::put('address', $address);
 
