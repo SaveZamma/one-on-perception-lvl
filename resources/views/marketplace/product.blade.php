@@ -14,10 +14,10 @@
 
 @section('page-content')
     <main class="gradient-bg background-padding" style="min-height:100vh;display:flex;align-items:center;justify-content:center;">
-        <div class="product-card card">
+        <article class="product-card card">
             <img src="{{ $product->imagePath }}" alt="{{ $product->name }}" class="product-img">
 
-            <div class="product-header-box">
+            <header class="product-header-box">
                 <h1 class="product-title">{{ $product->name }}</h1>
                 <button class="primary wishlist-toggle-btn" data-product-id="{{ $product->id }}" title="Add product to wishlist">
                     <span class="wishlist-icon">
@@ -26,13 +26,13 @@
                         </svg>
                     </span>
                 </button>
-            </div>
+            </header>
 
-            <div class="product-categories">
+            <section class="product-categories">
                 @foreach($product->categories as $category)
                     <span class="category-tag">{{ ucfirst($category->name) }}</span>
                 @endforeach
-            </div>
+            </section>
             
             <p class="product-description">{{ $product->description }}</p>
             @php
@@ -47,6 +47,6 @@
             @endphp
 
             <p class="product-price">{{ $symbol }} {{ $product->price }}</p>
-        </div>
+        </article>
     </main>
 @endsection
