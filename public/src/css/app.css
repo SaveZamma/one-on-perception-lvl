@@ -212,8 +212,7 @@ aside {
 
 .background-padding {
     border-radius: 2rem;
-    padding: 2.5rem;
-    margin: 1.5rem;
+    padding: 5%;
     box-sizing: border-box;
 }
 
@@ -360,5 +359,12 @@ textarea.form-control::placeholder {
 
     .fill-landing {
         padding: 5%;
+    }
+    
+    .background-padding {
+        border-radius: 2rem;
+        padding: 2.5rem;
+        margin: 1.5rem;
+        box-sizing: border-box;
     }
 }

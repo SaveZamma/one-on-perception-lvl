@@ -62,17 +62,17 @@
                             <a for="image" class="form-a">Product Image</a>
                         </td>
                         <td>
-                            <a for="image" class="btn primary" style="display:inline-block; cursor:pointer; margin-bottom:0;">
+                            <a for="image" class="btn glass with-shadow-sm" style="display:inline-block; cursor:pointer; margin-bottom:0;">
                                 Choose Image
                                 <input type="file" id="image" name="image" class="form-control" style="display:none;" onchange="previewImage(event)">
                             </a>
                         </td>
                     </tr>
                 </table>
-                <button type="submit" class="btn primary">
+                <button type="submit" class="btn glass with-shadow-sm">
                     {{ isset($product) ? 'Update insertion' : 'Add insertion' }}
                 </button>
-                <a href="{{ route('seller.dashboard') }}" class="btn primary">Back to Dashboard</a>
+                <a href="{{ route('seller.dashboard') }}" class="btn glass with-shadow-sm">Back to Dashboard</a>
             </form>
         </section>
     </main>
