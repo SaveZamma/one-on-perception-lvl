@@ -211,6 +211,10 @@ input:focus {
 .btn:hover {
     background-color: #2563eb;
 }
+.btn-primary {
+    margin: 0 5% !important;
+    text-align: center;
+}
 
 .seller-button-container {
     text-align: right;
@@ -361,5 +365,10 @@ input:focus {
         justify-content: center;
         align-items: stretch;
     } */
+
+    .btn-primary {
+        margin: 0 30% !important;
+        padding: 2%;
+    }
     
 }

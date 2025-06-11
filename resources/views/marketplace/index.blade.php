@@ -69,7 +69,7 @@
                     'NZD' => '$'
                 ];
             @endphp
-            <table class="grid">
+            <ul class="grid">
                 @foreach ($products as $product)
                     @php
                         $symbol = $currencySymbols[$product['currency']] ?? $product['currency'];
@@ -85,7 +85,7 @@
                         </a>
                     </form>
                 @endforeach
-            </table>
+            </ul>
         </section>
 
         {{ $products->links() }}
