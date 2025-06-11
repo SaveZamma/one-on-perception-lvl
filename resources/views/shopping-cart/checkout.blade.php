@@ -46,10 +46,10 @@
                 <input class="form-control" type="text" id="address-number" required name="number">
 
                 <label for="latitude">Latitude:</label>
-                <input class="form-control" type="number" id="latitude" name="lat">
+                <input class="form-control" type="number" step="any" id="latitude" name="lat">
 
                 <label for="longitude">Longitude:</label>
-                <input class="form-control" type="number" id="longitude" name="lng">
+                <input class="form-control" type="number" step="any" id="longitude" name="lng">
             </fieldset>
 
             <fieldset class="data-payment-fieldset">

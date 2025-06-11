@@ -44,7 +44,7 @@ class CheckoutController extends Controller
                     $shop_id = $item['item']['shop_id'];
                     $shop = Shop::query()->find($shop_id);
                     $notificationController = new NotificationController();
-                    $notificationController->sendNotificationTo('Purchase', json_encode(['product_id' => $item['item']['id'],'qty' => $item['qty']]), $shop->user_id);
+                    $notificationController->sendNotificationTo('Purchase', "{$item['item']['name']} : {$item['qty']}", $shop->user_id);
 
                     $productController = new ProductController();
                     $productController->reduceByQty($item['item']['id'], $item['qty']);
