@@ -10,6 +10,18 @@
 @endsection
 
 @section('page-content')
+    @if(\Illuminate\Support\Facades\Session::has('error'))
+        <script>
+            Toastify({
+                text: '{{\Illuminate\Support\Facades\Session::get('error')}}',
+                duration: 2000,
+                close: true,
+                style: {
+                    background: "linear-gradient(to right, #29A3A3, #FE7171)",
+                },
+            }).showToast();
+        </script>
+    @endif
     <section class="cart">
     @if(\Illuminate\Support\Facades\Cookie::has('shopping_cart'))
         <ul class="products-list">
