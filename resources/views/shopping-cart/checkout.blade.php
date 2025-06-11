@@ -30,7 +30,6 @@
                 <label for="country">Country:</label>
                 <select id="country" class="form-control" required name="country">
                     <option>ITALY</option>
-                    <option>NORWAY</option>
                 </select>
 
                 <label for="city">City:</label>

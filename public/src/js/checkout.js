@@ -16,6 +16,12 @@ $(document).ready(function (...args) {
         zoom: 17,
     });
 
+    $('#country').val('ITALY');
+    $('#address-city').val('Cesena');
+    $('#address-zip').val('47521');
+    $('#address-street').val('via Cesare Pavese');
+    $('#address-number').val('50');
+
     map.addListener("click", (e) => {
         placeMarkerAndPanTo(e.latLng, map);
     });
