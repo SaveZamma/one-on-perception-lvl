@@ -1,12 +1,16 @@
 csrfToken = document.querySelector('meta[name="csrf-token"]').content;
 authUser = document.querySelector('meta[name="auth"]').content;
 
-const cartBtn = document.querySelector("button.header-cart-btn");
-const notifsBtn = document.querySelector("button.header-notifications-btn");
+let cartBtn;
+let notifsBtn;
+
+$(document).ready(function () {
+    cartBtn = document.querySelector("button.header-cart-btn");
+    notifsBtn = document.querySelector("button.header-notifications-btn");
+});
 
 checkNotifications();
 setInterval(checkNotifications, 30000);
-
 
 function addSpan(father, id, text = "") {
     const span = document.createElement("span");
@@ -40,26 +44,26 @@ function checkNotifications() {
     if (!authUser) return;
 
     const route = "/notification/get";
-     fetch(route, {
+    fetch(route, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
             'X-CSRF-TOKEN': csrfToken,
         },
     })
-    .then(response => mapToJsonOrNull(response))
-    .then(data => data == null ? [] : data.data )
-    .then(notifications => notifications.filter(n => !n.read))
-    .then(n => {
-        if (n.length > 0) {
-            if (document.getElementById("header-notifications-btn-span") == null) {
-                const txt = n.length > 99 ? "99" : n.length;
-                addSpan(notifsBtn, "header-notifications-btn-span", txt);
+        .then(response => mapToJsonOrNull(response))
+        .then(data => data == null ? [] : data.data )
+        .then(notifications => notifications.filter(n => !n.read))
+        .then(n => {
+            if (n.length > 0) {
+                if (document.getElementById("header-notifications-btn-span") == null) {
+                    const txt = n.length > 99 ? "99" : n.length;
+                    addSpan(notifsBtn, "header-notifications-btn-span", txt);
+                }
+            } else {
+                if (document.getElementById("header-notifications-btn-span") != null) {
+                    document.getElementById("header-notifications-btn-span").remove();
+                }
             }
-        } else {
-            if (document.getElementById("header-notifications-btn-span") != null) {
-                document.getElementById("header-notifications-btn-span").remove();
-            }
-        }
-    })
+        })
 }

@@ -1,12 +1,26 @@
-let deleteBtns = document.querySelectorAll('button.delete-btn');
-let readBtns = document.querySelectorAll('button.read-btn');
-let hasBeenReadBtns = document.querySelector('button.header-notifications-btn');
+let deleteBtns;
+let readBtns;
+let hasBeenReadBtns;
 
-setInterval(checkNotifications, 3000);
+$(document).ready(function () {
+    deleteBtns = document.querySelectorAll('button.delete-btn');
+    readBtns = document.querySelectorAll('button.read-btn');
+    hasBeenReadBtns = document.querySelector('button.header-notifications-btn');
+
+    setInterval(checkNotifications, 3000);
+
+    for (let btn of deleteBtns) {
+        btn.addEventListener('click', function (e) { deleteNotification(btn) });
+    }
+    for (let btn of readBtns) {
+        btn.addEventListener('click', function (e) { toggleRead(btn) });
+    }
+});
+
 
 function mapToJsonOrNull(response) {
-    return response.ok 
-        ? response.json().then(data => ({ data: data, status: response.status })) 
+    return response.ok
+        ? response.json().then(data => ({ data: data, status: response.status }))
         : null;
 }
 
@@ -20,28 +34,28 @@ function addSpan(father, id, text = "") {
 
 function checkNotifications() {
     const route = "/notification/get";
-     fetch(route, {
+    fetch(route, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
             'X-CSRF-TOKEN': csrfToken,
         },
     })
-    .then(response => mapToJsonOrNull(response))
-    .then(data => data == null ? [] : data.data )
-    .then(notifications => notifications.filter(n => !n.read))
-    .then(n => {
-        if (n.length > 0) {
-            if (document.getElementById("header-notifications-btn-span") == null) {
-                const txt = n.length > 99 ? "99" : n.length;
-                addSpan(hasBeenReadBtns, "header-notifications-btn-span", txt);
-            }        
-        } else {
-            if (document.getElementById("header-notifications-btn-span") != null) {
-                document.getElementById("header-notifications-btn-span").remove();
+        .then(response => mapToJsonOrNull(response))
+        .then(data => data == null ? [] : data.data )
+        .then(notifications => notifications.filter(n => !n.read))
+        .then(n => {
+            if (n.length > 0) {
+                if (document.getElementById("header-notifications-btn-span") == null) {
+                    const txt = n.length > 99 ? "99" : n.length;
+                    addSpan(hasBeenReadBtns, "header-notifications-btn-span", txt);
+                }
+            } else {
+                if (document.getElementById("header-notifications-btn-span") != null) {
+                    document.getElementById("header-notifications-btn-span").remove();
+                }
             }
-        }
-    })
+        })
 }
 
 function changeReadBtnIcon(btn, showOpen)
@@ -53,7 +67,7 @@ function changeReadBtnIcon(btn, showOpen)
                     <path d="M48 64C21.5 64 0 85.5 0 112c0 15.1 7.1 29.3 19.2 38.4L236.8 313.6c11.4 8.5 27 8.5 38.4 0L492.8 150.4c12.1-9.1 19.2-23.3 19.2-38.4c0-26.5-21.5-48-48-48L48 64zM0 176L0 384c0 35.3 28.7 64 64 64l384 0c35.3 0 64-28.7 64-64l0-208L294.4 339.2c-22.8 17.1-54 17.1-76.8 0L0 176z"/>
                 </svg>`;
     const innerSpan = btn.querySelector('span');
-    innerSpan.innerHTML = showOpen ? open : closed;    
+    innerSpan.innerHTML = showOpen ? open : closed;
 }
 
 function deleteNotification(btn) {
@@ -67,26 +81,26 @@ function deleteNotification(btn) {
         },
         body: JSON.stringify({ notification_id: notifId })
     })
-    .then(response => mapToJsonOrNull(response))
-    .then(data => {
-        if (data === null) {
-            throw new Error('Failed to delete notification');
-        } else {
-            Toastify({
-                text: "Notification deleted",
-                duration: 2000,
-                close: true,
-                style: {
-                    background: "linear-gradient(to right, #29A3A3, #FE7171)",
-                },
-            }).showToast();
-            const ul = btn.parentElement.parentElement.parentElement;
-            if (ul.children.length == 1) { //is last element
-                ul.innerHTML = `<p>You have zero notification.</p>`;
+        .then(response => mapToJsonOrNull(response))
+        .then(data => {
+            if (data === null) {
+                throw new Error('Failed to delete notification');
+            } else {
+                Toastify({
+                    text: "Notification deleted",
+                    duration: 2000,
+                    close: true,
+                    style: {
+                        background: "linear-gradient(to right, #29A3A3, #FE7171)",
+                    },
+                }).showToast();
+                const ul = btn.parentElement.parentElement.parentElement;
+                if (ul.children.length == 1) { //is last element
+                    ul.innerHTML = `<p>You have zero notification.</p>`;
+                }
+                btn.parentElement.parentElement.remove()
             }
-            btn.parentElement.parentElement.remove()
-        }
-    });
+        });
 }
 
 function toggleRead(btn) {
@@ -100,29 +114,22 @@ function toggleRead(btn) {
         },
         body: JSON.stringify({ notification_id: notifId })
     })
-    .then(response => mapToJsonOrNull(response))
-    .then(data => {
-        if (data === null) {
-            throw new Error('Failed to toggle notification read');
-        } else {
-            checkNotifications();
-            Toastify({
-                text: "Done!",
-                duration: 2000,
-                close: true,
-                style: {
-                    background: "linear-gradient(to right, #29A3A3, #FE7171)",
-                },
-            }).showToast();
-            btn.dataset.read = btn.dataset.read == "true" ? "false" : "true";
-            changeReadBtnIcon(btn, btn.dataset.read == "true");
-        }
-    });
-}
-
-for (let btn of deleteBtns) {
-    btn.addEventListener('click', function (e) { deleteNotification(btn) });
-}
-for (let btn of readBtns) {
-    btn.addEventListener('click', function (e) { toggleRead(btn) });
+        .then(response => mapToJsonOrNull(response))
+        .then(data => {
+            if (data === null) {
+                throw new Error('Failed to toggle notification read');
+            } else {
+                checkNotifications();
+                Toastify({
+                    text: "Done!",
+                    duration: 2000,
+                    close: true,
+                    style: {
+                        background: "linear-gradient(to right, #29A3A3, #FE7171)",
+                    },
+                }).showToast();
+                btn.dataset.read = btn.dataset.read == "true" ? "false" : "true";
+                changeReadBtnIcon(btn, btn.dataset.read == "true");
+            }
+        });
 }
