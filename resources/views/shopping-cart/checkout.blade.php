@@ -43,40 +43,39 @@
                 <option>NORWAY</option>
             </select>
 
-            <div class="form-control">
+            <p class="form-control">
                 <label for="city">City:</label>
                 <input type="text" id="address-city" required name="city">
-            </div>
+            </p>
 
-            <div class="form-control">
+            <p class="form-control">
                 <label for="zip">Zip Code:</label>
                 <input type="text" id="address-zip" required name="zip">
-            </div>
+            </p>
 
-            <div class="form-control">
+            <p class="form-control">
                 <label for="street">Street:</label>
                 <input type="text" id="address-street" required name="street">
-            </div>
+            </p>
 
-            <div class="form-control">
+            <p class="form-control">
                 <label for="number">Number:</label>
                 <input type="text" id="address-number" required name="number">
-            </div>
+            </p>
 
-            <div class="form-control">
+            <p class="form-control">
                 <label for="latitude">Latitude:</label>
                 <input type="number" id="latitude" name="lat">
-            </div>
+            </p>
 
-            <div class="form-control">
+            <p class="form-control">
                 <label for="longitude">Longitude:</label>
                 <input type="number" id="longitude" name="lng">
-            </div>
+            </p>
 
-            <div class="google-map">
+            <section class="google-map">
                 <div id="map"></div>
-            </div>
-
+            </section>
 
         </fieldset>
 
