@@ -11,7 +11,12 @@
 @section('page-content')
     <main class="gradient-bg background-padding" style="min-height:100vh;display:flex;align-items:center;justify-content:center;">
         <article class="product-card card">
-            <img src="{{ $product->imagePath }}" alt="{{ $product->name }}" class="product-img">
+            <img
+                src="{{ Str::startsWith($product->imagePath, ['http://', 'https://']) ? $product->imagePath : asset('storage/' . $product->imagePath) }}"
+                alt="{{ $product->name }}"
+                class="product-img"
+                onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,<svg xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;80&quot; height=&quot;80&quot; viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot; stroke=&quot;#999&quot; stroke-width=&quot;2&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot;><rect x=&quot;3&quot; y=&quot;3&quot; width=&quot;18&quot; height=&quot;18&quot; rx=&quot;2&quot; ry=&quot;2&quot;/><circle cx=&quot;8.5&quot; cy=&quot;8.5&quot; r=&quot;1.5&quot;/><polyline points=&quot;16 15 13 12 8 17&quot;/></svg>'"
+            >
 
             <header class="product-header-box">
                 <h1 class="product-title">{{ $product->name }}</h1>
