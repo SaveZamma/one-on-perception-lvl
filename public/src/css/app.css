@@ -134,6 +134,14 @@ aside {
     margin: 5px;
 }
 
+button.header-notifications-btn span {
+    top: -30px !important;
+}
+
+button.header-notifications-btn svg {
+    width: 20px !important;
+}
+
 /* LAYOUT */
 .fill-height {
     height: -webkit-fill-available;
