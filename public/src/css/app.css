@@ -2,6 +2,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Rakkas&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Rakkas&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
 
+main {
+    margin-bottom: 1%;
+}
+
 :root{
     --primary: #29A3A3;
     --secondary: #FE7171;
@@ -44,6 +48,18 @@ nav {
     gap: 10px;
     align-content: center;
     flex-wrap: wrap;
+}
+
+nav span {
+    color: var(--dark-ternary);
+}
+
+nav p {
+    display: none;
+}
+svg.icon-btn {
+    width: 25px !important;
+    cursor: pointer;
 }
 
 button {
@@ -131,6 +147,14 @@ aside {
 }
 .notification h3, .notification p {
     margin: 5px;
+}
+
+button.header-notifications-btn span {
+    top: -30px !important;
+}
+
+button.header-notifications-btn svg {
+    width: 20px !important;
 }
 
 /* LAYOUT */
@@ -296,7 +320,7 @@ button {
     width: 12px;
     position: relative;
     left: 12px;
-    top: -26px;
+    top: -32px;
     border: 1px white solid;
 }
 
@@ -367,7 +391,7 @@ textarea.form-control::placeholder {
     .fill-landing {
         padding: 5%;
     }
-    
+
     .background-padding {
         border-radius: 2rem;
         padding: 2.5rem;
