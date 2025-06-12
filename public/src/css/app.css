@@ -50,6 +50,13 @@ nav {
     flex-wrap: wrap;
 }
 
+nav span {
+    color: var(--dark-ternary);
+}
+
+nav p {
+    display: none;
+}
 svg.icon-btn {
     width: 25px !important;
     cursor: pointer;
