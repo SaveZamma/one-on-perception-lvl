@@ -2,6 +2,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Rakkas&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Rakkas&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
 
+main {
+    margin-bottom: 1%;
+}
+
 :root{
     --primary: #29A3A3;
     --secondary: #FE7171;
