@@ -46,6 +46,11 @@ nav {
     flex-wrap: wrap;
 }
 
+svg.icon-btn {
+    width: 25px !important;
+    cursor: pointer;
+}
+
 button {
     font-family: Raleway, sans-serif;
     padding: 2%;
@@ -292,7 +297,7 @@ button {
     width: 12px;
     position: relative;
     left: 12px;
-    top: -26px;
+    top: -32px;
     border: 1px white solid;
 }
 
@@ -363,7 +368,7 @@ textarea.form-control::placeholder {
     .fill-landing {
         padding: 5%;
     }
-    
+
     .background-padding {
         border-radius: 2rem;
         padding: 2.5rem;
