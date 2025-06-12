@@ -6,12 +6,18 @@
 
 @section('page-content')
     <h2>My Orders</h2>
-{{--    @if ($orders->count() == 0)--}}
-{{--        <p>You haven't placed any order yet.</p>--}}
-{{--    @else--}}
     <ul class="products-list">
         @if(\Illuminate\Support\Facades\Session::has('success'))
-            <h4>{{\Illuminate\Support\Facades\Session::get('success')}}</h4>
+            <script>
+                Toastify({
+                    text: '{{\Illuminate\Support\Facades\Session::get('success')}}',
+                    duration: 2000,
+                    close: true,
+                    style: {
+                        background: "linear-gradient(to right, #29A3A3, #FE7171)",
+                    },
+                }).showToast();
+            </script>
         @endif
         @foreach ($orders as $order)
             <li class="card-border fx-row fx-space-between" style="padding: 0.2rem 1rem;">
@@ -26,6 +32,6 @@
             </li>
         @endforeach
     </ul>
-{{--    @endif--}}
+    {{--    @endif--}}
 
 @endsection
