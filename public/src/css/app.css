@@ -71,6 +71,10 @@ a:hover {
     font-weight: bold;
 }
 
+.sidebar-text {
+    font-size: x-large;
+}
+
 .card {
     border: lightgray 1px solid;
     border-radius: 10px;

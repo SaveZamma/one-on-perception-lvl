@@ -36,8 +36,8 @@
 </nav>
 
 <aside id="side-menu" class="side-menu glass">
-    <a href="{{ route('marketplace.index')}}">Marketplace</a>
-    <a href="{{ route('profile')}}">Profile</a>
-    <a href="{{ route('profile.orders')}}">Orders</a>
-    <a href="{{ route('seller.index')}}">Seller dashboard</a>
+    <a class="sidebar-text" href="{{ route('marketplace.index')}}">Marketplace</a>
+    <a class="sidebar-text" href="{{ route('profile')}}">Profile</a>
+    <a class="sidebar-text" href="{{ route('profile.orders')}}">Orders</a>
+    <a class="sidebar-text" href="{{ route('seller.index')}}">Seller dashboard</a>
 </aside>
